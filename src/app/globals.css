@@ -1,43 +1,59 @@
+/* 
+ * This file uses Tailwind CSS directives
+ * https://tailwindcss.com/docs/functions-and-directives
+ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: #f5f3f7;
-    --foreground: #301934;
-  }
-
-  body {
-    @apply bg-background text-gray-800 font-serif;
-  }
-  
-  h1, h2, h3, h4, h5, h6, nav, button {
-    @apply font-sans;
-  }
+:root {
+  --background: #f5f3f7;
+  --foreground: #301934;
 }
 
-@layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4;
-  }
+body {
+  background-color: var(--background);
+  color: #333;
+  font-family: var(--font-eb-garamond), serif;
 }
 
-@layer utilities {
-  .animate-gradient {
-    @apply bg-hero-gradient bg-[length:400%_400%] animate-gradient-shift;
-  }
-
-  .fade-in-section {
-    @apply opacity-0 translate-y-5 transition-all duration-600 ease-out;
-  }
-
-  .fade-in-section.is-visible {
-    @apply opacity-100 translate-y-0;
-  }
+h1, h2, h3, h4, h5, h6, nav, button {
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-/* Custom animations */
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.animate-gradient {
+  background-image: radial-gradient(circle at 25% 30%, #4b2b5c, transparent 40%), 
+    radial-gradient(circle at 75% 60%, #301934, transparent 50%), 
+    radial-gradient(circle at 50% 50%, #1d1020, transparent 60%), 
+    radial-gradient(circle at 80% 20%, #583668, transparent 40%),
+    radial-gradient(circle at 20% 70%, #eab308, transparent 35%),
+    radial-gradient(circle at 65% 40%, #facc15, transparent 30%),
+    radial-gradient(circle at 40% 25%, #fef08a, transparent 25%),
+    radial-gradient(circle at 85% 80%, #fef9c3, transparent 20%),
+    #301934;
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -48,22 +64,4 @@
   100% {
     background-position: 0% 50%;
   }
-}
-
-/* Custom styles */
-.animate-gradient-shift {
-  animation: gradientShift 15s ease infinite;
-}
-
-/* Hero gradient */
-.bg-hero-gradient {
-  background: radial-gradient(circle at 25% 30%, #4b2b5c, transparent 40%),
-              radial-gradient(circle at 75% 60%, #301934, transparent 50%),
-              radial-gradient(circle at 50% 50%, #1d1020, transparent 60%),
-              radial-gradient(circle at 80% 20%, #583668, transparent 40%),
-              radial-gradient(circle at 20% 70%, #eab308, transparent 35%),
-              radial-gradient(circle at 65% 40%, #facc15, transparent 30%),
-              radial-gradient(circle at 40% 25%, #fef08a, transparent 25%),
-              radial-gradient(circle at 85% 80%, #fef9c3, transparent 20%),
-              #301934;
 }
