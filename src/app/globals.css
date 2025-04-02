@@ -1,20 +1,26 @@
 /* 
- * This file uses Tailwind CSS directives
- * https://tailwindcss.com/docs/functions-and-directives
+ * Tailwind CSS directives
  */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles */
 :root {
   --background: #f5f3f7;
   --foreground: #301934;
+  --primary: #301934;
+  --secondary: #6d5590;
+  --accent: #b2a3c7;
 }
 
 body {
   background-color: var(--background);
   color: #333;
-  font-family: var(--font-eb-garamond), serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'EB Garamond', serif;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6, nav, button {
@@ -29,8 +35,10 @@ h1, h2, h3, h4, h5, h6, nav, button {
   padding-right: 1rem;
 }
 
+/* Hero gradient background */
 .animate-gradient {
-  background-image: radial-gradient(circle at 25% 30%, #4b2b5c, transparent 40%), 
+  background-image: 
+    radial-gradient(circle at 25% 30%, #4b2b5c, transparent 40%), 
     radial-gradient(circle at 75% 60%, #301934, transparent 50%), 
     radial-gradient(circle at 50% 50%, #1d1020, transparent 60%), 
     radial-gradient(circle at 80% 20%, #583668, transparent 40%),
@@ -43,6 +51,14 @@ h1, h2, h3, h4, h5, h6, nav, button {
   animation: gradientShift 15s ease infinite;
 }
 
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fade in animations */
 .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
@@ -54,14 +70,28 @@ h1, h2, h3, h4, h5, h6, nav, button {
   transform: translateY(0);
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+/* Colors */
+.bg-primary { background-color: var(--primary); }
+.text-primary { color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+.text-secondary { color: var(--secondary); }
+.bg-accent { background-color: var(--accent); }
+.text-accent { color: var(--accent); }
+.bg-background { background-color: var(--background); }
+
+/* Text styling */
+.font-light { font-weight: 300; }
+.font-medium { font-weight: 500; }
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* Spacing utilities */
+.space-x-8 > * + * { margin-left: 2rem; }
+.space-y-8 > * + * { margin-top: 2rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
