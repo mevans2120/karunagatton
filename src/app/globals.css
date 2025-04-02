@@ -2,19 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #f5f3f7;
-  --foreground: #301934;
-}
-
 @layer base {
   body {
-    @apply bg-[#f5f3f7] text-gray-800;
-    font-family: var(--font-eb-garamond), serif;
+    @apply bg-background text-gray-800 font-serif;
   }
   
   h1, h2, h3, h4, h5, h6, nav, button {
-    font-family: Helvetica, Arial, sans-serif;
+    @apply font-sans;
   }
 }
 
