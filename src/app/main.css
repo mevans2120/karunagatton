@@ -99,10 +99,14 @@ a {
 .bg-gray-900 { background-color: #111827; }
 .bg-purple-50 { background-color: #f5f3ff; }
 .bg-purple-100 { background-color: #ede9ff; }
+.bg-purple-200 { background-color: #ddd6fe; }
+.bg-purple-300 { background-color: #c4b5fd; }
 .bg-opacity-95 { background-color: rgba(48, 25, 52, 0.95); }
 .bg-opacity-20 { background-color: rgba(255, 255, 255, 0.2); }
 .fill-purple-50 { fill: #f5f3ff; }
 .fill-purple-100 { fill: #ede9ff; }
+.fill-purple-200 { fill: #ddd6fe; }
+.fill-purple-300 { fill: #c4b5fd; }
 
 /* Border */
 .border { border: 1px solid; }
