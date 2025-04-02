@@ -165,7 +165,7 @@ export default function Home() {
     <div className="min-h-screen text-gray-800 bg-gray-50">
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#301934] bg-opacity-95 flex flex-col items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center">
           <button 
             onClick={() => setIsMenuOpen(false)}
             className="absolute top-5 right-5 text-white"
@@ -173,11 +173,11 @@ export default function Home() {
             <X size={30} />
           </button>
           <nav className="flex flex-col items-center space-y-8 text-xl text-white">
-            <Link href="/" className="hover:text-[#b2a3c7] transition duration-300">Home</Link>
-            <Link href="/offerings" className="hover:text-[#b2a3c7] transition duration-300">Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-[#b2a3c7] transition duration-300">Drum Circle</Link>
-            <Link href="/about" className="hover:text-[#b2a3c7] transition duration-300">About</Link>
-            <Link href="/get-in-touch" className="hover:text-[#b2a3c7] transition duration-300">Get in Touch</Link>
+            <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
+            <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
+            <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
+            <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
+            <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
           </nav>
         </div>
       )}
@@ -189,11 +189,11 @@ export default function Home() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">
-            <Link href="/" className="hover:text-[#b2a3c7] transition duration-300">Home</Link>
-            <Link href="/offerings" className="hover:text-[#b2a3c7] transition duration-300">Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-[#b2a3c7] transition duration-300">Drum Circle</Link>
-            <Link href="/about" className="hover:text-[#b2a3c7] transition duration-300">About</Link>
-            <Link href="/get-in-touch" className="hover:text-[#b2a3c7] transition duration-300">Get in Touch</Link>
+            <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
+            <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
+            <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
+            <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
+            <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
           </nav>
           
           {/* Mobile Menu Button */}
@@ -207,19 +207,7 @@ export default function Home() {
       </header>
       
       {/* Hero Section with Wavy Header */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden animate-gradient" style={{ 
-        background: `
-          radial-gradient(circle at 25% 30%, #4b2b5c, transparent 40%), 
-          radial-gradient(circle at 75% 60%, #301934, transparent 50%), 
-          radial-gradient(circle at 50% 50%, #1d1020, transparent 60%), 
-          radial-gradient(circle at 80% 20%, #583668, transparent 40%),
-          radial-gradient(circle at 20% 70%, #eab308, transparent 35%),
-          radial-gradient(circle at 65% 40%, #facc15, transparent 30%),
-          radial-gradient(circle at 40% 25%, #fef08a, transparent 25%),
-          radial-gradient(circle at 85% 80%, #fef9c3, transparent 20%),
-          #301934
-        `
-      }}>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden animate-gradient">
         {/* Wavy pattern */}
         <div className="absolute inset-0 overflow-hidden">
           <svg className="absolute bottom-0 w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -249,9 +237,9 @@ export default function Home() {
       <section id="welcome" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="relative fade-in-section">
-            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-7xl text-[#6d5590] opacity-30">✧</div>
+            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-7xl text-secondary opacity-30">✧</div>
           </div>
-          <h2 className="text-3xl md:text-4xl text-center font-light text-[#301934] mb-10 fade-in-section">Welcome</h2>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section">Welcome</h2>
           <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
             You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and gentle presence. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
           </p>
@@ -295,7 +283,7 @@ export default function Home() {
                 <button 
                   key={index}
                   className={`w-3 h-3 rounded-full ${
-                    index === currentPhotoIndex ? 'bg-[#301934]' : 'bg-[#d2c9dd]'
+                    index === currentPhotoIndex ? 'bg-primary' : 'bg-accent/30'
                   }`}
                   onClick={() => setCurrentPhotoIndex(index)}
                   aria-label={`View photo ${index + 1}`}
@@ -317,12 +305,12 @@ export default function Home() {
       <section id="offerings" className="py-20 bg-purple-50 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-gray-50 to-transparent"></div>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl text-center font-light text-[#301934] mb-16 fade-in-section">Healing Offerings</h2>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section">Healing Offerings</h2>
           
           <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto">
             {offeringTeasers.map((offering, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center flex-1 min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
-                <div className="text-3xl text-[#6d5590] mb-6">{offering.icon}</div>
+                <div className="text-3xl text-secondary mb-6">{offering.icon}</div>
                 <h3 className="text-xl font-medium text-gray-800 mb-4">{offering.title}</h3>
                 <p className="text-gray-600">{offering.description}</p>
               </div>
@@ -330,7 +318,7 @@ export default function Home() {
           </div>
           
           <div className="text-center mt-12 fade-in-section">
-            <Link href="/offerings" className="inline-flex items-center px-6 py-3 bg-[#301934] text-white rounded-full hover:bg-[#3e2f56] transition duration-300">
+            <Link href="/offerings" className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition duration-300">
               View All Offerings
               <ChevronRight size={20} className="ml-2" />
             </Link>
@@ -339,22 +327,22 @@ export default function Home() {
       </section>
       
       {/* Testimonial Section */}
-      <section className="py-24 bg-[#f5f3f7] text-gray-800 relative overflow-hidden">
-        <div className="absolute top-10 left-10 text-8xl text-[#8e79ab] opacity-10">❝</div>
-        <div className="absolute bottom-10 right-10 text-8xl text-[#8e79ab] opacity-10">❞</div>
+      <section className="py-24 bg-background text-gray-800 relative overflow-hidden">
+        <div className="absolute top-10 left-10 text-8xl text-secondary opacity-10">❝</div>
+        <div className="absolute bottom-10 right-10 text-8xl text-secondary opacity-10">❞</div>
         
         <div className="container mx-auto px-4 max-w-4xl relative z-10">
-          <h2 className="text-3xl md:text-4xl text-center font-light text-[#301934] mb-16 fade-in-section">What People Are Saying</h2>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section">What People Are Saying</h2>
           
           <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm fade-in-section">
             <div className="flex flex-col">
-              <div className="text-[#8e79ab] text-xl mb-4">❝</div>
+              <div className="text-secondary text-xl mb-4">❝</div>
               <p className="text-gray-700 italic mb-6 text-lg">
                 {testimonials[currentTestimonial].quote.length > 220 
                   ? testimonials[currentTestimonial].quote.substring(0, 220) + "..." 
                   : testimonials[currentTestimonial].quote}
               </p>
-              <p className="font-medium text-[#301934] self-end text-right">
+              <p className="font-medium text-primary self-end text-right">
                 ― {testimonials[currentTestimonial].author}
               </p>
             </div>
@@ -365,7 +353,7 @@ export default function Home() {
               <button 
                 key={index}
                 className={`w-3 h-3 rounded-full ${
-                  index === currentTestimonial ? 'bg-[#301934]' : 'bg-[#d2c9dd]'
+                  index === currentTestimonial ? 'bg-primary' : 'bg-accent/30'
                 }`}
                 onClick={() => setCurrentTestimonial(index)}
                 aria-label={`View testimonial ${index + 1}`}
@@ -376,7 +364,7 @@ export default function Home() {
       </section>
       
       {/* Drum Circle Highlight */}
-      <section style={{backgroundColor: '#301934', color: 'white', padding: '5rem 0'}}>
+      <section className="bg-primary text-white py-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="md:flex items-center">
             <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12 fade-in-section">
@@ -391,7 +379,7 @@ export default function Home() {
               <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section">
                 Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
               </p>
-              <Link href="/drum-circle" className="inline-flex items-center text-[#d2c9dd] hover:text-[#e9e4ee] transition duration-300 fade-in-section">
+              <Link href="/drum-circle" className="inline-flex items-center text-accent hover:text-accent/80 transition duration-300 fade-in-section">
                 Learn More
                 <ChevronRight size={20} className="ml-1" />
               </Link>
@@ -418,7 +406,7 @@ export default function Home() {
               <p className="text-lg leading-relaxed mb-6 text-gray-700 fade-in-section">
                 Karuna Gatton brings decades of experience in shamanic healing traditions. Her approach is gentle yet powerful, focusing on empowering her clients through deep connection with spirit and nature.
               </p>
-              <Link href="/about" className="inline-flex items-center text-[#533e72] hover:text-[#301934] transition duration-300 fade-in-section">
+              <Link href="/about" className="inline-flex items-center text-secondary hover:text-primary transition duration-300 fade-in-section">
                 Read More About Karuna
                 <ChevronRight size={20} className="ml-1" />
               </Link>
@@ -440,11 +428,11 @@ export default function Home() {
               <div>
                 <h4 className="text-lg font-medium text-white mb-4">Pages</h4>
                 <ul className="space-y-2">
-                  <li><Link href="/" className="hover:text-[#b2a3c7] transition duration-300">Home</Link></li>
-                  <li><Link href="/offerings" className="hover:text-[#b2a3c7] transition duration-300">Offerings</Link></li>
-                  <li><Link href="/drum-circle" className="hover:text-[#b2a3c7] transition duration-300">Drum Circle</Link></li>
-                  <li><Link href="/about" className="hover:text-[#b2a3c7] transition duration-300">About</Link></li>
-                  <li><Link href="/get-in-touch" className="hover:text-[#b2a3c7] transition duration-300">Get in Touch</Link></li>
+                  <li><Link href="/" className="hover:text-accent transition duration-300">Home</Link></li>
+                  <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
+                  <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
+                  <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>
+                  <li><Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link></li>
                 </ul>
               </div>
               
@@ -453,7 +441,7 @@ export default function Home() {
                 <address className="not-italic space-y-2">
                   <p>Eugene, Oregon</p>
                   <p>
-                    <a href="mailto:contact@karunagatton.com" className="hover:text-[#b2a3c7] transition duration-300">
+                    <a href="mailto:contact@karunagatton.com" className="hover:text-accent transition duration-300">
                       contact@karunagatton.com
                     </a>
                   </p>

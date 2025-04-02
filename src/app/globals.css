@@ -23,30 +23,16 @@
   }
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
+@layer utilities {
+  .animate-gradient {
+    @apply bg-hero-gradient bg-[length:400%_400%] animate-gradient-shift;
   }
-  50% {
-    background-position: 100% 50%;
+
+  .fade-in-section {
+    @apply opacity-0 translate-y-5 transition-all duration-600 ease-out;
   }
-  100% {
-    background-position: 0% 50%;
+
+  .fade-in-section.is-visible {
+    @apply opacity-100 translate-y-0;
   }
-}
-
-.animate-gradient {
-  animation: gradientShift 15s ease infinite;
-  background-size: 200% 200%;
-}
-
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
