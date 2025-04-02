@@ -5,6 +5,7 @@ import "./globals.css";
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
   variable: "--font-eb-garamond",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -18,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${ebGaramond.variable} font-serif antialiased`}>
+    <html lang="en" className={ebGaramond.variable}>
+      <body className="font-serif antialiased">
         {children}
       </body>
     </html>

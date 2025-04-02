@@ -1,1 +1,24 @@
-@tailwind base; @tailwind components; @tailwind utilities; @layer base { body { @apply bg-background text-gray-800 font-serif; } h1, h2, h3, h4, h5, h6, nav, button { @apply font-sans; } } @layer components { .container { @apply max-w-7xl mx-auto px-4; } }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f5f3f7;
+    --foreground: #301934;
+  }
+
+  body {
+    @apply bg-background text-gray-800 font-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6, nav, button {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+}
