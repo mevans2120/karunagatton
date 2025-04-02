@@ -29,53 +29,7 @@ export default function Home() {
     }
   ];
   
-  // Custom font styles and animations
-  const styles = `
-    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-    
-    body {
-      font-family: 'EB Garamond', serif;
-    }
-    
-    h1, h2, h3, h4, h5, h6, nav, button {
-      font-family: Helvetica, Arial, sans-serif;
-    }
-
-    @keyframes gradientShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    .animate-gradient {
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-    }
-
-    .fade-in-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    
-    .fade-in-section.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `;
-  
   useEffect(() => {
-    // Add styles to document
-    const styleElement = document.createElement('style');
-    styleElement.innerHTML = styles;
-    document.head.appendChild(styleElement);
-    
     // Intersection Observer for fade-in animations
     const observerOptions = {
       root: null,
@@ -97,9 +51,6 @@ export default function Home() {
     });
     
     return () => {
-      if (styleElement.parentNode) {
-        document.head.removeChild(styleElement);
-      }
       fadeElements.forEach(element => {
         observer.unobserve(element);
       });
