@@ -1,102 +1,471 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { ChevronRight, Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  
+  // Carousel photos data
+  const carouselPhotos = [
+    {
+      src: "/api/placeholder/600/800",
+      alt: "Karuna's healing yurt exterior"
+    },
+    {
+      src: "/api/placeholder/600/800",
+      alt: "Sacred healing space interior"
+    },
+    {
+      src: "/api/placeholder/600/800",
+      alt: "Ceremonial items and tools"
+    },
+    {
+      src: "/api/placeholder/600/800",
+      alt: "Natural surroundings in Eugene"
+    }
+  ];
+  
+  // Custom font styles and animations
+  const styles = `
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+    
+    body {
+      font-family: 'EB Garamond', serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6, nav, button {
+      font-family: Helvetica, Arial, sans-serif;
+    }
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animate-gradient {
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `;
+  
+  useEffect(() => {
+    // Add styles to document
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = styles;
+    document.head.appendChild(styleElement);
+    
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15,
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+    
+    const fadeElements = document.querySelectorAll('.fade-in-section');
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    return () => {
+      if (styleElement.parentNode) {
+        document.head.removeChild(styleElement);
+      }
+      fadeElements.forEach(element => {
+        observer.unobserve(element);
+      });
+    };
+  }, []);
+  
+  // Carousel auto-rotation
+  useEffect(() => {
+    const photoTimer = setInterval(() => {
+      setCurrentPhotoIndex(prev => (prev + 1) % carouselPhotos.length);
+    }, 5000);
+    
+    return () => clearInterval(photoTimer);
+  }, []);
+  
+  // Testimonial rotation
+  useEffect(() => {
+    const testimonialTimer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+    return () => clearInterval(testimonialTimer);
+  }, []);
+  
+  // Testimonial data
+  const testimonials = [
+    {
+      quote: "Karuna has been tremendously helpful to me, and the wellness of my whole family. Her unique insight and extraordinary gifts make her a powerful healer. She is also simply delightful to spend time with. Her ability to work remotely makes it so easy to work with her and have work done when it's really needed, even when life is keeping you busy.",
+      author: "Fauna"
+    },
+    {
+      quote: "Since working with Karuna, I have become connected with Spirit on a level that I'd never experienced before! She shares the tools needed to make and maintain this connection that makes magnitudes of difference in my life on a daily basis…. Health, relationships, material success and spiritual realms… I never knew how powerful I was until she showed me!",
+      author: "Kristin F."
+    },
+    {
+      quote: "My first shamanic session with Karuna was almost 20 years ago, after a significant family trauma. Upon meeting Karuna, I immediately felt at ease. I intuitively sensed that I could trust her completely. The session was a deeply healing experience for me and for my child. I felt seen, supported, and loved.",
+      author: "Wendy H."
+    },
+    {
+      quote: "I have had the pleasure of knowing Karuna for over 20 years. During this time she performed a Healing and Empowerment Ceremony for me as well as distance healing for several members of my family. My own healing was very profound. The soul gathering for family members who had passed was such a blessing for the entire family.",
+      author: "Sue Brown"
+    }
+  ];
+  
+  const offeringTeasers = [
+    {
+      title: "Soul Retrieval",
+      description: "Recover vital energy and essence lost through trauma or difficult life experiences.",
+      icon: "✧"
+    },
+    {
+      title: "Power Spirit Retrieval",
+      description: "Connect with helping spirits that offer guidance, protection, and power.",
+      icon: "✧"
+    },
+    {
+      title: "Shamanic Counseling",
+      description: "Personal guidance using shamanic techniques to address your unique situation.",
+      icon: "✧"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen text-gray-800 bg-gray-50">
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-[#301934] bg-opacity-95 flex flex-col items-center justify-center">
+          <button 
+            onClick={() => setIsMenuOpen(false)}
+            className="absolute top-5 right-5 text-white"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <X size={30} />
+          </button>
+          <nav className="flex flex-col items-center space-y-8 text-xl text-white">
+            <Link href="/" className="hover:text-[#b2a3c7] transition duration-300">Home</Link>
+            <Link href="/offerings" className="hover:text-[#b2a3c7] transition duration-300">Offerings</Link>
+            <Link href="/drum-circle" className="hover:text-[#b2a3c7] transition duration-300">Drum Circle</Link>
+            <Link href="/about" className="hover:text-[#b2a3c7] transition duration-300">About</Link>
+            <Link href="/get-in-touch" className="hover:text-[#b2a3c7] transition duration-300">Get in Touch</Link>
+          </nav>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      )}
+    
+      {/* Header */}
+      <header className="absolute top-0 w-full z-10 p-4">
+        <div className="container mx-auto flex items-center justify-between">
+          <Link href="/" className="text-white text-3xl font-light tracking-wider">Karuna</Link>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8 text-white">
+            <Link href="/" className="hover:text-[#b2a3c7] transition duration-300">Home</Link>
+            <Link href="/offerings" className="hover:text-[#b2a3c7] transition duration-300">Offerings</Link>
+            <Link href="/drum-circle" className="hover:text-[#b2a3c7] transition duration-300">Drum Circle</Link>
+            <Link href="/about" className="hover:text-[#b2a3c7] transition duration-300">About</Link>
+            <Link href="/get-in-touch" className="hover:text-[#b2a3c7] transition duration-300">Get in Touch</Link>
+          </nav>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsMenuOpen(true)} 
+            className="md:hidden text-white"
+          >
+            <Menu size={24} />
+          </button>
+        </div>
+      </header>
+      
+      {/* Hero Section with Wavy Header */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden animate-gradient" style={{ 
+        background: `
+          radial-gradient(circle at 25% 30%, #4b2b5c, transparent 40%), 
+          radial-gradient(circle at 75% 60%, #301934, transparent 50%), 
+          radial-gradient(circle at 50% 50%, #1d1020, transparent 60%), 
+          radial-gradient(circle at 80% 20%, #583668, transparent 40%),
+          radial-gradient(circle at 20% 70%, #eab308, transparent 35%),
+          radial-gradient(circle at 65% 40%, #facc15, transparent 30%),
+          radial-gradient(circle at 40% 25%, #fef08a, transparent 25%),
+          radial-gradient(circle at 85% 80%, #fef9c3, transparent 20%),
+          #301934
+        `
+      }}>
+        {/* Wavy pattern */}
+        <div className="absolute inset-0 overflow-hidden">
+          <svg className="absolute bottom-0 w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#f9fafb" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+          </svg>
+          <svg className="absolute bottom-0 w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ transform: 'translateY(10px)' }}>
+            <path fill="#f3f4f6" fillOpacity="0.5" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,213.3C672,213,768,203,864,186.7C960,171,1056,149,1152,149.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+          </svg>
+        </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 text-left px-8 md:px-16 pb-32 container mx-auto">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight">
+            Shamanic Healing <br className="hidden md:block" />in Eugene, OR
+          </h1>
+          <h2 className="text-xl md:text-2xl text-white font-light tracking-wide max-w-2xl mb-8">
+            A place where spirit moves through ancient ceremony and gentle presence
+          </h2>
+          <Link href="#offerings" className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300">
+            View Offerings
+            <ChevronRight size={20} className="ml-2" />
+          </Link>
+        </div>
+      </section>
+      
+      {/* Welcome Message */}
+      <section id="welcome" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="relative fade-in-section">
+            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-7xl text-[#6d5590] opacity-30">✧</div>
+          </div>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-[#301934] mb-10 fade-in-section">Welcome</h2>
+          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
+            You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and gentle presence. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
+          </p>
+          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section">
+            Through shamanic practice, she helps you reconnect to your wholeness, awaken your vitality, and walk forward empowered. Whether you're new to this work or returning to it, you're invited to explore, feel, and heal.
+          </p>
+        </div>
+      </section>
+      
+      {/* Integrated Photo Carousel */}
+      <section className="relative py-32 bg-purple-50">
+        {/* Top wave decoration */}
+        <div className="absolute top-0 left-0 w-full overflow-hidden">
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-gray-50"></path>
+          </svg>
+        </div>
+        
+        <div className="container mx-auto px-4">
+          <div className="max-w-xl mx-auto fade-in-section relative">
+            <div className="w-full h-[800px] relative overflow-hidden rounded-lg">
+              {carouselPhotos.map((photo, index) => (
+                <div 
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentPhotoIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                >
+                  <img 
+                    src={photo.src} 
+                    alt={photo.alt} 
+                    className="w-[600px] h-[800px] object-cover mx-auto"
+                  />
+                </div>
+              ))}
+            </div>
+            
+            {/* Navigation dots */}
+            <div className="flex justify-center mt-6 space-x-3">
+              {carouselPhotos.map((_, index) => (
+                <button 
+                  key={index}
+                  className={`w-3 h-3 rounded-full ${
+                    index === currentPhotoIndex ? 'bg-[#301934]' : 'bg-[#d2c9dd]'
+                  }`}
+                  onClick={() => setCurrentPhotoIndex(index)}
+                  aria-label={`View photo ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Bottom wave decoration */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20" style={{ transform: 'rotate(180deg)' }}>
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-purple-50"></path>
+          </svg>
+        </div>
+      </section>
+      
+      {/* Offerings Teaser */}
+      <section id="offerings" className="py-20 bg-purple-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-gray-50 to-transparent"></div>
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl text-center font-light text-[#301934] mb-16 fade-in-section">Healing Offerings</h2>
+          
+          <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto">
+            {offeringTeasers.map((offering, index) => (
+              <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center flex-1 min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
+                <div className="text-3xl text-[#6d5590] mb-6">{offering.icon}</div>
+                <h3 className="text-xl font-medium text-gray-800 mb-4">{offering.title}</h3>
+                <p className="text-gray-600">{offering.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12 fade-in-section">
+            <Link href="/offerings" className="inline-flex items-center px-6 py-3 bg-[#301934] text-white rounded-full hover:bg-[#3e2f56] transition duration-300">
+              View All Offerings
+              <ChevronRight size={20} className="ml-2" />
+            </Link>
+          </div>
+        </div>
+      </section>
+      
+      {/* Testimonial Section */}
+      <section className="py-24 bg-[#f5f3f7] text-gray-800 relative overflow-hidden">
+        <div className="absolute top-10 left-10 text-8xl text-[#8e79ab] opacity-10">❝</div>
+        <div className="absolute bottom-10 right-10 text-8xl text-[#8e79ab] opacity-10">❞</div>
+        
+        <div className="container mx-auto px-4 max-w-4xl relative z-10">
+          <h2 className="text-3xl md:text-4xl text-center font-light text-[#301934] mb-16 fade-in-section">What People Are Saying</h2>
+          
+          <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm fade-in-section">
+            <div className="flex flex-col">
+              <div className="text-[#8e79ab] text-xl mb-4">❝</div>
+              <p className="text-gray-700 italic mb-6 text-lg">
+                {testimonials[currentTestimonial].quote.length > 220 
+                  ? testimonials[currentTestimonial].quote.substring(0, 220) + "..." 
+                  : testimonials[currentTestimonial].quote}
+              </p>
+              <p className="font-medium text-[#301934] self-end text-right">
+                ― {testimonials[currentTestimonial].author}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex justify-center mt-8 space-x-3 fade-in-section">
+            {testimonials.map((_, index) => (
+              <button 
+                key={index}
+                className={`w-3 h-3 rounded-full ${
+                  index === currentTestimonial ? 'bg-[#301934]' : 'bg-[#d2c9dd]'
+                }`}
+                onClick={() => setCurrentTestimonial(index)}
+                aria-label={`View testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Drum Circle Highlight */}
+      <section style={{backgroundColor: '#301934', color: 'white', padding: '5rem 0'}}>
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="md:flex items-center">
+            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12 fade-in-section">
+              <img 
+                src="/api/placeholder/600/400" 
+                alt="Drum Circle" 
+                className="rounded-lg shadow-lg" 
+              />
+            </div>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-light mb-6 fade-in-section">Monthly Drum Circle</h2>
+              <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section">
+                Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
+              </p>
+              <Link href="/drum-circle" className="inline-flex items-center text-[#d2c9dd] hover:text-[#e9e4ee] transition duration-300 fade-in-section">
+                Learn More
+                <ChevronRight size={20} className="ml-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* About Karuna Teaser */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="md:flex items-center">
+            <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">
+              <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
+                <img 
+                  src="/api/placeholder/400/400" 
+                  alt="Karuna Gatton" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+            </div>
+            <div className="md:w-2/3">
+              <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-800 fade-in-section">About Karuna</h2>
+              <p className="text-lg leading-relaxed mb-6 text-gray-700 fade-in-section">
+                Karuna Gatton brings decades of experience in shamanic healing traditions. Her approach is gentle yet powerful, focusing on empowering her clients through deep connection with spirit and nature.
+              </p>
+              <Link href="/about" className="inline-flex items-center text-[#533e72] hover:text-[#301934] transition duration-300 fade-in-section">
+                Read More About Karuna
+                <ChevronRight size={20} className="ml-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="container mx-auto px-4">
+          <div className="md:flex md:justify-between">
+            <div className="mb-8 md:mb-0 fade-in-section">
+              <h3 className="text-2xl font-light text-white mb-4">Karuna</h3>
+              <p className="max-w-xs">Shamanic healing in Eugene, Oregon and beyond through remote sessions.</p>
+            </div>
+            
+            <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
+              <div>
+                <h4 className="text-lg font-medium text-white mb-4">Pages</h4>
+                <ul className="space-y-2">
+                  <li><Link href="/" className="hover:text-[#b2a3c7] transition duration-300">Home</Link></li>
+                  <li><Link href="/offerings" className="hover:text-[#b2a3c7] transition duration-300">Offerings</Link></li>
+                  <li><Link href="/drum-circle" className="hover:text-[#b2a3c7] transition duration-300">Drum Circle</Link></li>
+                  <li><Link href="/about" className="hover:text-[#b2a3c7] transition duration-300">About</Link></li>
+                  <li><Link href="/get-in-touch" className="hover:text-[#b2a3c7] transition duration-300">Get in Touch</Link></li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-medium text-white mb-4">Connect</h4>
+                <address className="not-italic space-y-2">
+                  <p>Eugene, Oregon</p>
+                  <p>
+                    <a href="mailto:contact@karunagatton.com" className="hover:text-[#b2a3c7] transition duration-300">
+                      contact@karunagatton.com
+                    </a>
+                  </p>
+                </address>
+              </div>
+            </nav>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm fade-in-section">
+            <p>&copy; {new Date().getFullYear()} Karuna Gatton. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
