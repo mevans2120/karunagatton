@@ -258,9 +258,9 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section">Healing Offerings</h2>
           
-          <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {offeringTeasers.map((offering, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center flex-1 min-h-64 fade-in-section md:w-1/3" style={{transitionDelay: `${index * 150}ms`}}>
+              <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
                 <div className="text-3xl text-secondary mb-6">{offering.icon}</div>
                 <h3 className="text-xl font-medium text-gray-800 mb-4">{offering.title}</h3>
                 <p className="text-gray-600">{offering.description}</p>
