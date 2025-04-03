@@ -320,7 +320,7 @@ export default function Home() {
           <div className="md:flex items-center">
             <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12 fade-in-section">
               <img 
-                src="/Boys_at_Omsi.jpg" 
+                src="/Boys_at_Omsi.jpg?v=1" 
                 alt="Drum Circle" 
                 className="rounded-lg shadow-lg" 
               />
