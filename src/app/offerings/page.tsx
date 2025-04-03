@@ -92,7 +92,7 @@ export default function Offerings() {
       )}
     
       {/* Header */}
-      <header className="absolute top-0 w-full z-10 p-4">
+      <header className="absolute top-0 w-full z-50 p-4">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
           <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
           
@@ -119,12 +119,12 @@ export default function Offerings() {
         </div>
       </header>
       
-      {/* Hero Section with Wavy Pattern - Shorter Version */}
-      <section className="relative py-24 bg-primary text-white overflow-hidden animate-gradient pb-16">
+      {/* Hero Section with Wavy Pattern */}
+      <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden animate-gradient">
         {/* Hero Content */}
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-light mb-6 font-heading">Healing Offerings</h1>
-          <p className="text-xl max-w-3xl mx-auto mb-8">
+        <div className="container mx-auto px-4 relative z-10 text-left py-24">
+          <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Healing Offerings</h1>
+          <p className="text-xl max-w-3xl mb-10">
             Explore Karuna's comprehensive healing ceremonies, each designed to address specific aspects of spiritual, emotional, and energetic wellbeing. All offerings can be conducted both in-person and remotely.
           </p>
           <Link href="/get-in-touch" className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300">
@@ -243,12 +243,12 @@ export default function Offerings() {
       <footer className="bg-gray-900 text-gray-300 py-12">
         <div className="container mx-auto px-4">
           <div className="md:flex md:justify-between">
-            <div className="mb-8 md:mb-0 fade-in-section">
+            <div className="mb-8 md:mb-0">
               <h3 className="text-2xl font-light text-white mb-4 font-heading">Karuna</h3>
               <p className="max-w-xs">Shamanic healing in Eugene, Oregon and beyond through remote sessions.</p>
             </div>
             
-            <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
+            <nav className="grid grid-cols-2 md:grid-cols-3 gap-8">
               <div>
                 <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
                 <ul className="space-y-2">
