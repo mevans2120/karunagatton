@@ -98,17 +98,17 @@ export default function Home() {
     {
       title: "Soul Retrieval",
       description: "Recover vital energy and essence lost through trauma or difficult life experiences.",
-      icon: "✧"
+      icon: "/yurt-icon-1.svg"
     },
     {
       title: "Power Spirit Retrieval",
       description: "Connect with helping spirits that offer guidance, protection, and power.",
-      icon: "✧"
+      icon: "/yurt-icon-2.svg"
     },
     {
       title: "Shamanic Counseling",
       description: "Personal guidance using shamanic techniques to address your unique situation.",
-      icon: "✧"
+      icon: "/yurt-icon-3.svg"
     }
   ];
 
@@ -188,7 +188,9 @@ export default function Home() {
       <section id="welcome" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="relative fade-in-section">
-            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-7xl text-secondary opacity-30">✧</div>
+            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-30">
+              <img src="/yurt-icon-welcome.svg" alt="Yurt icon" className="w-full h-full" />
+            </div>
           </div>
           <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section">Welcome</h2>
           <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
@@ -261,7 +263,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {offeringTeasers.map((offering, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
-                <div className="text-3xl text-secondary mb-6">{offering.icon}</div>
+                <div className="w-12 h-12 mb-6">
+                  <img src={offering.icon} alt="Yurt icon" className="w-full h-full" />
+                </div>
                 <h3 className="text-xl font-medium text-gray-800 mb-4">{offering.title}</h3>
                 <p className="text-gray-600">{offering.description}</p>
               </div>
