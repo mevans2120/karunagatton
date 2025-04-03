@@ -67,7 +67,7 @@ export default function DrumCircle() {
       </header>
       
       {/* Hero Section with Wavy Pattern */}
-      <section className="relative pt-20 min-h-[50vh] flex items-center bg-primary text-white overflow-hidden animate-gradient">
+      <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden animate-gradient">
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-10 text-left py-24">
           <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Monthly Drum Circle</h1>
