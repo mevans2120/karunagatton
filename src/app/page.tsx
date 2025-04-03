@@ -263,7 +263,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {offeringTeasers.map((offering, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
-                <div className="w-6 h-6 mb-6">
+                <div className="w-3 h-3 mb-6">
                   <img 
                     src={offering.icon} 
                     alt="Yurt icon" 
