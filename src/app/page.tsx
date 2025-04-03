@@ -12,20 +12,20 @@ export default function Home() {
   // Carousel photos data
   const carouselPhotos = [
     {
-      src: "/api/placeholder/600/800",
-      alt: "Karuna's healing yurt exterior"
+      src: "/Boys_Omsi_water_part.jpg",
+      alt: "Boys at OMSI water exhibit"
     },
     {
-      src: "/api/placeholder/600/800",
-      alt: "Sacred healing space interior"
+      src: "/Charlie_Quincy_Silver.jpg",
+      alt: "Charlie and Quincy Silver"
     },
     {
-      src: "/api/placeholder/600/800",
-      alt: "Ceremonial items and tools"
+      src: "/Boys_at_Omsi.jpg",
+      alt: "Boys at OMSI"
     },
     {
-      src: "/api/placeholder/600/800",
-      alt: "Natural surroundings in Eugene"
+      src: "/Charlie_Quincy_Bubbles.jpg",
+      alt: "Charlie and Quincy with bubbles"
     }
   ];
   
@@ -320,7 +320,7 @@ export default function Home() {
           <div className="md:flex items-center">
             <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12 fade-in-section">
               <img 
-                src="/api/placeholder/600/400" 
+                src="/Boys_at_Omsi.jpg" 
                 alt="Drum Circle" 
                 className="rounded-lg shadow-lg" 
               />
@@ -346,7 +346,7 @@ export default function Home() {
             <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">
               <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
                 <img 
-                  src="/api/placeholder/400/400" 
+                  src="/Charlie_Quincy_Silver.jpg" 
                   alt="Karuna Gatton" 
                   className="w-full h-full object-cover" 
                 />
