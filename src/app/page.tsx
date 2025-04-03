@@ -127,7 +127,7 @@ export default function Home() {
       {/* Header */}
       <header className="absolute top-0 w-full z-10 p-4">
         <div className="container mx-auto flex items-center justify-between">
-          <Link href="/" className="text-white text-3xl font-light tracking-wider">Karuna</Link>
+          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">
@@ -162,7 +162,7 @@ export default function Home() {
         
         {/* Hero Content */}
         <div className="relative z-10 text-left px-8 md:px-16 pb-32 container mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
             Shamanic Healing <br className="hidden md:block" />in Eugene, OR
           </h1>
           <h2 className="text-xl md:text-2xl text-white font-light tracking-wide max-w-2xl mb-8">
@@ -183,7 +183,7 @@ export default function Home() {
               <img src="/yurt-icon-welcome.svg" alt="Yurt icon" className="w-full h-full" />
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section">Welcome</h2>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section font-heading">Welcome</h2>
           <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
             You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and gentle presence. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
           </p>
@@ -249,20 +249,26 @@ export default function Home() {
       <section id="offerings" className="py-20 bg-purple-50 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-gray-50 to-transparent"></div>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section">Healing Offerings</h2>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section font-heading">Healing Offerings</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {offeringTeasers.map((offering, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
-                <div className="w-4 h-4 mb-6">
+                <div className="mb-6">
                   <img 
                     src={offering.icon} 
                     alt="Yurt icon" 
-                    className="w-full h-full" 
-                    style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
+                    width="72"
+                    height="72
+                    "
+                    style={{ 
+                      filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)',
+                      maxWidth: '100%',
+                      height: 'auto'
+                    }}
                   />
                 </div>
-                <h3 className="text-xl font-medium text-gray-800 mb-4">{offering.title}</h3>
+                <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{offering.title}</h3>
                 <p className="text-gray-600">{offering.description}</p>
               </div>
             ))}
@@ -283,7 +289,7 @@ export default function Home() {
         <div className="absolute bottom-10 right-10 text-8xl text-secondary opacity-10">❞</div>
         
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section">What People Are Saying</h2>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section font-heading">What the community says</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -309,7 +315,7 @@ export default function Home() {
       <section className="bg-primary text-white py-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-light mb-6 fade-in-section">Monthly Drum Circle</h2>
+            <h2 className="text-3xl md:text-4xl font-light mb-6 fade-in-section font-heading">Monthly Drum Circle</h2>
             <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section max-w-2xl mx-auto">
               Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
             </p>
@@ -335,7 +341,7 @@ export default function Home() {
               </div>
             </div>
             <div className="md:w-2/3">
-              <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-800 fade-in-section">About Karuna</h2>
+              <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-800 fade-in-section font-heading">About Karuna</h2>
               <p className="text-lg leading-relaxed mb-6 text-gray-700 fade-in-section">
                 Karuna Gatton brings decades of experience in shamanic healing traditions. Her approach is gentle yet powerful, focusing on empowering her clients through deep connection with spirit and nature.
               </p>
@@ -353,13 +359,13 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="md:flex md:justify-between">
             <div className="mb-8 md:mb-0 fade-in-section">
-              <h3 className="text-2xl font-light text-white mb-4">Karuna</h3>
+              <h3 className="text-2xl font-light text-white mb-4 font-heading">Karuna</h3>
               <p className="max-w-xs">Shamanic healing in Eugene, Oregon and beyond through remote sessions.</p>
             </div>
             
             <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
               <div>
-                <h4 className="text-lg font-medium text-white mb-4">Pages</h4>
+                <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
                 <ul className="space-y-2">
                   <li><Link href="/" className="hover:text-accent transition duration-300">Home</Link></li>
                   <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
@@ -370,7 +376,7 @@ export default function Home() {
               </div>
               
               <div>
-                <h4 className="text-lg font-medium text-white mb-4">Connect</h4>
+                <h4 className="text-lg font-medium text-white mb-4 font-heading">Connect</h4>
                 <address className="not-italic space-y-2">
                   <p>Eugene, Oregon</p>
                   <p>
