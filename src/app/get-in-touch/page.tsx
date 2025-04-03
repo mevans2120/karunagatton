@@ -226,15 +226,15 @@ export default function GetInTouch() {
       </section>
       
       {/* Directions */}
-      <section className="py-16 px-4 bg-purple-50">
+      <section className="py-24 px-4 bg-purple-50">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="w-24 h-24 mx-auto mb-6">
+          <div className="w-36 h-36 mx-auto mb-16">
             <img 
               src="/yurt-icon-9.svg" 
               alt="Yurt location" 
               className="w-full h-full" 
-              width="72"
-              height="72"
+              width="108"
+              height="108"
               style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
             />
           </div>

@@ -222,13 +222,13 @@ export default function Offerings() {
       {/* Remote Healing Note */}
       <section className="py-12 px-4 bg-background">
         <div className="container mx-auto max-w-3xl text-center">
-          <div className="w-24 h-24 mx-auto mb-6">
+          <div className="w-36 h-36 mx-auto mb-6">
             <img 
               src="/yurt-icon-9.svg" 
               alt="Distance healing" 
               className="w-full h-full" 
-              width="72"
-              height="72"
+              width="108"
+              height="108"
               style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
             />
           </div>
