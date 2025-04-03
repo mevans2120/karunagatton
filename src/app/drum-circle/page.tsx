@@ -92,7 +92,7 @@ export default function DrumCircle() {
             <div className="relative">
               <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="/api/placeholder/600/800" 
+                  src="/Drum-circle-image.png" 
                   alt="Drum Circle Gathering" 
                   className="w-full h-full object-cover"
                 />
