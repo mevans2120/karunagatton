@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   
   // Carousel photos data
@@ -64,14 +63,6 @@ export default function Home() {
     }, 5000);
     
     return () => clearInterval(photoTimer);
-  }, []);
-  
-  // Testimonial rotation
-  useEffect(() => {
-    const testimonialTimer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 8000);
-    return () => clearInterval(testimonialTimer);
   }, []);
   
   // Testimonial data
@@ -291,33 +282,24 @@ export default function Home() {
         <div className="absolute top-10 left-10 text-8xl text-secondary opacity-10">❝</div>
         <div className="absolute bottom-10 right-10 text-8xl text-secondary opacity-10">❞</div>
         
-        <div className="container mx-auto px-4 max-w-4xl relative z-10">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section">What People Are Saying</h2>
           
-          <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm fade-in-section">
-            <div className="flex flex-col">
-              <div className="text-secondary text-xl mb-4">❝</div>
-              <p className="text-gray-700 italic mb-6 text-lg">
-                {testimonials[currentTestimonial].quote.length > 220 
-                  ? testimonials[currentTestimonial].quote.substring(0, 220) + "..." 
-                  : testimonials[currentTestimonial].quote}
-              </p>
-              <p className="font-medium text-primary self-end text-right">
-                ― {testimonials[currentTestimonial].author}
-              </p>
-            </div>
-          </div>
-          
-          <div className="flex justify-center mt-8 space-x-3 fade-in-section">
-            {testimonials.map((_, index) => (
-              <button 
-                key={index}
-                className={`w-3 h-3 rounded-full ${
-                  index === currentTestimonial ? 'bg-primary' : 'bg-accent/30'
-                }`}
-                onClick={() => setCurrentTestimonial(index)}
-                aria-label={`View testimonial ${index + 1}`}
-              />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
+                <div className="flex flex-col h-full">
+                  <div className="text-secondary text-xl mb-4">❝</div>
+                  <p className="text-gray-700 italic mb-6 text-lg flex-grow">
+                    {testimonial.quote.length > 150 
+                      ? testimonial.quote.substring(0, 150) + "..." 
+                      : testimonial.quote}
+                  </p>
+                  <p className="font-medium text-primary self-end text-right">
+                    ― {testimonial.author}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
