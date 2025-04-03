@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { EB_Garamond } from "next/font/google";
+import { EB_Garamond, Unbounded } from "next/font/google";
 import "./globals.css";
 import "./main.css";
 
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
   variable: "--font-eb-garamond",
+  display: "swap",
+});
+
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  variable: "--font-unbounded",
   display: "swap",
 });
 
@@ -20,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={ebGaramond.variable}>
+    <html lang="en" className={`${ebGaramond.variable} ${unbounded.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
