@@ -69,7 +69,7 @@ export default function About() {
       {/* Hero Section with Wavy Pattern */}
       <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden animate-gradient">
         {/* Hero Content */}
-        <div className="container mx-auto px-4 relative z-10 text-left py-24">
+        <div className="container mx-auto px-4 relative z-10 text-left py-24 pt-36">
           <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">About Karuna</h1>
           <p className="text-xl max-w-3xl mb-6">
             A journey of healing and spiritual guidance in Eugene, Oregon.
@@ -85,7 +85,7 @@ export default function About() {
       </div>
 
       {/* Main Content */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div className="relative">
