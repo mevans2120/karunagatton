@@ -48,22 +48,6 @@ a {
   padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
-  box-sizing: border-box;
-}
-
-/* Fix for mobile viewport */
-@media (max-width: 640px) {
-  html, body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
 }
 
 /* Hero gradient background */
