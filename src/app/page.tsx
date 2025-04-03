@@ -317,24 +317,15 @@ export default function Home() {
       {/* Drum Circle Highlight */}
       <section className="bg-primary text-white py-20">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="md:flex items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12 fade-in-section">
-              <img 
-                src="/Charlie_Quincy_Bubbles.jpg" 
-                alt="Drum Circle" 
-                className="rounded-lg shadow-lg" 
-              />
-            </div>
-            <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-light mb-6 fade-in-section">Monthly Drum Circle</h2>
-              <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section">
-                Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
-              </p>
-              <Link href="/drum-circle" className="inline-flex items-center text-accent hover:text-accent/80 transition duration-300 fade-in-section">
-                Learn More
-                <ChevronRight size={20} className="ml-1" />
-              </Link>
-            </div>
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-light mb-6 fade-in-section">Monthly Drum Circle</h2>
+            <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section max-w-2xl mx-auto">
+              Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
+            </p>
+            <Link href="/drum-circle" className="inline-flex items-center text-accent hover:text-accent/80 transition duration-300 fade-in-section">
+              Learn More
+              <ChevronRight size={20} className="ml-1" />
+            </Link>
           </div>
         </div>
       </section>
