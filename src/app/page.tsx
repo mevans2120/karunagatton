@@ -104,7 +104,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen text-gray-800 bg-gray-50">
+    <div className="min-h-screen text-gray-800 bg-gray-50 w-full">
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center">
@@ -126,7 +126,7 @@ export default function Home() {
     
       {/* Header */}
       <header className="absolute top-0 w-full z-10 p-4">
-        <div className="container mx-auto flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
           <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
           
           {/* Desktop Navigation */}
@@ -139,12 +139,16 @@ export default function Home() {
           </nav>
           
           {/* Mobile Menu Button */}
-          <button 
+          <div 
             onClick={() => setIsMenuOpen(true)} 
-            className="md:hidden text-white"
+            className="md:hidden text-white cursor-pointer"
+            aria-label="Open menu"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && setIsMenuOpen(true)}
           >
             <Menu size={24} />
-          </button>
+          </div>
         </div>
       </header>
       
@@ -183,7 +187,9 @@ export default function Home() {
               <img src="/yurt-icon-welcome.svg" alt="Yurt icon" className="w-full h-full" />
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section font-heading">Welcome</h2>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section font-heading">
+            Welcome
+          </h2>
           <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
             You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and gentle presence. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
           </p>
