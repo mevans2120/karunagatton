@@ -5,6 +5,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force Unbounded font */
+@layer base {
+  @font-face {
+    font-family: 'Unbounded';
+    font-display: swap;
+    src: url(https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=swap);
+  }
+}
+
 /* Custom styles */
 :root {
   --background: #f5f3f7;
@@ -23,8 +32,13 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6, nav, button {
-  font-family: var(--font-unbounded), sans-serif;
+h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
+  font-family: var(--font-unbounded), sans-serif !important;
+}
+
+/* Additional font overrides */
+#welcome h2, h2.font-heading, .font-heading {
+  font-family: var(--font-unbounded), sans-serif !important;
 }
 
 .container {

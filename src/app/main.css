@@ -26,8 +26,13 @@ body {
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, nav, button {
-  font-family: var(--font-unbounded), sans-serif;
+h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
+  font-family: var(--font-unbounded), sans-serif !important;
+}
+
+/* Additional font overrides */
+#welcome h2, h2.font-heading, .font-heading {
+  font-family: var(--font-unbounded), sans-serif !important;
 }
 
 a {
@@ -43,6 +48,22 @@ a {
   padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
+  box-sizing: border-box;
+}
+
+/* Fix for mobile viewport */
+@media (max-width: 640px) {
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
 
 /* Hero gradient background */
