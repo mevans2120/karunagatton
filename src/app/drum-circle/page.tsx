@@ -87,9 +87,10 @@ export default function DrumCircle() {
       {/* Main Content */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          {/* Image and circle info sections */}
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
             <div className="relative">
-              <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
+              <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src="/api/placeholder/600/800" 
                   alt="Drum Circle Gathering" 
@@ -97,9 +98,9 @@ export default function DrumCircle() {
                 />
               </div>
             </div>
-            <div>
+            <div className="bg-white p-8 rounded-lg shadow-sm flex flex-col justify-center">
               <h2 className="text-3xl font-light mb-6 font-heading text-primary">Join Our Circle</h2>
-              <p className="text-lg leading-relaxed mb-6">
+              <p className="text-base leading-relaxed mb-6">
                 Experience the transformative power of communal drumming in a supportive and welcoming environment. Our monthly drum circle meets on the first Tuesday of each month at 7:30pm.
               </p>
               <div className="space-y-4 mb-8">
@@ -123,55 +124,51 @@ export default function DrumCircle() {
             </div>
           </div>
 
-          {/* Wave divider */}
-          <div className="my-16 relative">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 opacity-25">
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-primary"></path>
-            </svg>
-          </div>
-
-          <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-light mb-6 font-heading text-primary">What to Expect</h2>
-            <p className="text-lg leading-relaxed mb-6">
-              Each drum circle is a unique experience, guided by the energy of the group and the intention of the evening. We begin with a brief introduction and grounding meditation, then move into the drumming practice.
-            </p>
-            <ul className="list-disc pl-6 mb-8 space-y-4">
-              <li>Opening ceremony and intention setting</li>
-              <li>Basic drumming techniques and rhythms</li>
-              <li>Group improvisation and connection</li>
-              <li>Healing vibrations and energy work</li>
-              <li>Closing ceremony and integration</li>
-            </ul>
-
-            {/* Wave divider */}
-            <div className="my-16 relative">
-              <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 opacity-25 rotate-180">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-primary"></path>
-              </svg>
+          {/* Stacked Cards */}
+          <div className="space-y-10">
+            {/* What to Expect Card */}
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h2 className="text-3xl font-light mb-6 font-heading text-primary">What to Expect</h2>
+              <p className="text-lg leading-relaxed mb-6">
+                Each drum circle is a unique experience, guided by the energy of the group and the intention of the evening. We begin with a brief introduction and grounding meditation, then move into the drumming practice.
+              </p>
+              <ul className="list-disc pl-6 mb-6 space-y-4">
+                <li>Opening ceremony and intention setting</li>
+                <li>Basic drumming techniques and rhythms</li>
+                <li>Group improvisation and connection</li>
+                <li>Healing vibrations and energy work</li>
+                <li>Closing ceremony and integration</li>
+              </ul>
             </div>
 
-            <h2 className="text-3xl font-light mb-6 font-heading text-primary">Benefits of Drum Circle</h2>
-            <p className="text-lg leading-relaxed mb-6">
-              Regular participation in drum circles can bring numerous benefits to your life:
-            </p>
-            <ul className="list-disc pl-6 mb-8 space-y-4">
-              <li>Stress reduction and relaxation</li>
-              <li>Enhanced creativity and self-expression</li>
-              <li>Improved focus and mindfulness</li>
-              <li>Community connection and support</li>
-              <li>Physical and emotional healing</li>
-            </ul>
+            {/* Benefits Card */}
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h2 className="text-3xl font-light mb-6 font-heading text-primary">Benefits of Drum Circle</h2>
+              <p className="text-lg leading-relaxed mb-6">
+                Regular participation in drum circles can bring numerous benefits to your life:
+              </p>
+              <ul className="list-disc pl-6 mb-6 space-y-4">
+                <li>Stress reduction and relaxation</li>
+                <li>Enhanced creativity and self-expression</li>
+                <li>Improved focus and mindfulness</li>
+                <li>Community connection and support</li>
+                <li>Physical and emotional healing</li>
+              </ul>
+            </div>
 
-            <h2 className="text-3xl font-light mb-6 font-heading text-primary">Location & Details</h2>
-            <p className="text-lg leading-relaxed mb-6">
-              The drum circle takes place in my healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings.
-            </p>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-medium mb-4 font-heading text-primary">Next Gathering</h3>
-              <p className="mb-2">First Tuesday of the month</p>
-              <p className="mb-2">7:30pm - 9:30pm</p>
-              <p className="mb-2">Eugene, Oregon</p>
-              <p className="text-sm text-gray-600">Please arrive 10-15 minutes early to settle in</p>
+            {/* Location Card */}
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h2 className="text-3xl font-light mb-6 font-heading text-primary">Location & Details</h2>
+              <p className="text-lg leading-relaxed mb-6">
+                The drum circle takes place in my healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings.
+              </p>
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h3 className="text-xl font-medium mb-4 font-heading text-primary">Next Gathering</h3>
+                <p className="mb-2">First Tuesday of the month</p>
+                <p className="mb-2">7:30pm - 9:30pm</p>
+                <p className="mb-2">Eugene, Oregon</p>
+                <p className="text-sm text-gray-600">Please arrive 10-15 minutes early to settle in</p>
+              </div>
             </div>
           </div>
         </div>
