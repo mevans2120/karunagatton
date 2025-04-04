@@ -131,12 +131,27 @@ export default function Home() {
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center">
-          <button 
-            onClick={() => setIsMenuOpen(false)}
-            className="absolute top-5 right-5 text-white z-60"
-          >
-            <X size={30} />
-          </button>
+          {/* Header with X button positioned exactly where hamburger was */}
+          <div className="absolute top-0 w-full z-40 p-4">
+            <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
+              {/* Empty div to maintain layout spacing */}
+              <div className="invisible w-24"></div>
+              
+              {/* X button positioned exactly like hamburger */}
+              <div 
+                onClick={() => setIsMenuOpen(false)}
+                className="md:hidden text-white cursor-pointer p-4"
+                style={{
+                  touchAction: 'manipulation',
+                  position: 'relative',
+                  zIndex: 50
+                }}
+              >
+                <X size={24} />
+              </div>
+            </div>
+          </div>
+          
           <nav className="flex flex-col items-center space-y-8 text-xl text-white">
             <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
@@ -147,10 +162,10 @@ export default function Home() {
         </div>
       )}
     
-      {/* Header - Increased z-index */}
+      {/* Header - Always visible in both open and closed states */}
       <header className="absolute top-0 w-full z-40 p-4">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading z-50 relative">Karuna</Link>
+          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading relative z-50">Karuna</Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">
@@ -169,8 +184,7 @@ export default function Home() {
               style={{
                 touchAction: 'manipulation',
                 position: 'relative',
-                zIndex: 50,
-                pointerEvents: 'auto'
+                zIndex: 50
               }}
             >
               <Menu size={24} />

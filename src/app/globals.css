@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 .px-4 { padding-left: 1rem; padding-right: 1rem; }
 .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
 
-/* Add yellow sun animation - TEMPORARILY DISABLED */
+/* Add yellow sun animation */
 .sun-spot {
   position: absolute;
   width: 743px;
