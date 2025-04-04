@@ -149,10 +149,34 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
   animation: sunPulseUpward 6.25s ease-in-out infinite;
   z-index: 1;
   pointer-events: none;
-  bottom: 0;
-  left: 30%;
   transform-origin: center;
   filter: url(#turbulence);
+}
+
+/* Position variants for different pages */
+.sun-spot-home {
+  bottom: -27%;
+  left: 1%;
+}
+
+.sun-spot-offerings {
+  bottom: -77%;
+  left: 1%;
+}
+
+.sun-spot-drum-circle {
+  bottom: -127%;
+  left: 1%;
+}
+
+.sun-spot-about {
+  bottom: -127%;
+  left: 1%;
+}
+
+.sun-spot-contact {
+  bottom: -127%;
+  left: 1%;
 }
 
 /* Add SVG filter for ragged edges */
