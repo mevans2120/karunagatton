@@ -6,6 +6,12 @@ import Link from 'next/link';
 
 export default function Offerings() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Set loaded state after mount
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   
   // Add useEffect to ensure page elements load correctly
   useEffect(() => {
@@ -71,7 +77,7 @@ export default function Offerings() {
   ];
 
   return (
-    <div className="min-h-screen text-gray-800 bg-gray-50 w-full">
+    <div className={`min-h-screen text-gray-800 bg-primary w-full ${!isLoaded ? 'initial-load' : ''}`}>
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
@@ -82,6 +88,14 @@ export default function Offerings() {
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
             <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
           </nav>
+          
+          {/* Close button that's always visible */}
+          <div 
+            onClick={() => setIsMenuOpen(false)}
+            className="mobile-menu-open-button cursor-pointer"
+          >
+            <X size={24} color="white" />
+          </div>
         </div>
       )}
     

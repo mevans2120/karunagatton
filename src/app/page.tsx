@@ -7,6 +7,12 @@ import Link from 'next/link';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Set loaded state after mount
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   
   // Debug log for menu state
   useEffect(() => {
@@ -119,7 +125,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen text-gray-800 bg-gray-50 w-full">
+    <div className={`min-h-screen text-gray-800 bg-primary w-full ${!isLoaded ? 'initial-load' : ''}`}>
       {/* SVG Filters */}
       <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
         <filter id="turbulence">
@@ -142,7 +148,7 @@ export default function Home() {
       )}
     
       {/* Main content wrapper with page transition */}
-      <div className="page-content">
+      <div className="purple-dissolve">
         {/* Header - Increased z-index */}
         <header className="absolute top-0 w-full z-50 p-4">
           <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
