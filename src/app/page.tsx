@@ -161,14 +161,21 @@ export default function Home() {
             <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
           </nav>
           
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - TEMPORARY DEBUG STYLING */}
           <div 
-            onClick={() => setIsMenuOpen(true)} 
-            className="md:hidden text-white cursor-pointer z-30"
+            onClick={() => {
+              console.log("Menu button clicked, current state:", isMenuOpen);
+              setIsMenuOpen(true);
+              console.log("Menu state after setting:", true);
+            }} 
+            className="md:hidden text-white cursor-pointer z-50"
+            style={{
+              padding: '8px',
+              position: 'relative'
+            }}
             aria-label="Open menu"
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && setIsMenuOpen(true)}
           >
             <Menu size={24} />
           </div>
