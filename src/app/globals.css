@@ -130,11 +130,11 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 .px-4 { padding-left: 1rem; padding-right: 1rem; }
 .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
 
-/* Add yellow sun animation */
+/* Add yellow sun animation - TEMPORARILY DISABLED */
 .sun-spot {
   position: absolute;
-  width: 675px;
-  height: 675px;
+  width: 743px;
+  height: 743px;
   border-radius: 50%;
   background: radial-gradient(circle, 
     rgba(255, 236, 25, 1) 0%, 
@@ -146,7 +146,7 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
     rgba(75, 0, 110, 0.05) 90%,
     rgba(75, 0, 110, 0) 100%);
   box-shadow: none;
-  animation: sunPulseUpward 5s ease-in-out infinite;
+  animation: sunPulseUpward 6.25s ease-in-out infinite;
   z-index: 1;
   pointer-events: none;
   bottom: 0;
