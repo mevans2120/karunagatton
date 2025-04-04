@@ -8,6 +8,11 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   
+  // Debug log for menu state
+  useEffect(() => {
+    console.log("Menu state changed:", isMenuOpen);
+  }, [isMenuOpen]);
+  
   // Carousel photos data
   const carouselPhotos = [
     {
@@ -49,12 +54,22 @@ export default function Home() {
       observer.observe(element);
     });
     
+    // Ensure menu can be closed with escape key
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    
+    document.addEventListener('keydown', handleEscKey);
+    
     return () => {
       fadeElements.forEach(element => {
         observer.unobserve(element);
       });
+      document.removeEventListener('keydown', handleEscKey);
     };
-  }, []);
+  }, [isMenuOpen]);
   
   // Carousel auto-rotation
   useEffect(() => {
@@ -118,16 +133,16 @@ export default function Home() {
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center">
           <button 
             onClick={() => setIsMenuOpen(false)}
-            className="absolute top-5 right-5 text-white"
+            className="absolute top-5 right-5 text-white z-60"
           >
             <X size={30} />
           </button>
           <nav className="flex flex-col items-center space-y-8 text-xl text-white">
-            <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
-            <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
+            <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
+            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
+            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
           </nav>
         </div>
       )}
@@ -149,7 +164,7 @@ export default function Home() {
           {/* Mobile Menu Button */}
           <div 
             onClick={() => setIsMenuOpen(true)} 
-            className="md:hidden text-white cursor-pointer"
+            className="md:hidden text-white cursor-pointer z-30"
             aria-label="Open menu"
             role="button"
             tabIndex={0}
@@ -174,8 +189,8 @@ export default function Home() {
         
         {/* Animated yellow sun spot */}
         <div className="sun-spot" style={{ 
-          bottom: '-25%', 
-          left: '5%' 
+          bottom: '-27%', 
+          left: '1%' 
         }}></div>
         
         {/* Hero Content */}
