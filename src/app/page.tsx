@@ -183,12 +183,7 @@ export default function Home() {
         </div>
         
         {/* Animated yellow sun spot */}
-        <div className="sun-spot" style={{ 
-          bottom: '-27%', 
-          left: '1%',
-          pointerEvents: 'none',
-          zIndex: 1
-        }}></div>
+        <div className="sun-spot sun-spot-home"></div>
         
         {/* Hero Content */}
         <div className="relative z-20 text-left px-8 md:px-16 pb-32 container mx-auto">
@@ -203,7 +198,7 @@ export default function Home() {
             className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300"
             style={{
               position: 'relative',
-              zIndex: 999
+              zIndex: 40
             }}
           >
             View Offerings

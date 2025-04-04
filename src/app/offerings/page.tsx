@@ -75,18 +75,12 @@ export default function Offerings() {
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center">
-          <button 
-            onClick={() => setIsMenuOpen(false)}
-            className="absolute top-5 right-5 text-white"
-          >
-            <X size={30} />
-          </button>
           <nav className="flex flex-col items-center space-y-8 text-xl text-white">
-            <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
-            <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
+            <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
+            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
+            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
           </nav>
         </div>
       )}
@@ -105,16 +99,17 @@ export default function Offerings() {
             <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
           </nav>
           
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Toggle between hamburger and X */}
           <div 
-            onClick={() => setIsMenuOpen(true)} 
-            className="md:hidden text-white cursor-pointer"
-            aria-label="Open menu"
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === 'Enter' && setIsMenuOpen(true)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-white cursor-pointer p-4"
+            style={{
+              touchAction: 'manipulation',
+              position: 'relative',
+              zIndex: 60
+            }}
           >
-            <Menu size={24} />
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </div>
         </div>
       </header>
@@ -130,12 +125,7 @@ export default function Offerings() {
         </svg>
         
         {/* Animated yellow sun spot */}
-        <div className="sun-spot" style={{ 
-          bottom: '-27%', 
-          left: '1%',
-          pointerEvents: 'none',
-          zIndex: 1
-        }}></div>
+        <div className="sun-spot sun-spot-offerings"></div>
         
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-left py-24">
