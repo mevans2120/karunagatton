@@ -49,27 +49,47 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
   padding-right: 1rem;
 }
 
-/* Hero gradient background */
+/* Hero gradient background - NO ANIMATION */
 .animate-gradient {
-  background-image: 
-    radial-gradient(circle at 25% 30%, #6B20A0, transparent 40%), 
-    radial-gradient(circle at 75% 60%, #4B006E, transparent 50%), 
-    radial-gradient(circle at 50% 50%, #35004F, transparent 60%), 
-    radial-gradient(circle at 80% 20%, #7B36A0, transparent 40%),
-    radial-gradient(circle at 20% 70%, #eab308, transparent 35%),
-    radial-gradient(circle at 65% 40%, #facc15, transparent 30%),
-    radial-gradient(circle at 40% 25%, #fef08a, transparent 25%),
-    radial-gradient(circle at 85% 80%, #fef9c3, transparent 20%),
-    #4B006E;
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: #4B006E;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Animations */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Static purple gradients */
+.animate-gradient::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: 
+    radial-gradient(circle at 30% 60%, #6B20A0, transparent 30%),
+    radial-gradient(circle at 40% 65%, #35004F, transparent 40%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Static sun spot - NO ANIMATION */
+.animate-gradient::after {
+  content: "";
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  left: 15%;
+  top: 60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    #facc15 0%, 
+    rgba(250, 204, 21, 0.8) 30%, 
+    #4B006E 60%,
+    rgba(75, 0, 110, 0.3) 75%,
+    transparent 90%);
+  box-shadow: 0 0 30px 10px rgba(250, 204, 21, 0.3);
+  /* NO ANIMATION */
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Fade in animations */
@@ -109,3 +129,44 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 .space-y-8 > * + * { margin-top: 2rem; }
 .px-4 { padding-left: 1rem; padding-right: 1rem; }
 .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+
+/* Add yellow sun animation */
+.sun-spot {
+  position: absolute;
+  width: 675px;
+  height: 675px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 236, 25, 1) 0%, 
+    rgba(255, 215, 0, 0.9) 10%,
+    rgba(250, 204, 21, 0.7) 25%, 
+    rgba(250, 204, 21, 0.4) 40%,
+    rgba(200, 150, 50, 0.2) 60%,
+    rgba(150, 100, 80, 0.1) 75%,
+    rgba(75, 0, 110, 0.05) 90%,
+    rgba(75, 0, 110, 0) 100%);
+  box-shadow: none;
+  animation: sunPulseUpward 5s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+  bottom: 0;
+  left: 30%;
+  transform-origin: center;
+  filter: url(#turbulence);
+}
+
+/* Add SVG filter for ragged edges */
+@keyframes sunPulseUpward {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+}
