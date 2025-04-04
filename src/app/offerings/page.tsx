@@ -120,14 +120,30 @@ export default function Offerings() {
       </header>
       
       {/* Hero Section with Wavy Pattern */}
-      <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden animate-gradient">
+      <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden">
+        {/* SVG Filters */}
+        <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
+          <filter id="turbulence">
+            <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="5" />
+            <feDisplacementMap in="SourceGraphic" scale="25" />
+          </filter>
+        </svg>
+        
+        {/* Animated yellow sun spot */}
+        <div className="sun-spot" style={{ 
+          bottom: '-27%', 
+          left: '1%',
+          pointerEvents: 'none',
+          zIndex: 1
+        }}></div>
+        
         {/* Hero Content */}
-        <div className="container mx-auto px-4 relative z-10 text-left py-24">
+        <div className="container mx-auto px-4 relative z-20 text-left py-24">
           <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Healing Offerings</h1>
           <p className="text-xl max-w-3xl mb-10">
             Explore Karuna's comprehensive healing ceremonies, each designed to address specific aspects of spiritual, emotional, and energetic wellbeing. All offerings can be conducted both in-person and remotely.
           </p>
-          <Link href="/get-in-touch" className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300">
+          <Link href="/get-in-touch" className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300 relative z-20">
             Get in Touch
             <ChevronRight size={20} className="ml-2" />
           </Link>

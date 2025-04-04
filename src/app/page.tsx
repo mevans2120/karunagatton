@@ -186,21 +186,33 @@ export default function Home() {
         <div className="sun-spot" style={{ 
           bottom: '-27%', 
           left: '1%',
-          pointerEvents: 'none'
+          pointerEvents: 'none',
+          zIndex: 1
         }}></div>
         
         {/* Hero Content */}
-        <div className="relative z-2 text-left px-8 md:px-16 pb-32 container mx-auto">
+        <div className="relative z-20 text-left px-8 md:px-16 pb-32 container mx-auto pointer-events-none">
           <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
             Shamanic Healing <br className="hidden md:block" />in Eugene, OR
           </h1>
           <h2 className="text-xl md:text-2xl text-white font-light tracking-wide max-w-2xl mb-8">
             A place where spirit moves through ancient ceremony and gentle presence
           </h2>
-          <Link href="#offerings" className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300">
-            View Offerings
-            <ChevronRight size={20} className="ml-2" />
-          </Link>
+          
+          {/* Button Container with pointer-events-auto to override parent */}
+          <div className="pointer-events-auto inline-block">
+            <a 
+              href="#offerings" 
+              className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('offerings')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              View Offerings
+              <ChevronRight size={20} className="ml-2" />
+            </a>
+          </div>
         </div>
       </section>
       
