@@ -147,10 +147,10 @@ export default function Home() {
         </div>
       )}
     
-      {/* Header */}
-      <header className="absolute top-0 w-full z-10 p-4">
+      {/* Header - Increased z-index */}
+      <header className="absolute top-0 w-full z-40 p-4">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
+          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading z-50 relative">Karuna</Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">
@@ -161,35 +161,32 @@ export default function Home() {
             <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
           </nav>
           
-          {/* Mobile Menu Button - TEMPORARY DEBUG STYLING */}
-          <div 
-            onClick={() => {
-              console.log("Menu button clicked, current state:", isMenuOpen);
-              setIsMenuOpen(true);
-              console.log("Menu state after setting:", true);
-            }} 
-            className="md:hidden text-white cursor-pointer z-50"
-            style={{
-              padding: '8px',
-              position: 'relative'
-            }}
-            aria-label="Open menu"
-            role="button"
-            tabIndex={0}
-          >
-            <Menu size={24} />
-          </div>
+          {/* Mobile Menu Button - Hidden when menu is open */}
+          {!isMenuOpen && (
+            <div 
+              onClick={() => setIsMenuOpen(true)}
+              className="md:hidden text-white cursor-pointer p-4"
+              style={{
+                touchAction: 'manipulation',
+                position: 'relative',
+                zIndex: 50,
+                pointerEvents: 'auto'
+              }}
+            >
+              <Menu size={24} />
+            </div>
+          )}
         </div>
       </header>
       
       {/* Hero Section with Wavy Header */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
-        {/* Wavy pattern */}
-        <div className="absolute inset-0 overflow-hidden z-10">
-          <svg className="absolute bottom-0 w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        {/* Wavy pattern - Ensure it doesn't block pointer events */}
+        <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
+          <svg className="absolute bottom-0 w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#f5f3f7" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
           </svg>
-          <svg className="absolute bottom-0 w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ transform: 'translateY(10px)' }}>
+          <svg className="absolute bottom-0 w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ transform: 'translateY(10px)' }}>
             <path fill="#f3f4f6" fillOpacity="0.5" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,213.3C672,213,768,203,864,186.7C960,171,1056,149,1152,149.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
           </svg>
         </div>
@@ -197,7 +194,8 @@ export default function Home() {
         {/* Animated yellow sun spot */}
         <div className="sun-spot" style={{ 
           bottom: '-27%', 
-          left: '1%' 
+          left: '1%',
+          pointerEvents: 'none'
         }}></div>
         
         {/* Hero Content */}
