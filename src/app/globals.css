@@ -194,3 +194,57 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
     opacity: 0.7;
   }
 }
+
+/* Mobile menu animations */
+.mobile-menu-overlay {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-nav {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: 0.1s;
+}
+
+.mobile-menu-nav.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-nav a {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+}
+
+.mobile-menu-nav.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-nav.open a:nth-child(1) { transition-delay: 0.2s; }
+.mobile-menu-nav.open a:nth-child(2) { transition-delay: 0.25s; }
+.mobile-menu-nav.open a:nth-child(3) { transition-delay: 0.3s; }
+.mobile-menu-nav.open a:nth-child(4) { transition-delay: 0.35s; }
+.mobile-menu-nav.open a:nth-child(5) { transition-delay: 0.4s; }
+
+/* Page load animation */
+.page-content {
+  /* Remove animation properties */
+}
+
+@keyframes fadeInFromPurple {
+  /* Empty to remove animation */
+}
+
+@keyframes fadeIn {
+  /* Empty to remove animation */
+}
