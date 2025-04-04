@@ -100,7 +100,7 @@ a {
 .text-gray-300 { color: #d1d5db; }
 .text-gray-200 { color: #e5e7eb; }
 .bg-white { background-color: white; }
-.bg-gray-50 { background-color: #f9fafb; }
+.bg-gray-50 { background-color: var(--background); }
 .bg-gray-900 { background-color: #111827; }
 .bg-purple-50 { background-color: #f5f3ff; }
 .bg-purple-100 { background-color: #ede9ff; }
