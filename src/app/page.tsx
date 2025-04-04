@@ -131,27 +131,6 @@ export default function Home() {
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center">
-          {/* Header with X button positioned exactly where hamburger was */}
-          <div className="absolute top-0 w-full z-40 p-4">
-            <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-              {/* Empty div to maintain layout spacing */}
-              <div className="invisible w-24"></div>
-              
-              {/* X button positioned exactly like hamburger */}
-              <div 
-                onClick={() => setIsMenuOpen(false)}
-                className="md:hidden text-white cursor-pointer p-4"
-                style={{
-                  touchAction: 'manipulation',
-                  position: 'relative',
-                  zIndex: 50
-                }}
-              >
-                <X size={24} />
-              </div>
-            </div>
-          </div>
-          
           <nav className="flex flex-col items-center space-y-8 text-xl text-white">
             <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
@@ -162,10 +141,10 @@ export default function Home() {
         </div>
       )}
     
-      {/* Header - Always visible in both open and closed states */}
-      <header className="absolute top-0 w-full z-40 p-4">
+      {/* Header - Increased z-index */}
+      <header className="absolute top-0 w-full z-50 p-4">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading relative z-50">Karuna</Link>
+          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading relative">Karuna</Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">
@@ -176,20 +155,18 @@ export default function Home() {
             <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
           </nav>
           
-          {/* Mobile Menu Button - Hidden when menu is open */}
-          {!isMenuOpen && (
-            <div 
-              onClick={() => setIsMenuOpen(true)}
-              className="md:hidden text-white cursor-pointer p-4"
-              style={{
-                touchAction: 'manipulation',
-                position: 'relative',
-                zIndex: 50
-              }}
-            >
-              <Menu size={24} />
-            </div>
-          )}
+          {/* Mobile Menu Button - Toggle between hamburger and X */}
+          <div 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-white cursor-pointer p-4"
+            style={{
+              touchAction: 'manipulation',
+              position: 'relative',
+              zIndex: 60
+            }}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </div>
         </div>
       </header>
       
