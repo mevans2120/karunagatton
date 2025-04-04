@@ -105,6 +105,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-gray-800 bg-gray-50 w-full">
+      {/* SVG Filters */}
+      <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
+        <filter id="turbulence">
+          <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="5" />
+          <feDisplacementMap in="SourceGraphic" scale="25" />
+        </filter>
+      </svg>
+      
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center">
@@ -153,9 +161,9 @@ export default function Home() {
       </header>
       
       {/* Hero Section with Wavy Header */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden animate-gradient">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
         {/* Wavy pattern */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden z-10">
           <svg className="absolute bottom-0 w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#f5f3f7" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
           </svg>
@@ -164,8 +172,14 @@ export default function Home() {
           </svg>
         </div>
         
+        {/* Animated yellow sun spot */}
+        <div className="sun-spot" style={{ 
+          bottom: '-25%', 
+          left: '5%' 
+        }}></div>
+        
         {/* Hero Content */}
-        <div className="relative z-10 text-left px-8 md:px-16 pb-32 container mx-auto">
+        <div className="relative z-2 text-left px-8 md:px-16 pb-32 container mx-auto">
           <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
             Shamanic Healing <br className="hidden md:block" />in Eugene, OR
           </h1>
