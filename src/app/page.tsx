@@ -9,6 +9,9 @@ export default function Home() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   
+  // Track user interaction to pause auto-rotation
+  const [userInteracted, setUserInteracted] = useState(false);
+  
   // Set loaded state after mount
   useEffect(() => {
     setIsLoaded(true);
@@ -36,6 +39,10 @@ export default function Home() {
     {
       src: "/Charlie_Quincy_Bubbles.jpg",
       alt: "Charlie and Quincy with bubbles"
+    },
+    {
+      src: "/Charlie_Chairlift.jpg",
+      alt: "Charlie in a chairlift"
     }
   ];
   
@@ -77,14 +84,73 @@ export default function Home() {
     };
   }, [isMenuOpen]);
   
+  // Handle carousel item click
+  const handleCarouselClick = (index: number) => {
+    // Always move to the next photo in the sequence (left to right)
+    const nextIndex = (currentPhotoIndex + 1) % carouselPhotos.length;
+    setCurrentPhotoIndex(nextIndex);
+    setUserInteracted(true);
+    
+    // Resume auto-rotation after 10 seconds of inactivity
+    const timer = setTimeout(() => {
+      setUserInteracted(false);
+    }, 10000);
+    
+    return () => clearTimeout(timer);
+  };
+  
   // Carousel auto-rotation
   useEffect(() => {
+    // Skip auto-rotation if user has interacted recently
+    if (userInteracted) return;
+    
     const photoTimer = setInterval(() => {
       setCurrentPhotoIndex(prev => (prev + 1) % carouselPhotos.length);
     }, 5000);
     
     return () => clearInterval(photoTimer);
-  }, []);
+  }, [userInteracted]);
+  
+  // Handle carousel position updates when currentPhotoIndex changes
+  useEffect(() => {
+    console.log("Current photo index changed to:", currentPhotoIndex);
+    
+    const updateCarouselPositions = () => {
+      console.log("Updating carousel positions...");
+      const items = document.querySelectorAll('.carousel__item');
+      console.log("Found items:", items.length);
+      
+      if (!items.length) {
+        console.warn("No carousel items found!");
+        return;
+      }
+      
+      items.forEach((item, index) => {
+        const element = item as HTMLElement;
+        let pos = index - currentPhotoIndex;
+        
+        // Handle wraparound for circular carousel
+        if (pos < -2) pos = pos + carouselPhotos.length;
+        if (pos > 2) pos = pos - carouselPhotos.length;
+        
+        // Keep position within -2 to 2 range
+        pos = Math.max(-2, Math.min(2, pos));
+        
+        console.log(`Setting item ${index} to position ${pos}`);
+        element.dataset.pos = pos.toString();
+      });
+    };
+    
+    // Call immediately and after a short delay to ensure DOM is ready
+    updateCarouselPositions();
+    
+    // Also try with a slight delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      updateCarouselPositions();
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [currentPhotoIndex, carouselPhotos.length]);
   
   // Testimonial data
   const testimonials = [
@@ -244,37 +310,41 @@ export default function Home() {
             </svg>
           </div>
           
-          <div className="container mx-auto px-4">
-            <div className="max-w-xl mx-auto fade-in-section relative">
-              <div className="w-full h-[800px] relative overflow-hidden rounded-lg">
-                {carouselPhotos.map((photo, index) => (
-                  <div 
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                      index === currentPhotoIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                    }`}
-                  >
-                    <img 
-                      src={photo.src} 
-                      alt={photo.alt} 
-                      className="w-[600px] h-[800px] object-cover mx-auto"
-                    />
-                  </div>
-                ))}
-              </div>
-              
-              {/* Navigation dots */}
-              <div className="flex justify-center mt-6 space-x-3">
-                {carouselPhotos.map((_, index) => (
-                  <button 
-                    key={index}
-                    className={`w-3 h-3 rounded-full ${
-                      index === currentPhotoIndex ? 'bg-primary' : 'bg-accent/30'
-                    }`}
-                    onClick={() => setCurrentPhotoIndex(index)}
-                    aria-label={`View photo ${index + 1}`}
-                  />
-                ))}
+          <div className="container mx-auto px-4 relative">
+            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section font-heading">
+              Visiting Karuna
+            </h2>
+            <div className="carousel-container mb-16">
+              <div className="carousel__list" id="photoCarousel">
+                {carouselPhotos.map((photo, index) => {
+                  // Calculate initial positions (0 is center, -1 and 1 are sides, -2 and 2 are far sides)
+                  let initialPos = index - currentPhotoIndex;
+                  
+                  // Handle wrap-around for positions
+                  if (initialPos < -2) initialPos = 2;
+                  if (initialPos > 2) initialPos = -2;
+                  
+                  console.log(`Photo ${index}: position ${initialPos}`);
+                  
+                  return (
+                    <div 
+                      key={index}
+                      className="carousel__item"
+                      data-pos={initialPos}
+                      onClick={() => handleCarouselClick(index)}
+                    >
+                      <div className="carousel__image-container">
+                        <img 
+                          src={photo.src} 
+                          alt={photo.alt} 
+                        />
+                      </div>
+                      <div className="carousel__item-caption">
+                        {photo.alt}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

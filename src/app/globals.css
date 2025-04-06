@@ -345,3 +345,147 @@ h1, h2, h3, h4, h5, h6 {
 h3 {
   font-size: 1.4rem; /* Increased from default */
 }
+
+/* Carousel styling */
+.carousel-container {
+  max-width: 80%;  /* Increased from 65% to show more content */
+  margin: 0 auto;
+  overflow: visible; /* Changed from hidden to prevent cutting off */
+}
+
+.carousel__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 500px; /* Increased from 400px to provide more vertical space */
+}
+
+.carousel__item {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel__image-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel__item-caption {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  background: transparent;
+  color: var(--primary);
+  padding: 8px 0;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* Position styling - reducing peek of non-primary photos */
+.carousel__item[data-pos="0"] {
+  z-index: 5;
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.carousel__item[data-pos="1"] {
+  z-index: 4;
+  transform: translateX(30%) scale(0.8); /* Reduced from 45% to make component less wide */
+  opacity: 0.25; /* Changed from 0.6 to 0.25 (25% opacity) */
+}
+
+.carousel__item[data-pos="-1"] {
+  z-index: 4;
+  transform: translateX(-30%) scale(0.8); /* Reduced from -45% to make component less wide */
+  opacity: 0.25; /* Changed from 0.6 to 0.25 (25% opacity) */
+}
+
+.carousel__item[data-pos="2"] {
+  z-index: 3;
+  transform: translateX(50%) scale(0.6); /* Reduced from 80% to make component less wide */
+  opacity: 0.25; /* Changed from 0.3 to 0.25 (25% opacity) */
+}
+
+.carousel__item[data-pos="-2"] {
+  z-index: 3;
+  transform: translateX(-50%) scale(0.6); /* Reduced from -80% to make component less wide */
+  opacity: 0.25; /* Changed from 0.3 to 0.25 (25% opacity) */
+}
+
+/* Force visibility for carousel items during development */
+.carousel__item {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    min-height: 500px;
+  }
+  
+  .carousel__item[data-pos="0"] {
+    width: 300px;
+    height: 400px;
+  }
+  
+  .carousel__item[data-pos="-1"],
+  .carousel__item[data-pos="1"] {
+    width: 250px;
+    height: 350px;
+  }
+  
+  .carousel__item[data-pos="-2"],
+  .carousel__item[data-pos="2"] {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-container {
+    min-height: 400px;
+  }
+  
+  .carousel__list {
+    min-height: 350px;
+  }
+  
+  .carousel__item[data-pos="0"] {
+    width: 220px;
+    height: 320px;
+  }
+  
+  .carousel__item[data-pos="-1"],
+  .carousel__item[data-pos="1"] {
+    width: 180px;
+    height: 280px;
+    transform: translateX(-35%) scale(0.9);
+  }
+  
+  .carousel__item[data-pos="1"] {
+    transform: translateX(35%) scale(0.9);
+  }
+  
+  .carousel__item[data-pos="-2"],
+  .carousel__item[data-pos="2"] {
+    display: none;
+  }
+}
