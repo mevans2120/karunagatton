@@ -1,17 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 export default function GetInTouch() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  
-  // Set loaded state after mount
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
   
   // Add useEffect to ensure page elements load correctly
   useEffect(() => {
@@ -24,7 +18,7 @@ export default function GetInTouch() {
   }, []);
 
   return (
-    <div className={`min-h-screen text-gray-800 bg-primary w-full ${!isLoaded ? 'initial-load' : ''}`}>
+    <div className="min-h-screen text-gray-800 bg-primary w-full">
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
@@ -35,18 +29,10 @@ export default function GetInTouch() {
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
             <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
           </nav>
-          
-          {/* Close button that's always visible */}
-          <div 
-            onClick={() => setIsMenuOpen(false)}
-            className="mobile-menu-open-button cursor-pointer"
-          >
-            <X size={24} color="white" />
-          </div>
         </div>
       )}
     
-      {/* Main content wrapper with page transition */}
+      {/* Main content wrapper */}
       <div className="page-content">
         {/* Header */}
         <header className="absolute top-0 w-full z-50 p-4">
@@ -250,13 +236,13 @@ export default function GetInTouch() {
         {/* Directions */}
         <section className="py-24 px-4 bg-purple-50">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="w-64 h-64 mx-auto mb-16">
+            <div className="w-36 h-36 mx-auto mb-16">
               <img 
                 src="/yurt-icon-9.svg" 
                 alt="Yurt location" 
                 className="w-full h-full" 
-                width="190"
-                height="190"
+                width="108"
+                height="108"
                 style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
               />
             </div>
