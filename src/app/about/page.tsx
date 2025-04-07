@@ -6,15 +6,51 @@ import Link from 'next/link';
 
 export default function About() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   
-  // Add useEffect to ensure page elements load correctly
+  // Set loaded state after mount to trigger dissolve effect
+  useEffect(() => {
+    // Short timeout to ensure purple background is visible first
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 50); // Just enough delay to ensure the purple bg shows first
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
+  // Add useEffect to ensure page elements load correctly and handle fade-in animations
   useEffect(() => {
     // This forces a re-render after component mounts
     const timer = setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 100);
     
-    return () => clearTimeout(timer);
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15,
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+    
+    const fadeElements = document.querySelectorAll('.fade-in-section');
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    return () => {
+      clearTimeout(timer);
+      fadeElements.forEach(element => {
+        observer.unobserve(element);
+      });
+    };
   }, []);
 
   return (

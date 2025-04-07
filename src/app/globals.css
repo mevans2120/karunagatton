@@ -97,11 +97,12 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
   pointer-events: none;
 }
 
-/* Fade in animations */
+/* Scroll-based animation for content sections */
 .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 .fade-in-section.is-visible {

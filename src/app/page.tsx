@@ -268,7 +268,11 @@ export default function Home() {
                         key={index} 
                         className="carousel__item"
                         data-pos={initialPos}
-                        onClick={() => setCurrentPhotoIndex(index)}
+                        onClick={() => {
+                          // Explicitly set currentPhotoIndex to this image's index when clicked
+                          setCurrentPhotoIndex(index);
+                          console.log("Clicked on image", index);
+                        }}
                       >
                         <div className="w-full h-full flex flex-col items-center">
                           <div className="rounded-lg overflow-hidden">
@@ -327,6 +331,7 @@ export default function Home() {
               transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
               cursor: pointer;
               overflow: visible;
+              pointer-events: auto;
             }
             
             .carousel__item[data-pos="0"] {
@@ -352,15 +357,15 @@ export default function Home() {
             }
             
             .carousel__item[data-pos="-2"] {
-              transform: translateX(-85%) scale(0.6);
-              z-index: 3;
+              transform: translateX(-75%) scale(0.5);
+              z-index: 2;
               opacity: 0.4;
               filter: blur(2px) grayscale(30%);
             }
             
             .carousel__item[data-pos="2"] {
-              transform: translateX(85%) scale(0.6);
-              z-index: 3;
+              transform: translateX(75%) scale(0.5);
+              z-index: 2;
               opacity: 0.4;
               filter: blur(2px) grayscale(30%);
             }
