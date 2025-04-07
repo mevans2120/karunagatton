@@ -235,7 +235,7 @@ export default function Home() {
         </section>
         
         {/* Integrated Photo Carousel */}
-        <section className="relative py-32 bg-purple-50">
+        <section className="relative py-20 bg-purple-50">
           {/* Top wave decoration */}
           <div className="absolute top-0 left-0 w-full overflow-hidden">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20">
@@ -282,18 +282,16 @@ export default function Home() {
                               className="w-full h-full object-cover"
                             />
                           </div>
-                          
-                          {/* Caption below the image instead of overlaid */}
-                          {initialPos === 0 && (
-                            <div className="text-center mt-4 text-primary">
-                              <p>{photo.alt}</p>
-                            </div>
-                          )}
                         </div>
                       </li>
                     );
                   })}
                 </ul>
+              </div>
+              
+              {/* Caption displayed separately below the carousel */}
+              <div className="text-center mt-8 text-primary">
+                <p>{carouselPhotos[currentPhotoIndex]?.alt}</p>
               </div>
             </div>
           </div>
@@ -379,7 +377,7 @@ export default function Home() {
             }
             
             .carousel__item > div > div:first-child {
-              box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.5);
+              box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.5);
               height: 100%;
             }
           `}</style>
