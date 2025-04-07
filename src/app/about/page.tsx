@@ -6,12 +6,6 @@ import Link from 'next/link';
 
 export default function About() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  
-  // Set loaded state after mount
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
   
   // Add useEffect to ensure page elements load correctly
   useEffect(() => {
@@ -24,7 +18,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className={`min-h-screen text-gray-800 bg-primary w-full ${!isLoaded ? 'initial-load' : ''}`}>
+    <div className="min-h-screen text-gray-800 bg-primary w-full">
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
@@ -35,18 +29,10 @@ export default function About() {
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
             <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
           </nav>
-          
-          {/* Close button that's always visible */}
-          <div 
-            onClick={() => setIsMenuOpen(false)}
-            className="mobile-menu-open-button cursor-pointer"
-          >
-            <X size={24} color="white" />
-          </div>
         </div>
       )}
     
-      {/* Main content wrapper with page transition */}
+      {/* Main content wrapper */}
       <div className="page-content">
         {/* Header */}
         <header className="absolute top-0 w-full z-50 p-4">
@@ -107,19 +93,19 @@ export default function About() {
         </div>
 
         {/* Main Content */}
-        <section className="py-16 bg-gray-50">
+        <section className="pt-0 pb-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-4xl">
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16 mt-16">
               <div className="relative">
                 <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
                   <img 
-                    src="/api/placeholder/600/800" 
+                    src="/Karuna.jpg" 
                     alt="Karuna Gatton" 
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
-              <div>
+              <div className="bg-white p-8 rounded-lg shadow-sm">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Journey</h2>
                 <p className="text-lg leading-relaxed mb-6">
                   My path to shamanic healing began over 30 years ago, when I first discovered the profound power of connecting with spirit and nature. Through years of dedicated study and practice, I've developed a unique approach that combines traditional shamanic techniques with modern understanding.
@@ -134,42 +120,38 @@ export default function About() {
               </div>
             </div>
 
-            {/* Wave divider */}
-            <div className="my-16 relative">
-              <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 opacity-25">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-primary"></path>
-              </svg>
-            </div>
-
-            <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Approach</h2>
-              <p className="text-lg leading-relaxed mb-6">
-                I believe that healing is a journey of rediscovery. Through shamanic practice, we work together to:
-              </p>
-              <ul className="list-disc pl-6 mb-8 space-y-4">
-                <li>Reconnect with your authentic self</li>
-                <li>Restore lost energy and vitality</li>
-                <li>Find clarity and purpose</li>
-                <li>Heal past traumas</li>
-                <li>Develop a deeper connection with spirit</li>
-              </ul>
-
-              {/* Wave divider */}
-              <div className="my-16 relative">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 opacity-25 rotate-180">
-                  <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-primary"></path>
-                </svg>
+            {/* Stacked Cards */}
+            <div>
+              {/* My Approach Card */}
+              <div className="bg-white p-8 rounded-lg shadow-sm mb-16">
+                <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Approach</h2>
+                <p className="text-lg leading-relaxed mb-6">
+                  I believe that healing is a journey of rediscovery. Through shamanic practice, we work together to:
+                </p>
+                <ul className="list-disc pl-6 mb-6 space-y-4">
+                  <li>Reconnect with your authentic self</li>
+                  <li>Restore lost energy and vitality</li>
+                  <li>Find clarity and purpose</li>
+                  <li>Heal past traumas</li>
+                  <li>Develop a deeper connection with spirit</li>
+                </ul>
               </div>
 
-              <h2 className="text-3xl font-light mb-6 font-heading text-primary">The Healing Space</h2>
-              <p className="text-lg leading-relaxed mb-6">
-                My healing yurt in Eugene provides a sacred space for transformation. This circular structure, inspired by traditional Mongolian yurts, creates an environment that supports deep healing work. The space is carefully designed to facilitate connection with spirit while maintaining comfort and accessibility.
-              </p>
+              {/* The Healing Space Card */}
+              <div className="bg-white p-8 rounded-lg shadow-sm mb-16">
+                <h2 className="text-3xl font-light mb-6 font-heading text-primary">The Healing Space</h2>
+                <p className="text-lg leading-relaxed mb-6">
+                  My healing yurt in Eugene provides a sacred space for transformation. This circular structure, inspired by traditional Mongolian yurts, creates an environment that supports deep healing work. The space is carefully designed to facilitate connection with spirit while maintaining comfort and accessibility.
+                </p>
+              </div>
 
-              <h2 className="text-3xl font-light mb-6 font-heading text-primary">Community & Connection</h2>
-              <p className="text-lg leading-relaxed mb-6">
-                Beyond individual sessions, I'm committed to building community through monthly drum circles and seasonal ceremonies. These gatherings provide opportunities for shared healing and spiritual growth.
-              </p>
+              {/* Community Card */}
+              <div className="bg-white p-8 rounded-lg shadow-sm mb-16">
+                <h2 className="text-3xl font-light mb-6 font-heading text-primary">Community & Connection</h2>
+                <p className="text-lg leading-relaxed mb-6">
+                  Beyond individual sessions, I'm committed to building community through monthly drum circles and seasonal ceremonies. These gatherings provide opportunities for shared healing and spiritual growth.
+                </p>
+              </div>
             </div>
           </div>
         </section>

@@ -6,12 +6,6 @@ import Link from 'next/link';
 
 export default function DrumCircle() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  
-  // Set loaded state after mount
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
   
   // Add useEffect to ensure page elements load correctly
   useEffect(() => {
@@ -24,7 +18,7 @@ export default function DrumCircle() {
   }, []);
 
   return (
-    <div className={`min-h-screen text-gray-800 bg-primary w-full ${!isLoaded ? 'initial-load' : ''}`}>
+    <div className="min-h-screen text-gray-800 bg-primary w-full">
       {/* SVG Filters */}
       <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
         <filter id="turbulence">
@@ -54,7 +48,7 @@ export default function DrumCircle() {
         </div>
       )}
 
-      {/* Main content wrapper with page transition */}
+      {/* Main content wrapper */}
       <div className="page-content">
         {/* Header */}
         <header className="absolute top-0 w-full z-50 p-4">
@@ -120,7 +114,7 @@ export default function DrumCircle() {
             {/* Image and circle info sections */}
             <div className="grid md:grid-cols-2 gap-8 mb-10">
               <div className="relative">
-                <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg">
+                <div className="w-full h-[400px] rounded-lg overflow-hidden">
                   <img 
                     src="/Drum-circle-image.png" 
                     alt="Drum Circle Gathering" 
@@ -168,21 +162,6 @@ export default function DrumCircle() {
                   <li>Group improvisation and connection</li>
                   <li>Healing vibrations and energy work</li>
                   <li>Closing ceremony and integration</li>
-                </ul>
-              </div>
-
-              {/* Benefits Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">Benefits of Drum Circle</h2>
-                <p className="text-lg leading-relaxed mb-6">
-                  Regular participation in drum circles can bring numerous benefits to your life:
-                </p>
-                <ul className="list-disc pl-6 mb-6 space-y-4">
-                  <li>Stress reduction and relaxation</li>
-                  <li>Enhanced creativity and self-expression</li>
-                  <li>Improved focus and mindfulness</li>
-                  <li>Community connection and support</li>
-                  <li>Physical and emotional healing</li>
                 </ul>
               </div>
 

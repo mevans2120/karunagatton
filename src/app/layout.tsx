@@ -46,7 +46,7 @@ export default function RootLayout({
           }
         `}} />
       </head>
-      <body className="bg-primary">
+      <body>
         {children}
       </body>
     </html>

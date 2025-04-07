@@ -7,15 +7,6 @@ import Link from 'next/link';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
-  
-  // Track user interaction to pause auto-rotation
-  const [userInteracted, setUserInteracted] = useState(false);
-  
-  // Set loaded state after mount
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
   
   // Debug log for menu state
   useEffect(() => {
@@ -42,7 +33,7 @@ export default function Home() {
     },
     {
       src: "/Charlie_Chairlift.jpg",
-      alt: "Charlie in a chairlift"
+      alt: "Charlie Chairlift"
     }
   ];
   
@@ -84,73 +75,15 @@ export default function Home() {
     };
   }, [isMenuOpen]);
   
-  // Handle carousel item click
-  const handleCarouselClick = (index: number) => {
-    // Always move to the next photo in the sequence (left to right)
-    const nextIndex = (currentPhotoIndex + 1) % carouselPhotos.length;
-    setCurrentPhotoIndex(nextIndex);
-    setUserInteracted(true);
-    
-    // Resume auto-rotation after 10 seconds of inactivity
-    const timer = setTimeout(() => {
-      setUserInteracted(false);
-    }, 10000);
-    
-    return () => clearTimeout(timer);
-  };
-  
   // Carousel auto-rotation
   useEffect(() => {
-    // Skip auto-rotation if user has interacted recently
-    if (userInteracted) return;
-    
     const photoTimer = setInterval(() => {
-      setCurrentPhotoIndex(prev => (prev + 1) % carouselPhotos.length);
+      // Move from left to right by decrementing the index
+      setCurrentPhotoIndex(prev => (prev > 0 ? prev - 1 : carouselPhotos.length - 1));
     }, 5000);
     
     return () => clearInterval(photoTimer);
-  }, [userInteracted]);
-  
-  // Handle carousel position updates when currentPhotoIndex changes
-  useEffect(() => {
-    console.log("Current photo index changed to:", currentPhotoIndex);
-    
-    const updateCarouselPositions = () => {
-      console.log("Updating carousel positions...");
-      const items = document.querySelectorAll('.carousel__item');
-      console.log("Found items:", items.length);
-      
-      if (!items.length) {
-        console.warn("No carousel items found!");
-        return;
-      }
-      
-      items.forEach((item, index) => {
-        const element = item as HTMLElement;
-        let pos = index - currentPhotoIndex;
-        
-        // Handle wraparound for circular carousel
-        if (pos < -2) pos = pos + carouselPhotos.length;
-        if (pos > 2) pos = pos - carouselPhotos.length;
-        
-        // Keep position within -2 to 2 range
-        pos = Math.max(-2, Math.min(2, pos));
-        
-        console.log(`Setting item ${index} to position ${pos}`);
-        element.dataset.pos = pos.toString();
-      });
-    };
-    
-    // Call immediately and after a short delay to ensure DOM is ready
-    updateCarouselPositions();
-    
-    // Also try with a slight delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      updateCarouselPositions();
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, [currentPhotoIndex, carouselPhotos.length]);
+  }, []);
   
   // Testimonial data
   const testimonials = [
@@ -191,7 +124,7 @@ export default function Home() {
   ];
 
   return (
-    <div className={`min-h-screen text-gray-800 bg-primary w-full ${!isLoaded ? 'initial-load' : ''}`}>
+    <div className="min-h-screen text-gray-800 bg-gray-50 w-full">
       {/* SVG Filters */}
       <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
         <filter id="turbulence">
@@ -213,8 +146,8 @@ export default function Home() {
         </div>
       )}
     
-      {/* Main content wrapper with page transition */}
-      <div className="purple-dissolve">
+      {/* Main content wrapper */}
+      <div className="page-content">
         {/* Header - Increased z-index */}
         <header className="absolute top-0 w-full z-50 p-4">
           <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
@@ -310,44 +243,141 @@ export default function Home() {
             </svg>
           </div>
           
-          <div className="container mx-auto px-4 relative">
-            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section font-heading">
-              Visiting Karuna
-            </h2>
-            <div className="carousel-container mb-16">
-              <div className="carousel__list" id="photoCarousel">
-                {carouselPhotos.map((photo, index) => {
-                  // Calculate initial positions (0 is center, -1 and 1 are sides, -2 and 2 are far sides)
-                  let initialPos = index - currentPhotoIndex;
-                  
-                  // Handle wrap-around for positions
-                  if (initialPos < -2) initialPos = 2;
-                  if (initialPos > 2) initialPos = -2;
-                  
-                  console.log(`Photo ${index}: position ${initialPos}`);
-                  
-                  return (
-                    <div 
-                      key={index}
-                      className="carousel__item"
-                      data-pos={initialPos}
-                      onClick={() => handleCarouselClick(index)}
-                    >
-                      <div className="carousel__image-container">
-                        <img 
-                          src={photo.src} 
-                          alt={photo.alt} 
-                        />
-                      </div>
-                      <div className="carousel__item-caption">
-                        {photo.alt}
-                      </div>
-                    </div>
-                  );
-                })}
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl text-center font-light text-primary mb-16 fade-in-section font-heading">Visiting Karuna</h2>
+            
+            <div className="max-w-5xl mx-auto fade-in-section">
+              {/* Card Carousel */}
+              <div className="carousel">
+                <ul className="carousel__list">
+                  {carouselPhotos.map((photo, index) => {
+                    // Calculate the initial position for each card
+                    // We need to center the first photo, so positions need to be calculated relative to the currentPhotoIndex
+                    let initialPos = index - currentPhotoIndex;
+                    
+                    // Handle wrapping for a circular carousel
+                    if (initialPos < -2) initialPos += carouselPhotos.length;
+                    if (initialPos > 2) initialPos -= carouselPhotos.length;
+                    
+                    // Handle the case with fewer than 5 photos
+                    if (carouselPhotos.length <= 5 && initialPos < -2) initialPos += carouselPhotos.length;
+                    if (carouselPhotos.length <= 5 && initialPos > 2) initialPos -= carouselPhotos.length;
+                    
+                    return (
+                      <li 
+                        key={index} 
+                        className="carousel__item"
+                        data-pos={initialPos}
+                        onClick={() => setCurrentPhotoIndex(index)}
+                      >
+                        <div className="w-full h-full flex flex-col items-center">
+                          <div className="rounded-lg overflow-hidden">
+                            <img 
+                              src={photo.src} 
+                              alt={photo.alt} 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          
+                          {/* Caption below the image instead of overlaid */}
+                          {initialPos === 0 && (
+                            <div className="text-center mt-4 text-primary">
+                              <p>{photo.alt}</p>
+                            </div>
+                          )}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
           </div>
+          
+          {/* Add custom CSS for carousel */}
+          <style jsx>{`
+            .carousel {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              margin: 0 auto;
+              height: 500px;
+            }
+
+            .carousel__list {
+              display: flex;
+              list-style: none;
+              position: relative;
+              width: 100%;
+              height: 450px;
+              justify-content: center;
+              perspective: 300px;
+              padding: 0;
+              margin: 0;
+            }
+            
+            .carousel__item {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 270px;
+              height: 400px;
+              border-radius: 12px;
+              position: absolute;
+              transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+              cursor: pointer;
+              overflow: visible;
+            }
+            
+            .carousel__item[data-pos="0"] {
+              z-index: 5;
+              transform: translateX(0) scale(1.25);
+              opacity: 1;
+              filter: blur(0px) grayscale(0%);
+              width: 300px;
+            }
+            
+            .carousel__item[data-pos="-1"] {
+              transform: translateX(-40%) scale(0.9);
+              z-index: 4;
+              opacity: 0.8;
+              filter: blur(1px) grayscale(10%);
+            }
+            
+            .carousel__item[data-pos="1"] {
+              transform: translateX(40%) scale(0.9);
+              z-index: 4;
+              opacity: 0.8;
+              filter: blur(1px) grayscale(10%);
+            }
+            
+            .carousel__item[data-pos="-2"] {
+              transform: translateX(-85%) scale(0.6);
+              z-index: 3;
+              opacity: 0.4;
+              filter: blur(2px) grayscale(30%);
+            }
+            
+            .carousel__item[data-pos="2"] {
+              transform: translateX(85%) scale(0.6);
+              z-index: 3;
+              opacity: 0.4;
+              filter: blur(2px) grayscale(30%);
+            }
+            
+            .carousel__item > div {
+              height: 350px;
+            }
+            
+            .carousel__item[data-pos="0"] > div {
+              height: 400px;
+            }
+            
+            .carousel__item > div > div:first-child {
+              box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.5);
+              height: 100%;
+            }
+          `}</style>
           
           {/* Bottom wave decoration */}
           <div className="absolute bottom-0 left-0 w-full overflow-hidden">

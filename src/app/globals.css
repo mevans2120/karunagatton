@@ -12,11 +12,6 @@
     font-display: swap;
     src: url(https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=swap);
   }
-  
-  /* Prevent white flash during page transitions */
-  html, body {
-    background-color: var(--primary);
-  }
 }
 
 /* Custom styles */
@@ -28,13 +23,18 @@
   --accent: #b2a3c7;
 }
 
+/* Critical for preventing white flash during page transitions */
+html {
+  background-color: var(--primary) !important;
+}
+
 body {
+  background-color: var(--primary) !important;
   color: #333;
   margin: 0;
   padding: 0;
   font-family: 'EB Garamond', serif;
   min-height: 100vh;
-  font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
@@ -241,251 +241,18 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 .mobile-menu-nav.open a:nth-child(4) { transition-delay: 0.35s; }
 .mobile-menu-nav.open a:nth-child(5) { transition-delay: 0.4s; }
 
-/* Force page to start purple */
-#__next {
-  background-color: var(--primary);
-}
-
-/* Special class for initial load state to prevent white flash */
-.initial-load {
-  visibility: hidden;
-}
-
-/* Purple dissolve animation - just for homepage testing */
-.purple-dissolve {
-  animation: purpleDissolve 1s ease-out forwards;
-  animation-delay: 0s;
+/* Basic page styles */
+.purple-dissolve, .page-content {
   position: relative;
-  background-color: var(--primary);
   min-height: 100vh;
   width: 100%;
-  will-change: opacity, background-color;
-  visibility: visible;
 }
 
-.purple-dissolve::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary);
-  z-index: -1;
-}
-
-@keyframes purpleDissolve {
-  0% {
-    opacity: 0;
-    background-color: var(--primary);
-  }
-  10% {
-    opacity: 0.1;
-    background-color: var(--primary);
-  }
-  40% {
-    opacity: 0.8;
-    background-color: var(--primary);
-  }
-  100% {
-    opacity: 1;
-    background-color: var(--background);
-  }
-}
-
-/* Page load animation */
-.page-content {
-  animation: purpleDissolve 1s ease-out forwards;
-  animation-delay: 0s;
-  position: relative;
-  background-color: var(--primary);
-  min-height: 100vh;
-  width: 100%;
-  will-change: opacity, background-color;
-}
-
-.page-content::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary);
-  z-index: -1;
-}
-
+/* Empty animations for compatibility */
 @keyframes fadeInFromPurple {
   /* Empty to remove animation */
 }
 
 @keyframes fadeIn {
   /* Empty to remove animation */
-}
-
-/* Mobile menu specific styles */
-.mobile-menu-open-button {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 70;
-  background-color: transparent;
-  border-radius: 0;
-  padding: 0.5rem;
-  backdrop-filter: none;
-  box-shadow: none;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-unbounded);
-  font-weight: 400;
-}
-
-h3 {
-  font-size: 1.4rem; /* Increased from default */
-}
-
-/* Carousel styling */
-.carousel-container {
-  max-width: 80%;  /* Increased from 65% to show more content */
-  margin: 0 auto;
-  overflow: visible; /* Changed from hidden to prevent cutting off */
-}
-
-.carousel__list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 500px; /* Increased from 400px to provide more vertical space */
-}
-
-.carousel__item {
-  position: absolute;
-  width: 300px;
-  height: auto;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: none;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  display: flex;
-  flex-direction: column;
-}
-
-.carousel__image-container {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.carousel__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.carousel__item-caption {
-  position: relative;
-  bottom: auto;
-  left: auto;
-  right: auto;
-  background: transparent;
-  color: var(--primary);
-  padding: 8px 0;
-  text-align: center;
-  font-size: 14px;
-  margin-top: 8px;
-}
-
-/* Position styling - reducing peek of non-primary photos */
-.carousel__item[data-pos="0"] {
-  z-index: 5;
-  transform: translateX(0) scale(1);
-  opacity: 1;
-}
-
-.carousel__item[data-pos="1"] {
-  z-index: 4;
-  transform: translateX(30%) scale(0.8); /* Reduced from 45% to make component less wide */
-  opacity: 0.25; /* Changed from 0.6 to 0.25 (25% opacity) */
-}
-
-.carousel__item[data-pos="-1"] {
-  z-index: 4;
-  transform: translateX(-30%) scale(0.8); /* Reduced from -45% to make component less wide */
-  opacity: 0.25; /* Changed from 0.6 to 0.25 (25% opacity) */
-}
-
-.carousel__item[data-pos="2"] {
-  z-index: 3;
-  transform: translateX(50%) scale(0.6); /* Reduced from 80% to make component less wide */
-  opacity: 0.25; /* Changed from 0.3 to 0.25 (25% opacity) */
-}
-
-.carousel__item[data-pos="-2"] {
-  z-index: 3;
-  transform: translateX(-50%) scale(0.6); /* Reduced from -80% to make component less wide */
-  opacity: 0.25; /* Changed from 0.3 to 0.25 (25% opacity) */
-}
-
-/* Force visibility for carousel items during development */
-.carousel__item {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-@media (max-width: 768px) {
-  .carousel-container {
-    min-height: 500px;
-  }
-  
-  .carousel__item[data-pos="0"] {
-    width: 300px;
-    height: 400px;
-  }
-  
-  .carousel__item[data-pos="-1"],
-  .carousel__item[data-pos="1"] {
-    width: 250px;
-    height: 350px;
-  }
-  
-  .carousel__item[data-pos="-2"],
-  .carousel__item[data-pos="2"] {
-    width: 200px;
-    height: 300px;
-  }
-}
-
-@media (max-width: 576px) {
-  .carousel-container {
-    min-height: 400px;
-  }
-  
-  .carousel__list {
-    min-height: 350px;
-  }
-  
-  .carousel__item[data-pos="0"] {
-    width: 220px;
-    height: 320px;
-  }
-  
-  .carousel__item[data-pos="-1"],
-  .carousel__item[data-pos="1"] {
-    width: 180px;
-    height: 280px;
-    transform: translateX(-35%) scale(0.9);
-  }
-  
-  .carousel__item[data-pos="1"] {
-    transform: translateX(35%) scale(0.9);
-  }
-  
-  .carousel__item[data-pos="-2"],
-  .carousel__item[data-pos="2"] {
-    display: none;
-  }
 }
