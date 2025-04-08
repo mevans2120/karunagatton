@@ -7,11 +7,44 @@ import Link from 'next/link';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+  const [isTouching, setIsTouching] = useState(false);
   
   // Debug log for menu state
   useEffect(() => {
     console.log("Menu state changed:", isMenuOpen);
   }, [isMenuOpen]);
+  
+  // Handle swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+    setIsTouching(true);
+  };
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    
+    const swipeDistance = touchEndX - touchStartX;
+    const minSwipeDistance = 50; // minimum distance to be considered a swipe
+    
+    if (swipeDistance > minSwipeDistance) {
+      // Swiped right - move to previous photo
+      setCurrentPhotoIndex(prev => (prev > 0 ? prev - 1 : carouselPhotos.length - 1));
+    } else if (swipeDistance < -minSwipeDistance) {
+      // Swiped left - move to next photo
+      setCurrentPhotoIndex(prev => (prev < carouselPhotos.length - 1 ? prev + 1 : 0));
+    }
+    
+    // Reset touch coordinates
+    setTouchStartX(0);
+    setTouchEndX(0);
+    setIsTouching(false);
+  };
   
   // Carousel photos data
   const carouselPhotos = [
@@ -77,13 +110,16 @@ export default function Home() {
   
   // Carousel auto-rotation
   useEffect(() => {
+    // Don't auto-rotate while the user is touching/swiping
+    if (isTouching) return;
+    
     const photoTimer = setInterval(() => {
       // Move from left to right by decrementing the index
       setCurrentPhotoIndex(prev => (prev > 0 ? prev - 1 : carouselPhotos.length - 1));
     }, 5000);
     
     return () => clearInterval(photoTimer);
-  }, []);
+  }, [isTouching, carouselPhotos.length]);
   
   // Testimonial data
   const testimonials = [
@@ -246,7 +282,12 @@ export default function Home() {
             
             <div className="max-w-5xl mx-auto fade-in-section">
               {/* Card Carousel */}
-              <div className="carousel">
+              <div 
+                className="carousel"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 <ul className="carousel__list">
                   {carouselPhotos.map((photo, index) => {
                     // Calculate the initial position for each card
@@ -328,6 +369,9 @@ export default function Home() {
               cursor: pointer;
               overflow: visible;
               pointer-events: auto;
+              will-change: transform, opacity, filter; /* Performance optimization */
+              transform-origin: center center;
+              -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
             }
             
             .carousel__item[data-pos="0"] {
