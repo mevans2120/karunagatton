@@ -22,6 +22,7 @@ body {
   background-color: var(--background);
   color: #333;
   font-family: 'EB Garamond', serif;
+  font-size: 1.1em;
   min-height: 100vh;
   width: 100%;
 }
@@ -268,9 +269,11 @@ a {
   .md\:mb-0 { margin-bottom: 0; }
   .md\:pr-12 { padding-right: 3rem; }
   .md\:px-16 { padding-left: 4rem; padding-right: 4rem; }
-  .md\:text-2xl { font-size: 1.5rem; }
-  .md\:text-4xl { font-size: 2.25rem; }
-  .md\:text-7xl { font-size: 4.5rem; }
+  .md\:text-lg { font-size: 1.3125rem; }
+  .md\:text-xl { font-size: 1.5rem; }
+  .md\:text-2xl { font-size: 1.75rem; }
+  .md\:text-4xl { font-size: 2.5rem; }
+  .md\:text-7xl { font-size: 4.75rem; }
   .md\:block { display: block; }
   .md\:flex-1 { flex: 1 1 0%; }
 }
