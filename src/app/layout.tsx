@@ -42,6 +42,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/yurt-icon-welcome.svg" type="image/svg+xml" />
         <style dangerouslySetInnerHTML={{ __html: `
           h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] { 
             font-family: 'Unbounded', sans-serif !important; 
