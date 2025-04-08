@@ -59,7 +59,6 @@ export default function About() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
             <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
@@ -77,7 +76,6 @@ export default function About() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
               <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
               <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
               <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
@@ -131,7 +129,7 @@ export default function About() {
         {/* Main Content */}
         <section className="pt-0 pb-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-4xl">
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16 mt-16">
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16 mt-[66px] fade-in-section">
               <div className="relative">
                 <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
                   <img 
@@ -159,7 +157,7 @@ export default function About() {
             {/* Stacked Cards */}
             <div>
               {/* My Approach Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm mb-16">
+              <div className="bg-white p-8 rounded-lg shadow-sm mb-16 fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Approach</h2>
                 <p className="text-lg leading-relaxed mb-6">
                   I believe that healing is a journey of rediscovery. Through shamanic practice, we work together to:
@@ -174,7 +172,7 @@ export default function About() {
               </div>
 
               {/* The Healing Space Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm mb-16">
+              <div className="bg-white p-8 rounded-lg shadow-sm mb-16 fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">The Healing Space</h2>
                 <p className="text-lg leading-relaxed mb-6">
                   My healing yurt in Eugene provides a sacred space for transformation. This circular structure, inspired by traditional Mongolian yurts, creates an environment that supports deep healing work. The space is carefully designed to facilitate connection with spirit while maintaining comfort and accessibility.
@@ -182,7 +180,7 @@ export default function About() {
               </div>
 
               {/* Community Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm mb-16">
+              <div className="bg-white p-8 rounded-lg shadow-sm mb-16 fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">Community & Connection</h2>
                 <p className="text-lg leading-relaxed mb-6">
                   Beyond individual sessions, I'm committed to building community through monthly drum circles and seasonal ceremonies. These gatherings provide opportunities for shared healing and spiritual growth.
@@ -190,6 +188,11 @@ export default function About() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Spacer section with off-white padding */}
+        <section className="py-16 bg-gray-50">
+          {/* Empty section for additional padding/spacing */}
         </section>
 
         {/* Footer */}
@@ -205,7 +208,6 @@ export default function About() {
                 <div>
                   <h4 className="text-lg font-medium text-white mb-4">Pages</h4>
                   <ul className="space-y-2">
-                    <li><Link href="/" className="hover:text-accent transition duration-300">Home</Link></li>
                     <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
                     <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
                     <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>

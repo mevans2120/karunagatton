@@ -67,7 +67,6 @@ export default function DrumCircle() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
             <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
@@ -93,7 +92,6 @@ export default function DrumCircle() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
               <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
               <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
               <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
@@ -148,7 +146,7 @@ export default function DrumCircle() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-4xl">
             {/* Image and circle info sections */}
-            <div className="grid md:grid-cols-2 gap-8 mb-10">
+            <div className="grid md:grid-cols-2 gap-8 mb-10 mt-[50px] fade-in-section">
               <div className="relative">
                 <div className="w-full h-[400px] rounded-lg overflow-hidden">
                   <img 
@@ -187,7 +185,7 @@ export default function DrumCircle() {
             {/* Stacked Cards */}
             <div className="space-y-10">
               {/* What to Expect Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">What to Expect</h2>
                 <p className="text-lg leading-relaxed mb-6">
                   Each drum circle is a unique experience, guided by the energy of the group and the intention of the evening. We begin with a brief introduction and grounding meditation, then move into the drumming practice.
@@ -202,7 +200,7 @@ export default function DrumCircle() {
               </div>
 
               {/* Location Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">Location & Details</h2>
                 <p className="text-lg leading-relaxed mb-6">
                   The drum circle takes place in my healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings.
@@ -219,6 +217,11 @@ export default function DrumCircle() {
           </div>
         </section>
 
+        {/* Spacer section with off-white padding */}
+        <section className="py-16 bg-gray-50">
+          {/* Empty section for additional padding/spacing */}
+        </section>
+
         {/* Footer */}
         <footer className="bg-gray-900 text-gray-300 py-12">
           <div className="container mx-auto px-4">
@@ -232,7 +235,6 @@ export default function DrumCircle() {
                 <div>
                   <h4 className="text-lg font-medium text-white mb-4">Pages</h4>
                   <ul className="space-y-2">
-                    <li><Link href="/" className="hover:text-accent transition duration-300">Home</Link></li>
                     <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
                     <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
                     <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>

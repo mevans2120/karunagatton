@@ -112,7 +112,7 @@ export default function Home() {
       icon: "/yurt-icon-1.svg"
     },
     {
-      title: "Power Spirit Retrieval",
+      title: "Power Animal Retrieval",
       description: "Connect with helping spirits that offer guidance, protection, and power.",
       icon: "/yurt-icon-2.svg"
     },
@@ -137,7 +137,6 @@ export default function Home() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
             <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
@@ -155,7 +154,6 @@ export default function Home() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
               <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
               <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
               <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
@@ -380,6 +378,34 @@ export default function Home() {
               box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.5);
               height: 100%;
             }
+            
+            /* Desktop media query for larger carousel (20% increase) */
+            @media (min-width: 768px) {
+              .carousel {
+                height: 600px; /* 500px × 1.2 */
+              }
+              
+              .carousel__list {
+                height: 540px; /* 450px × 1.2 */
+              }
+              
+              .carousel__item {
+                width: 324px; /* 270px × 1.2 */
+                height: 480px; /* 400px × 1.2 */
+              }
+              
+              .carousel__item[data-pos="0"] {
+                width: 360px; /* 300px × 1.2 */
+              }
+              
+              .carousel__item > div {
+                height: 420px; /* 350px × 1.2 */
+              }
+              
+              .carousel__item[data-pos="0"] > div {
+                height: 480px; /* 400px × 1.2 */
+              }
+            }
           `}</style>
           
           {/* Bottom wave decoration */}
@@ -512,7 +538,6 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
                   <ul className="space-y-2">
-                    <li><Link href="/" className="hover:text-accent transition duration-300">Home</Link></li>
                     <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
                     <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
                     <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>

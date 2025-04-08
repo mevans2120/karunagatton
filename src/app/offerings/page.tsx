@@ -66,7 +66,7 @@ export default function Offerings() {
       icon: "/yurt-icon-2.svg"
     },
     {
-      title: "Power Spirit Retrieval",
+      title: "Power Animal Retrieval",
       description: "This ceremony connects you with helping spirits that offer guidance, protection, and power. Each of us has spiritual allies in non-ordinary reality who can assist us on our path. Through shamanic journeying, Karuna helps you meet and establish relationships with these power spirits.",
       icon: "/yurt-icon-3.svg"
     },
@@ -112,7 +112,6 @@ export default function Offerings() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
             <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
@@ -130,7 +129,6 @@ export default function Offerings() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
               <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
               <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
               <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
@@ -166,7 +164,7 @@ export default function Offerings() {
           <div className="sun-spot sun-spot-offerings"></div>
           
           {/* Hero Content */}
-          <div className="container mx-auto px-4 relative z-20 text-left py-24">
+          <div className="container mx-auto px-4 relative z-20 text-left py-24 fade-in-section">
             <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Healing Offerings</h1>
             <p className="text-xl max-w-3xl mb-10">
               Explore Karuna's comprehensive healing ceremonies, each designed to address specific aspects of spiritual, emotional, and energetic wellbeing. All offerings can be conducted both in-person and remotely.
@@ -188,14 +186,16 @@ export default function Offerings() {
         {/* Empowerment Ceremonies Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 max-w-5xl">
-            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Empowerment Ceremonies</h2>
-            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-              These core shamanic ceremonies are focused on soul healing, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
-            </p>
+            <div className="fade-in-section">
+              <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Empowerment Ceremonies</h2>
+              <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
+                These core shamanic ceremonies are focused on soul healing, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {empowermentCeremonies.map((ceremony, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+                <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center fade-in-section">
                   <div className="w-24 h-24 mb-6">
                     <img 
                       src={ceremony.icon} 
@@ -227,14 +227,16 @@ export default function Offerings() {
         {/* Other Offerings Section */}
         <section className="py-20 bg-purple-50 relative">
           <div className="container mx-auto px-4 max-w-5xl">
-            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Other Offerings</h2>
-            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-              Beyond the core empowerment ceremonies, Karuna offers specialized shamanic services to address specific life situations and spaces.
-            </p>
+            <div className="fade-in-section">
+              <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Other Offerings</h2>
+              <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
+                Beyond the core empowerment ceremonies, Karuna offers specialized shamanic services to address specific life situations and spaces.
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {otherOfferings.map((offering, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+                <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center fade-in-section">
                   <div className="w-24 h-24 mb-6">
                     <img 
                       src={offering.icon} 
@@ -265,7 +267,7 @@ export default function Offerings() {
         
         {/* Remote Healing Note */}
         <section className="py-12 px-4 bg-background">
-          <div className="container mx-auto max-w-3xl text-center">
+          <div className="container mx-auto max-w-3xl text-center fade-in-section">
             <div className="w-36 h-36 mx-auto mb-6">
               <img 
                 src="/yurt-icon-9.svg" 
@@ -283,6 +285,11 @@ export default function Offerings() {
           </div>
         </section>
         
+        {/* Spacer section with off-white padding */}
+        <section className="py-16 bg-gray-50">
+          {/* Empty section for additional padding/spacing */}
+        </section>
+        
         {/* Footer */}
         <footer className="bg-gray-900 text-gray-300 py-12">
           <div className="container mx-auto px-4">
@@ -296,7 +303,6 @@ export default function Offerings() {
                 <div>
                   <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
                   <ul className="space-y-2">
-                    <li><Link href="/" className="hover:text-accent transition duration-300">Home</Link></li>
                     <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
                     <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
                     <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>

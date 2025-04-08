@@ -59,7 +59,6 @@ export default function GetInTouch() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
             <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
             <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
@@ -77,7 +76,6 @@ export default function GetInTouch() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/" className="hover:text-accent transition duration-300">Home</Link>
               <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
               <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
               <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
@@ -130,7 +128,7 @@ export default function GetInTouch() {
         
         {/* Contact Form */}
         <section className="py-20 px-4 bg-gray-50">
-          <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-8">
+          <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-8 fade-in-section">
             <style jsx>{`
               /* Formspree styles */
               .fs-form {
@@ -271,7 +269,7 @@ export default function GetInTouch() {
         
         {/* Directions */}
         <section className="py-24 px-4 bg-purple-50">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center fade-in-section">
             <div className="w-36 h-36 mx-auto mb-16">
               <img 
                 src="/yurt-icon-9.svg" 
@@ -299,6 +297,11 @@ export default function GetInTouch() {
           <div className="h-24"></div>
         </section>
         
+        {/* Spacer section with off-white padding */}
+        <section className="py-16 bg-gray-50">
+          {/* Empty section for additional padding/spacing */}
+        </section>
+        
         {/* Footer */}
         <footer className="bg-gray-900 text-gray-300 py-12">
           <div className="container mx-auto px-4">
@@ -312,7 +315,6 @@ export default function GetInTouch() {
                 <div>
                   <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
                   <ul className="space-y-2">
-                    <li><Link href="/" className="hover:text-accent transition duration-300">Home</Link></li>
                     <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
                     <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
                     <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>
