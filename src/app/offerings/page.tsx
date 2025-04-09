@@ -201,8 +201,8 @@ export default function Offerings() {
                       src={ceremony.icon} 
                       alt={ceremony.title} 
                       className="w-full h-full" 
-                      width="72"
-                      height="72"
+                      width="86"
+                      height="86"
                       style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
                     />
                   </div>
@@ -242,8 +242,8 @@ export default function Offerings() {
                       src={offering.icon} 
                       alt={offering.title}
                       className="w-full h-full" 
-                      width="72"
-                      height="72"
+                      width="86"
+                      height="86"
                       style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
                     />
                   </div>
@@ -294,15 +294,15 @@ export default function Offerings() {
         <footer className="bg-gray-900 text-gray-300 py-12">
           <div className="container mx-auto px-4">
             <div className="md:flex md:justify-between">
-              <div className="mb-8 md:mb-0">
+              <div className="mb-8 md:mb-0 fade-in-section">
                 <h3 className="text-2xl font-light text-white mb-4 font-heading">Karuna</h3>
                 <p className="max-w-xs">Shamanic healing in Eugene, Oregon and beyond through remote sessions.</p>
               </div>
               
-              <nav className="grid grid-cols-2 md:grid-cols-3 gap-8">
+              <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
                 <div>
                   <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 list-none">
                     <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
                     <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
                     <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>
@@ -324,7 +324,7 @@ export default function Offerings() {
               </nav>
             </div>
             
-            <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+            <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm fade-in-section">
               <p>&copy; {new Date().getFullYear()} Karuna Gatton. All rights reserved.</p>
             </div>
           </div>

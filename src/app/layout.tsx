@@ -42,7 +42,16 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/yurt-icon-welcome.svg" type="image/svg+xml" />
+        {/* SVG favicon (primary) */}
+        <link rel="icon" href="/yurt-icon-welcome.svg" type="image/svg+xml" sizes="any" />
+        
+        {/* Apple Touch Icon (for iOS devices) - makes icon larger on Apple devices */}
+        <link rel="apple-touch-icon" href="/yurt-icon-welcome.svg" sizes="180x180" />
+        
+        {/* Large favicon sizes for various contexts */}
+        <link rel="icon" type="image/svg+xml" href="/yurt-icon-welcome.svg" sizes="192x192" />
+        <link rel="icon" type="image/svg+xml" href="/yurt-icon-welcome.svg" sizes="512x512" />
+        
         <style dangerouslySetInnerHTML={{ __html: `
           h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] { 
             font-family: 'Unbounded', sans-serif !important; 
