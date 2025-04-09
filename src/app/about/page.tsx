@@ -159,16 +159,28 @@ export default function About() {
               {/* My Approach Card */}
               <div className="bg-white p-8 rounded-lg shadow-sm mb-16 fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Approach</h2>
-                <p className="text-lg leading-relaxed mb-6">
-                  I believe that healing is a journey of rediscovery. Through shamanic practice, we work together to:
-                </p>
-                <ul className="list-disc pl-6 mb-6 space-y-4">
-                  <li>Reconnect with your authentic self</li>
-                  <li>Restore lost energy and vitality</li>
-                  <li>Find clarity and purpose</li>
-                  <li>Heal past traumas</li>
-                  <li>Develop a deeper connection with spirit</li>
-                </ul>
+                <div className="max-w-3xl mx-auto">
+                  <p className="text-lg leading-relaxed mb-8">
+                    My approach to shamanic healing is rooted in ancient wisdom and modern understanding. Through years of practice, I've developed a gentle yet powerful method that helps people:
+                  </p>
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-start">
+                      <span className="text-lg leading-relaxed">Reconnect with their authentic self and inner wisdom</span>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-lg leading-relaxed">Release old patterns and limiting beliefs</span>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-lg leading-relaxed">Heal past traumas and emotional wounds</span>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-lg leading-relaxed">Discover their unique gifts and life purpose</span>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-lg leading-relaxed">Build a deeper connection with spirit and nature</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* The Healing Space Card */}
