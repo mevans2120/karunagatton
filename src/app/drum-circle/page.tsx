@@ -163,15 +163,15 @@ export default function DrumCircle() {
                 </p>
                 <div className="space-y-4 mb-8">
                   <p className="flex items-center">
-                    <span className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3">1</span>
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
                     <span>No experience necessary</span>
                   </p>
                   <p className="flex items-center">
-                    <span className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3">2</span>
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
                     <span>Drums provided or bring your own</span>
                   </p>
                   <p className="flex items-center">
-                    <span className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3">3</span>
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
                     <span>All skill levels welcome</span>
                   </p>
                 </div>
@@ -190,13 +190,28 @@ export default function DrumCircle() {
                 <p className="text-lg leading-relaxed mb-6">
                   Each drum circle is a unique experience, guided by the energy of the group and the intention of the evening. We begin with a brief introduction and grounding meditation, then move into the drumming practice.
                 </p>
-                <ul className="list-disc pl-6 mb-6 space-y-4">
-                  <li>Opening ceremony and intention setting</li>
-                  <li>Basic drumming techniques and rhythms</li>
-                  <li>Group improvisation and connection</li>
-                  <li>Healing vibrations and energy work</li>
-                  <li>Closing ceremony and integration</li>
-                </ul>
+                <div className="space-y-4 mb-6">
+                  <p className="flex items-center">
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
+                    <span>Opening ceremony and intention setting</span>
+                  </p>
+                  <p className="flex items-center">
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
+                    <span>Basic drumming techniques and rhythms</span>
+                  </p>
+                  <p className="flex items-center">
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
+                    <span>Group improvisation and connection</span>
+                  </p>
+                  <p className="flex items-center">
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
+                    <span>Healing vibrations and energy work</span>
+                  </p>
+                  <p className="flex items-center">
+                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
+                    <span>Closing ceremony and integration</span>
+                  </p>
+                </div>
               </div>
 
               {/* Location Card */}
