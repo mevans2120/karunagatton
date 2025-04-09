@@ -150,8 +150,8 @@ export default function DrumCircle() {
               <div className="relative">
                 <div className="w-full h-[400px] rounded-lg overflow-hidden">
                   <img 
-                    src="/Drum-circle-image.png" 
-                    alt="Drum Circle Gathering" 
+                    src="/Photo of Yurt.jpg" 
+                    alt="Karuna's Healing Yurt" 
                     className="w-full h-full object-cover"
                   />
                 </div>
