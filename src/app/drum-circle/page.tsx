@@ -162,18 +162,15 @@ export default function DrumCircle() {
                   Experience the transformative power of communal drumming in a supportive and welcoming environment. Our monthly drum circle meets on the first Tuesday of each month at 7:30pm.
                 </p>
                 <div className="space-y-4 mb-8">
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>No experience necessary</span>
-                  </p>
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>Drums provided or bring your own</span>
-                  </p>
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>All skill levels welcome</span>
-                  </p>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">No experience necessary</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">Drums provided or bring your own</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">All skill levels welcome</span>
+                  </div>
                 </div>
                 <Link href="/get-in-touch" className="inline-flex items-center text-primary hover:text-accent transition duration-300">
                   RSVP for the next circle
@@ -183,7 +180,7 @@ export default function DrumCircle() {
             </div>
 
             {/* Stacked Cards */}
-            <div className="space-y-10">
+            <div className="space-y-16">
               {/* What to Expect Card */}
               <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">What to Expect</h2>
@@ -191,26 +188,21 @@ export default function DrumCircle() {
                   Each drum circle is a unique experience, guided by the energy of the group and the intention of the evening. We begin with a brief introduction and grounding meditation, then move into the drumming practice.
                 </p>
                 <div className="space-y-4 mb-6">
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>Opening ceremony and intention setting</span>
-                  </p>
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>Basic drumming techniques and rhythms</span>
-                  </p>
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>Group improvisation and connection</span>
-                  </p>
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>Healing vibrations and energy work</span>
-                  </p>
-                  <p className="flex items-center">
-                    <span className="w-2 h-2 rounded-full bg-primary flex items-center justify-center mr-3"></span>
-                    <span>Closing ceremony and integration</span>
-                  </p>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">Opening ceremony and intention setting</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">Basic drumming techniques and rhythms</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">Group drumming and free expression</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">Guided meditation and sound journey</span>
+                  </div>
+                  <div className="flex items-start">
+                    <span className="text-lg leading-relaxed">Closing circle and sharing</span>
+                  </div>
                 </div>
               </div>
 
