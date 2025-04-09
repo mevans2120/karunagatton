@@ -12,6 +12,12 @@
     font-display: swap;
     src: url(https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=swap);
   }
+  
+  /* Reset footer list styles to ensure they never show bullets */
+  footer ul {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+  }
 }
 
 /* Custom styles */

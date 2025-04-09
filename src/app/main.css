@@ -226,6 +226,17 @@ a {
 .max-w-5xl { max-width: 64rem; }
 .max-w-xs { max-width: 20rem; }
 
+/* SVG Icons */
+.offering-icon {
+  width: 4rem;  /* 64px base size */
+  height: 4rem;
+  transition: transform 0.2s ease;
+}
+
+.offering-icon:hover {
+  transform: scale(1.05);
+}
+
 /* Display */
 .hidden { display: none; }
 .block { display: block; }

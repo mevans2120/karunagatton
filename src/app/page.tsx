@@ -232,7 +232,7 @@ export default function Home() {
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
             </h1>
             <h2 className="text-xl md:text-2xl text-white font-light tracking-wide max-w-2xl mb-8">
-              A place where spirit moves through ancient ceremony and gentle presence
+              A place where spirit moves through ancient ceremony and great mystery
             </h2>
             <Link 
               href="/offerings" 
@@ -260,7 +260,7 @@ export default function Home() {
               Welcome
             </h2>
             <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
-              You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and gentle presence. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
+              You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and great mystery. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section">
               Through shamanic practice, she helps you reconnect to your wholeness, awaken your vitality, and walk forward empowered. Whether you're new to this work or returning to it, you're invited to explore, feel, and heal.
@@ -473,9 +473,8 @@ export default function Home() {
                     <img 
                       src={offering.icon} 
                       alt="Yurt icon" 
-                      width="72"
-                      height="72
-                      "
+                      width="86"
+                      height="86"
                       style={{ 
                         filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)',
                         maxWidth: '100%',
@@ -581,7 +580,7 @@ export default function Home() {
               <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
                 <div>
                   <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 list-none">
                     <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
                     <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
                     <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>
