@@ -49,24 +49,24 @@ export default function Home() {
   // Carousel photos data
   const carouselPhotos = [
     {
-      src: "/Boys_Omsi_water_part.jpg",
-      alt: "Boys at OMSI water exhibit"
+      src: "/01_Yurt with flowers.jpg",
+      alt: "Yurt with beautiful flowers in the foreground"
     },
     {
-      src: "/Charlie_Quincy_Silver.jpg",
-      alt: "Charlie and Quincy Silver"
+      src: "/02_Purple house from driveway.jpg",
+      alt: "Purple house viewed from the driveway"
     },
     {
-      src: "/Boys_at_Omsi.jpg",
-      alt: "Boys at OMSI"
+      src: "/03_karuna with drum.png",
+      alt: "Karuna with ceremonial drum"
     },
     {
-      src: "/Charlie_Quincy_Bubbles.jpg",
-      alt: "Charlie and Quincy with bubbles"
+      src: "/04_Yurt from a distance.jpg",
+      alt: "Yurt viewed from a distance"
     },
     {
-      src: "/Charlie_Chairlift.jpg",
-      alt: "Charlie Chairlift"
+      src: "/05_Purple house up close.JPG",
+      alt: "Close-up view of the purple house"
     }
   ];
   
