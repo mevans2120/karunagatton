@@ -9,7 +9,9 @@ export default function Home() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
+  const [touchStartTime, setTouchStartTime] = useState(0);
   const [isTouching, setIsTouching] = useState(false);
+  const [touchMoveX, setTouchMoveX] = useState(0);
   
   // Debug log for menu state
   useEffect(() => {
@@ -18,24 +20,33 @@ export default function Home() {
   
   // Handle swipe
   const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
     setTouchStartX(e.touches[0].clientX);
+    setTouchStartTime(Date.now());
+    setTouchMoveX(e.touches[0].clientX);
     setIsTouching(true);
   };
   
   const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
     setTouchEndX(e.touches[0].clientX);
+    setTouchMoveX(e.touches[0].clientX);
   };
   
-  const handleTouchEnd = () => {
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
     if (!touchStartX || !touchEndX) return;
     
     const swipeDistance = touchEndX - touchStartX;
-    const minSwipeDistance = 50; // minimum distance to be considered a swipe
+    const swipeTime = Date.now() - touchStartTime;
+    const velocity = Math.abs(swipeDistance) / swipeTime;
+    const minSwipeDistance = 30; // Reduced from 50 to make it more sensitive
     
-    if (swipeDistance > minSwipeDistance) {
+    // Check both distance and velocity for more natural swipe detection
+    if ((swipeDistance > minSwipeDistance || (swipeDistance > 10 && velocity > 0.3))) {
       // Swiped right - move to previous photo
       setCurrentPhotoIndex(prev => (prev > 0 ? prev - 1 : carouselPhotos.length - 1));
-    } else if (swipeDistance < -minSwipeDistance) {
+    } else if ((swipeDistance < -minSwipeDistance || (swipeDistance < -10 && velocity > 0.3))) {
       // Swiped left - move to next photo
       setCurrentPhotoIndex(prev => (prev < carouselPhotos.length - 1 ? prev + 1 : 0));
     }
@@ -43,6 +54,7 @@ export default function Home() {
     // Reset touch coordinates
     setTouchStartX(0);
     setTouchEndX(0);
+    setTouchMoveX(0);
     setIsTouching(false);
   };
   
@@ -369,9 +381,9 @@ export default function Home() {
               cursor: pointer;
               overflow: visible;
               pointer-events: auto;
-              will-change: transform, opacity, filter; /* Performance optimization */
+              will-change: transform, opacity, filter;
               transform-origin: center center;
-              -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+              -webkit-tap-highlight-color: transparent;
             }
             
             .carousel__item[data-pos="0"] {
