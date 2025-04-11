@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Menu, X } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 export default function DrumCircle() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   
   // Set loaded state after mount to trigger dissolve effect
@@ -63,55 +64,10 @@ export default function DrumCircle() {
         </filter>
       </svg>
       
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
-          <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
-          </nav>
-          
-          {/* Close button that's always visible */}
-          <div 
-            onClick={() => setIsMenuOpen(false)}
-            className="mobile-menu-open-button cursor-pointer"
-          >
-            <X size={24} color="white" />
-          </div>
-        </div>
-      )}
-
       {/* Main content wrapper */}
       <div className="page-content">
-        {/* Header */}
-        <header className="absolute top-0 w-full z-50 p-4">
-          <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-            <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-              <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-              <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-              <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
-            </nav>
-            
-            {/* Mobile Menu Button - Toggle between hamburger and X */}
-            <div 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white cursor-pointer p-4"
-              style={{
-                touchAction: 'manipulation',
-                position: 'relative',
-                zIndex: 60
-              }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </div>
-          </div>
-        </header>
+        {/* Navigation */}
+        <Navigation />
         
         {/* Hero Section with Wavy Pattern */}
         <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden">
@@ -230,44 +186,7 @@ export default function DrumCircle() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-300 py-12">
-          <div className="container mx-auto px-4">
-            <div className="md:flex md:justify-between">
-              <div className="mb-8 md:mb-0 fade-in-section">
-                <h3 className="text-2xl font-light text-white mb-4 font-heading">Karuna</h3>
-                <p className="max-w-xs">Shamanic healing in Eugene, Oregon and beyond through remote sessions.</p>
-              </div>
-              
-              <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
-                  <ul className="space-y-2 list-none">
-                    <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
-                    <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
-                    <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>
-                    <li><Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-4 font-heading">Connect</h4>
-                  <address className="not-italic space-y-2">
-                    <p>Eugene, Oregon</p>
-                    <p>
-                      <a href="mailto:contact@karunagatton.com" className="hover:text-accent transition duration-300">
-                        contact@karunagatton.com
-                      </a>
-                    </p>
-                  </address>
-                </div>
-              </nav>
-            </div>
-            
-            <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm fade-in-section">
-              <p>&copy; {new Date().getFullYear()} Karuna Gatton. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
