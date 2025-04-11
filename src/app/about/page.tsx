@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Menu, X } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 export default function About() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   
   // Set loaded state after mount to trigger dissolve effect
@@ -55,47 +56,10 @@ export default function About() {
 
   return (
     <div className="min-h-screen text-gray-800 bg-primary w-full">
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
-          <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
-          </nav>
-        </div>
-      )}
-    
       {/* Main content wrapper */}
       <div className="page-content">
-        {/* Header */}
-        <header className="absolute top-0 w-full z-50 p-4">
-          <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-            <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-              <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-              <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-              <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
-            </nav>
-            
-            {/* Mobile Menu Button - Toggle between hamburger and X */}
-            <div 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white cursor-pointer p-4"
-              style={{
-                touchAction: 'manipulation',
-                position: 'relative',
-                zIndex: 60
-              }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </div>
-          </div>
-        </header>
+        {/* Navigation */}
+        <Navigation />
         
         {/* Hero Section with Wavy Pattern */}
         <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden">
@@ -133,8 +97,8 @@ export default function About() {
               <div className="relative">
                 <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
                   <img 
-                    src="/Karuna.jpg" 
-                    alt="Karuna Gatton" 
+                    src="/Karuna in front of yurt.jpg" 
+                    alt="Karuna Gatton in front of her healing yurt" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -142,61 +106,64 @@ export default function About() {
               <div className="bg-white p-8 rounded-lg shadow-sm">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Journey</h2>
                 <p className="text-lg leading-relaxed mb-6">
-                  My path to shamanic healing began over 30 years ago, when I first discovered the profound power of connecting with spirit and nature. Through years of dedicated study and practice, I've developed a unique approach that combines traditional shamanic techniques with modern understanding.
+                  Like many people who are drawn to Shamanic healing, my journey began after a car accident that left me with PTSD.
+                  For over a year, I struggled with intense anxiety and nightly panic attacks.
                 </p>
                 <p className="text-lg leading-relaxed mb-6">
-                  I've trained with indigenous healers and modern practitioners, learning to bridge ancient wisdom with contemporary life. My practice is rooted in the belief that healing happens when we reconnect with our true nature and the natural world around us.
+                  I sought out a soul retrieval from a local shaman. But the experience didn't bring the healing I had hoped for. Normally, a power animal would be retrieved alongside the soul parts, but that didn't happen for me.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  Nearly two weeks later, I was able to see another shamanic healer, who did a power animal retrieval ceremony. As I lay down for the session, I saw a hawk in my mind's eye. I thought, even if he brings back a different helper, I know Hawk is mine.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  And he did bring back a hawk. It was powerful. It was validating.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  A few days later, I remembered: I had an ally. I could call on Hawk.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  At that time, I was still waking every night in fear and panic. My partner would help calm me back to sleep. But one night, I remembered Hawk—and the moment I did, I felt myself lifted up. I merged with Hawk. A prayer came into my mind:
+                </p>
+                <p className="text-lg leading-relaxed mb-6 italic">
+                  I am the Hawk. I see with the Hawk's eye view.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  It brought me so much comfort. I kept repeating it until I fell into a peaceful sleep. I did that for two more nights.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  After that… it never happened again. I never woke in fear. That was my first miracle from this work.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  I had already learned the journey process, so I began journeying every day. The journeys healed me completely from PTSD. And as I healed, Spirit began teaching me how to do Shamanic healing work myself.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  Eventually, I began taking workshops and reading everything I could find about Shamanism. To my surprise, I discovered that many of the techniques I had been taught by Spirit were the same ones I found in those trainings.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  I was also lucky. At that time, shamans from many cultures and countries were coming to Eugene and Portland to offer workshops. It was a rich time for our Shamanic community—and many of us are still connected, still growing together.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  Because my first exposure to healing was so fragmented and painful, I made a promise to offer something more complete, more grounded, when I began my own healing practice.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  Today, I offer a thorough, 3.5-hour healing empowerment ceremony. It includes soul retrieval, extraction, an illumination ceremony, depossession if needed, and power animal retrieval.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  I also teach each person how to journey. We do two practice journeys together—where deep healing and powerful teachings often arise.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  When the ceremony is complete, we take time to write everything down, so the person has a full record of the experience.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  I feel so honored and privileged to do this work—to be a conduit for Spirit.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  I look forward to being in service to you.
                 </p>
                 <Link href="/get-in-touch" className="inline-flex items-center text-primary hover:text-accent transition duration-300">
                   Connect with me
                   <ChevronRight size={20} className="ml-1" />
                 </Link>
-              </div>
-            </div>
-
-            {/* Stacked Cards */}
-            <div>
-              {/* My Approach Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm mb-16 fade-in-section">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Approach</h2>
-                <div className="max-w-3xl mx-auto">
-                  <p className="text-lg leading-relaxed mb-8">
-                    My approach to shamanic healing is rooted in ancient wisdom and modern understanding. Through years of practice, I've developed a gentle yet powerful method that helps people:
-                  </p>
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start">
-                      <span className="text-lg leading-relaxed">Reconnect with their authentic self and inner wisdom</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="text-lg leading-relaxed">Release old patterns and limiting beliefs</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="text-lg leading-relaxed">Heal past traumas and emotional wounds</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="text-lg leading-relaxed">Discover their unique gifts and life purpose</span>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="text-lg leading-relaxed">Build a deeper connection with spirit and nature</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* The Healing Space Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm mb-16 fade-in-section">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">The Healing Space</h2>
-                <p className="text-lg leading-relaxed mb-6">
-                  My healing yurt in Eugene provides a sacred space for transformation. This circular structure, inspired by traditional Mongolian yurts, creates an environment that supports deep healing work. The space is carefully designed to facilitate connection with spirit while maintaining comfort and accessibility.
-                </p>
-              </div>
-
-              {/* Community Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm mb-16 fade-in-section">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">Community & Connection</h2>
-                <p className="text-lg leading-relaxed mb-6">
-                  Beyond individual sessions, I'm committed to building community through monthly drum circles and seasonal ceremonies. These gatherings provide opportunities for shared healing and spiritual growth.
-                </p>
               </div>
             </div>
           </div>
@@ -208,44 +175,7 @@ export default function About() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-300 py-12">
-          <div className="container mx-auto px-4">
-            <div className="md:flex md:justify-between">
-              <div className="mb-8 md:mb-0 fade-in-section">
-                <h3 className="text-2xl font-light text-white mb-4 font-heading">Karuna</h3>
-                <p className="max-w-xs">Shamanic healing in Eugene, Oregon and beyond through remote sessions.</p>
-              </div>
-              
-              <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
-                  <ul className="space-y-2 list-none">
-                    <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
-                    <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
-                    <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>
-                    <li><Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-4 font-heading">Connect</h4>
-                  <address className="not-italic space-y-2">
-                    <p>Eugene, Oregon</p>
-                    <p>
-                      <a href="mailto:contact@karunagatton.com" className="hover:text-accent transition duration-300">
-                        contact@karunagatton.com
-                      </a>
-                    </p>
-                  </address>
-                </div>
-              </nav>
-            </div>
-            
-            <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm fade-in-section">
-              <p>&copy; {new Date().getFullYear()} Karuna Gatton. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
