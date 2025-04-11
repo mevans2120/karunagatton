@@ -24,6 +24,11 @@ export default function Navigation() {
   
   // Prevent scrolling when menu is open
   useEffect(() => {
+    // Define the function once for consistent reference
+    const preventTouch = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+    
     if (isMenuOpen) {
       // Save current scroll position
       const scrollY = window.scrollY;
@@ -36,13 +41,10 @@ export default function Navigation() {
       document.body.style.width = '100%';
       
       // Add touch event listeners to prevent mobile scrolling
-      const preventTouch = (e: TouchEvent) => {
-        e.preventDefault();
-      };
-      
       document.addEventListener('touchmove', preventTouch, { passive: false });
       
-    } else {
+    } else if (document.body.style.position === 'fixed') {
+      // Only run this code if the body is currently fixed (menu was previously open)
       // Restore scrolling when menu is closed
       const scrollY = document.body.style.top;
       document.documentElement.style.overflow = '';
@@ -52,10 +54,6 @@ export default function Navigation() {
       document.body.style.width = '';
       
       // Remove touch event listeners
-      const preventTouch = (e: TouchEvent) => {
-        e.preventDefault();
-      };
-      
       document.removeEventListener('touchmove', preventTouch);
       
       // Restore scroll position
@@ -64,20 +62,18 @@ export default function Navigation() {
       }
     }
     
+    // Cleanup function that runs when component unmounts or before effect runs again
     return () => {
-      // Clean up styles if component unmounts
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      
-      // Remove touch event listeners
-      const preventTouch = (e: TouchEvent) => {
-        e.preventDefault();
-      };
-      
       document.removeEventListener('touchmove', preventTouch);
+      
+      // Only clean up styles if the menu is currently open when unmounting
+      if (isMenuOpen) {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+      }
     };
   }, [isMenuOpen]);
   
