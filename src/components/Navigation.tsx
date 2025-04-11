@@ -28,18 +28,35 @@ export default function Navigation() {
       // Save current scroll position
       const scrollY = window.scrollY;
       
-      // Apply styles to prevent scrolling
+      // Apply styles to prevent scrolling - more robust approach
+      document.documentElement.style.overflow = 'hidden'; // <html> element
+      document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
       document.body.style.width = '100%';
-      document.body.style.overflowY = 'hidden';
+      
+      // Add touch event listeners to prevent mobile scrolling
+      const preventTouch = (e: TouchEvent) => {
+        e.preventDefault();
+      };
+      
+      document.addEventListener('touchmove', preventTouch, { passive: false });
+      
     } else {
       // Restore scrolling when menu is closed
       const scrollY = document.body.style.top;
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      document.body.style.overflowY = '';
+      
+      // Remove touch event listeners
+      const preventTouch = (e: TouchEvent) => {
+        e.preventDefault();
+      };
+      
+      document.removeEventListener('touchmove', preventTouch);
       
       // Restore scroll position
       if (scrollY) {
@@ -49,10 +66,18 @@ export default function Navigation() {
     
     return () => {
       // Clean up styles if component unmounts
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      document.body.style.overflowY = '';
+      
+      // Remove touch event listeners
+      const preventTouch = (e: TouchEvent) => {
+        e.preventDefault();
+      };
+      
+      document.removeEventListener('touchmove', preventTouch);
     };
   }, [isMenuOpen]);
   
