@@ -120,19 +120,6 @@ export default function Home() {
     };
   }, [isMenuOpen]);
   
-  // Carousel auto-rotation
-  useEffect(() => {
-    // Don't auto-rotate while the user is touching/swiping
-    if (isTouching) return;
-    
-    const photoTimer = setInterval(() => {
-      // Move from left to right by decrementing the index
-      setCurrentPhotoIndex(prev => (prev > 0 ? prev - 1 : carouselPhotos.length - 1));
-    }, 5000);
-    
-    return () => clearInterval(photoTimer);
-  }, [isTouching, carouselPhotos.length]);
-  
   // Testimonial data
   const testimonials = [
     {
