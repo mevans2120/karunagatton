@@ -29,21 +29,24 @@
 
 /* Critical for preventing white flash during page transitions */
 html {
-  background-color: var(--primary) !important;
-  overscroll-behavior: none; /* Prevent browser bouncing/swiping navigation */
-  touch-action: pan-y; /* Allow vertical scrolling but disable horizontal swipe gestures */
+  background-color: var(--primary);
+  overscroll-behavior: none;
+  touch-action: pan-y;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 body {
-  background-color: var(--primary) !important;
+  background-color: var(--background);
   color: #333;
   margin: 0;
   padding: 0;
   font-family: 'EB Garamond', serif;
-  font-size: 1.1em; /* Increase body text by 10% */
+  font-size: 1.1em;
   min-height: 100vh;
-  overscroll-behavior-x: none; /* Prevent horizontal overscroll behavior */
-  -webkit-touch-callout: none; /* Disable callout on mobile browsers */
+  overscroll-behavior-x: none;
+  -webkit-touch-callout: none;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
@@ -61,6 +64,7 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
+  width: 100%;
 }
 
 /* Hero gradient background - NO ANIMATION */
