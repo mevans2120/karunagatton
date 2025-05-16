@@ -90,7 +90,7 @@ tailwind.config.ts # Tailwind theme and customizations
 ## 🤝 Credits
 
 - **Design & Development:**  
-  Karuna Gatton & contributors
+Michael Evans & Claude
 - **Icons:** [Lucide](https://lucide.dev/)
 - **Fonts:** [Google Fonts](https://fonts.google.com/)
 
