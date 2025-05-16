@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['var(--font-eb-garamond)', 'serif'],
-        sans: ['var(--font-unbounded)', 'Helvetica', 'Arial', 'sans-serif'],
-        heading: ['var(--font-unbounded)', 'sans-serif'],
+        serif: ['EB Garamond', 'serif'],
+        sans: ['Unbounded', 'Helvetica', 'Arial', 'sans-serif'],
+        heading: ['Unbounded', 'sans-serif'],
       },
       colors: {
         primary: '#4B006E',
