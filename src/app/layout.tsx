@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { EB_Garamond, Unbounded } from "next/font/google";
 import "./globals.css";
 import "./main.css";
-import "./fonts-fix.css";
 
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
