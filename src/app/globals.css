@@ -287,3 +287,13 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 footer, footer p, footer li, footer address, footer a {
   color: #fff !important;
 }
+
+.offering-icon {
+  width: 4rem;  /* 64px base size */
+  height: 4rem;
+  transition: transform 0.2s ease;
+}
+
+.offering-icon:hover {
+  transform: scale(1.05);
+}
