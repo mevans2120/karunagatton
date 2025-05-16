@@ -235,7 +235,7 @@ export default function Home() {
             </h2>
             <Link 
               href="/offerings" 
-              className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300"
+              className="inline-flex items-center px-6 py-3 bg-transparent text-white border border-white rounded-full backdrop-blur-sm hover:bg-white hover:bg-opacity-10 transition duration-300"
               style={{
                 position: 'relative',
                 zIndex: 40
@@ -272,7 +272,7 @@ export default function Home() {
           {/* Top wave decoration */}
           <div className="absolute top-0 left-0 w-full overflow-hidden">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20">
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-purple-300"></path>
+              <path fill="#DCD6FB" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
           </div>
           
@@ -454,7 +454,7 @@ export default function Home() {
           {/* Bottom wave decoration */}
           <div className="absolute bottom-0 left-0 w-full overflow-hidden">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20" style={{ transform: 'rotate(180deg)' }}>
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-purple-200"></path>
+              <path fill="#DCD6FB" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
           </div>
         </section>
@@ -568,7 +568,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-300 py-12">
+        <footer className="bg-footer text-gray-300 py-12">
           <div className="container mx-auto px-4">
             <div className="md:flex md:justify-between">
               <div className="mb-8 md:mb-0 fade-in-section">

@@ -103,7 +103,7 @@ export default function Navigation() {
       )}
 
       {/* Header */}
-      <header className="absolute top-0 w-full z-50 p-4">
+      <header className="absolute top-0 w-full z-50 p-4 text-white">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
           <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
           

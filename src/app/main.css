@@ -78,32 +78,6 @@ a {
 }
 
 /* Colors */
-.bg-primary { background-color: var(--primary); }
-.text-primary { color: var(--primary); }
-.bg-secondary { background-color: var(--secondary); }
-.text-secondary { color: var(--secondary); }
-.bg-accent { background-color: var(--accent); }
-.text-accent { color: var(--accent); }
-.bg-background { background-color: var(--background); }
-.text-white { color: white; }
-.text-gray-800 { color: #1f2937; }
-.text-gray-700 { color: #374151; }
-.text-gray-600 { color: #4b5563; }
-.text-gray-300 { color: #d1d5db; }
-.text-gray-200 { color: #e5e7eb; }
-.bg-white { background-color: white; }
-.bg-gray-50 { background-color: #f9fafb; }
-.bg-gray-900 { background-color: #111827; }
-.bg-purple-50 { background-color: #f5f3ff; }
-.bg-purple-100 { background-color: #ede9ff; }
-.bg-purple-200 { background-color: #ddd6fe; }
-.bg-purple-300 { background-color: #c4b5fd; }
-.bg-opacity-95 { background-color: rgba(48, 25, 52, 0.95); }
-.bg-opacity-20 { background-color: rgba(255, 255, 255, 0.2); }
-.fill-purple-50 { fill: #f5f3ff; }
-.fill-purple-100 { fill: #ede9ff; }
-.fill-purple-200 { fill: #ddd6fe; }
-.fill-purple-300 { fill: #c4b5fd; }
 
 /* Border */
 .border { border: 1px solid; }
