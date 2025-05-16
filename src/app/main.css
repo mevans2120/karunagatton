@@ -1,12 +1,4 @@
 /* Base styles */
-:root {
-  --background: #f5f3f7;
-  --foreground: #4B006E;
-  --primary: #4B006E;
-  --secondary: #6d5590;
-  --accent: #b2a3c7;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
