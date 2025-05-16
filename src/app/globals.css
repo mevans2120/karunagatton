@@ -20,7 +20,7 @@
 
 /* Custom styles */
 :root {
-  --background: #f5f3f7;
+  --background: #F5F3FE;
   --foreground: #4B006E;
   --primary: #4B006E;
   --secondary: #6d5590;
@@ -37,7 +37,7 @@ html {
 }
 
 body {
-  background-color: var(--background);
+  background-color: #F5F3FE;
   color: #333;
   margin: 0;
   padding: 0;
@@ -131,6 +131,9 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 .bg-accent { background-color: var(--accent); }
 .text-accent { color: var(--accent); }
 .bg-background { background-color: var(--background); }
+.bg-white {
+  background-color: #fff !important;
+}
 
 /* Text styling */
 .font-light { font-weight: 300; }
@@ -269,4 +272,18 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 
 @keyframes fadeIn {
   /* Empty to remove animation */
+}
+
+/* tailwind test */
+.text-white {
+  @apply text-white;
+  color: #fff !important;
+}
+
+.bg-footer {
+  background-color: #121826 !important;
+}
+
+footer, footer p, footer li, footer address, footer a {
+  color: #fff !important;
 }
