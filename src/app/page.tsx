@@ -147,15 +147,15 @@ export default function Home() {
       icon: "/yurt-icon-1.svg"
     },
     {
-      title: "Power Animal Retrieval",
-      description: "Connect with helping spirits that offer guidance, protection, and power.",
+      title: "Soul Part Integration",
+      description: "After a soul retrieval, this ceremony offers continued support as you welcome home and integrate the returned soul parts..",
       icon: "/yurt-icon-2.svg"
     },
     {
-      title: "Shamanic Counseling",
-      description: "Personal guidance using shamanic techniques to address your unique situation.",
+      title: "Power Animal Retrieval",
+      description: "Connect with helping spirits that offer guidance, protection, and power.",
       icon: "/yurt-icon-3.svg"
-    }
+    },
   ];
 
   return (
@@ -463,7 +463,7 @@ export default function Home() {
         <section id="offerings" className="py-20 bg-purple-50 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-gray-50 to-transparent"></div>
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section font-heading">Healing Offerings</h2>
+            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section font-heading">Empowerment Ceremonies Include</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {offeringTeasers.map((offering, index) => (
@@ -489,7 +489,7 @@ export default function Home() {
             
             <div className="text-center mt-12 fade-in-section">
               <Link href="/offerings" className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition duration-300">
-                View All Offerings
+                View All
                 <ChevronRight size={20} className="ml-2" />
               </Link>
             </div>
