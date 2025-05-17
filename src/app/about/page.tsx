@@ -55,7 +55,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="min-h-screen text-gray-800 bg-primary w-full">
+    <div className="min-h-screen text-gray-800 w-full">
       {/* Main content wrapper */}
       <div className="page-content">
         {/* Navigation */}
@@ -91,7 +91,7 @@ export default function About() {
         </div>
 
         {/* Main Content */}
-        <section className="pt-0 pb-16 bg-gray-50">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16 mt-[66px] fade-in-section">
               <div className="relative">

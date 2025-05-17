@@ -55,7 +55,7 @@ export default function DrumCircle() {
   }, []);
 
   return (
-    <div className="min-h-screen text-gray-800 bg-primary w-full">
+    <div className="min-h-screen text-gray-800 w-full">
       {/* SVG Filters */}
       <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
         <filter id="turbulence">
