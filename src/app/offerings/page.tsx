@@ -107,7 +107,7 @@ export default function Offerings() {
   ];
 
   return (
-    <div className="min-h-screen text-gray-800 bg-primary w-full">
+    <div className="min-h-screen text-gray-800 w-full">
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
@@ -169,7 +169,7 @@ export default function Offerings() {
             <p className="text-xl max-w-3xl mb-10">
               Explore Karuna's comprehensive healing ceremonies, each designed to address specific aspects of spiritual, emotional, and energetic wellbeing. All offerings can be conducted both in-person and remotely.
             </p>
-            <Link href="/get-in-touch" className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300 relative z-20">
+            <Link href="/get-in-touch" className="inline-flex items-center px-6 py-3 bg-transparent text-white border border-white rounded-full backdrop-blur-sm hover:bg-white hover:bg-opacity-10 transition duration-300" style={{ position: 'relative', zIndex: 20 }}>
               Get in Touch
               <ChevronRight size={20} className="ml-2" />
             </Link>
@@ -189,7 +189,7 @@ export default function Offerings() {
             <div className="fade-in-section">
               <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Empowerment Ceremonies</h2>
               <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-                These core shamanic ceremonies are focused on soul healing, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
+                Karuna offers an empowerment ceremony focused on soul healing from past traumas, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
               </p>
             </div>
             
@@ -230,7 +230,7 @@ export default function Offerings() {
             <div className="fade-in-section">
               <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Other Offerings</h2>
               <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-                Beyond the core empowerment ceremonies, Karuna offers specialized shamanic services to address specific life situations and spaces.
+                Beyond the core empowerment ceremony, Karuna offers specialized shamanic services to address specific life situations and spaces.
               </p>
             </div>
             
