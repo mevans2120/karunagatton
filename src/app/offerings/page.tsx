@@ -151,7 +151,7 @@ export default function Offerings() {
         </header>
         
         {/* Hero Section with Wavy Pattern */}
-        <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden">
+        <section className="relative min-h-[50vh] flex items-center bg-primary text-white overflow-hidden">
           {/* SVG Filters */}
           <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
             <filter id="turbulence">
@@ -159,29 +159,20 @@ export default function Offerings() {
               <feDisplacementMap in="SourceGraphic" scale="25" />
             </filter>
           </svg>
-          
           {/* Animated yellow sun spot */}
-          <div className="sun-spot sun-spot-offerings"></div>
-          
+          <div className="sun-spot sun-spot-offerings z-10"></div>
           {/* Hero Content */}
-          <div className="container mx-auto px-4 relative z-20 text-left py-24 fade-in-section">
+          <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
             <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Healing Offerings</h1>
-            <p className="text-xl max-w-3xl mb-10">
+            <p className="text-xl max-w-3xl mb-6">
               Explore Karuna's comprehensive healing ceremonies, each designed to address specific aspects of spiritual, emotional, and energetic wellbeing. All offerings can be conducted both in-person and remotely.
             </p>
-            <Link href="/get-in-touch" className="inline-flex items-center px-6 py-3 bg-transparent text-white border border-white rounded-full backdrop-blur-sm hover:bg-white hover:bg-opacity-10 transition duration-300" style={{ position: 'relative', zIndex: 20 }}>
-              Get in Touch
-              <ChevronRight size={20} className="ml-2" />
-            </Link>
           </div>
-        </section>
-        
-        {/* Wave divider as separate section */}
-        <div className="relative bg-primary h-12 -mt-12">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="absolute top-0 w-full" style={{ transform: 'translateY(-80%)' }}>
-            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+          {/* Wavy white bar at the bottom, in front of sun spot */}
+          <svg className="absolute bottom-0 left-0 w-full z-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z" />
           </svg>
-        </div>
+        </section>
         
         {/* Empowerment Ceremonies Section */}
         <section className="py-20 bg-gray-50">
@@ -291,7 +282,7 @@ export default function Offerings() {
         </section>
         
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-300 py-12">
+        <footer className="bg-footer text-gray-300 py-12">
           <div className="container mx-auto px-4">
             <div className="md:flex md:justify-between">
               <div className="mb-8 md:mb-0 fade-in-section">

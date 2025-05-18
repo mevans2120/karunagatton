@@ -20,11 +20,10 @@
 
 /* Custom styles */
 :root {
-  --background: #F5F3FE;
-  --foreground: #4B006E;
   --primary: #4B006E;
-  --secondary: #6d5590;
   --accent: #b2a3c7;
+  --secondary: #6d5590;
+  --background: #F5F3FE;
 }
 
 /* Critical for preventing white flash during page transitions */
@@ -262,11 +261,6 @@ h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
 }
 
 /* tailwind test */
-.text-white {
-  @apply text-white;
-  color: #fff !important;
-}
-
 .bg-footer {
   background-color: #121826 !important;
 }

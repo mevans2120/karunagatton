@@ -70,7 +70,7 @@ export default function DrumCircle() {
         <Navigation />
         
         {/* Hero Section with Wavy Pattern */}
-        <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden">
+        <section className="relative min-h-[50vh] flex items-center bg-primary text-white overflow-hidden">
           {/* SVG Filters */}
           <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
             <filter id="turbulence">
@@ -78,32 +78,27 @@ export default function DrumCircle() {
               <feDisplacementMap in="SourceGraphic" scale="25" />
             </filter>
           </svg>
-          
           {/* Animated yellow sun spot */}
-          <div className="sun-spot sun-spot-drum-circle"></div>
-
+          <div className="sun-spot sun-spot-drum-circle z-10"></div>
           {/* Hero Content */}
-          <div className="container mx-auto px-4 relative z-10 text-left py-24 pt-36">
+          <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
             <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Monthly Drum Circle</h1>
             <p className="text-xl max-w-3xl mb-6">
               Join our community gathering for healing and connection through the power of the drum.
             </p>
           </div>
-        </section>
-        
-        {/* Wave divider as separate section */}
-        <div className="relative bg-primary h-12 -mt-12">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="absolute top-0 w-full" style={{ transform: 'translateY(-80%)' }}>
-            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+          {/* Wavy white bar at the bottom, in front of sun spot */}
+          <svg className="absolute bottom-0 left-0 w-full z-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z" />
           </svg>
-        </div>
+        </section>
 
         {/* Main Content */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-4xl">
             {/* Image and circle info sections */}
             <div className="grid md:grid-cols-2 gap-8 mb-10 mt-[50px] fade-in-section">
-              <div className="relative">
+              <div className="relative w-full">
                 <div className="w-full h-[400px] rounded-lg overflow-hidden">
                   <img 
                     src="/Photo of Yurt.jpg" 
@@ -112,7 +107,7 @@ export default function DrumCircle() {
                   />
                 </div>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm flex flex-col justify-center">
+              <div className="bg-white p-8 rounded-lg shadow-sm flex flex-col justify-center w-full">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">Join Our Circle</h2>
                 <p className="text-base leading-relaxed mb-6">
                   Experience the transformative power of communal drumming in a supportive and welcoming environment. Our monthly drum circle meets on the first Tuesday of each month at 7:30pm.
@@ -136,7 +131,7 @@ export default function DrumCircle() {
             </div>
 
             {/* Stacked Cards */}
-            <div className="space-y-16">
+            <div className="space-y-24 max-w-4xl mx-auto">
               {/* What to Expect Card */}
               <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">What to Expect</h2>
