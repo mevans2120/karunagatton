@@ -95,9 +95,9 @@ export default function DrumCircle() {
 
         {/* Main Content */}
         <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="container mx-auto px-2 max-w-4xl">
             {/* Image and circle info sections */}
-            <div className="grid md:grid-cols-2 gap-8 mb-10 mt-[50px] fade-in-section">
+            <div className="grid md:grid-cols-2 gap-4 mb-10 mt-[50px] fade-in-section">
               <div className="relative w-full">
                 <div className="w-full h-[400px] rounded-lg overflow-hidden">
                   <img 
@@ -132,33 +132,8 @@ export default function DrumCircle() {
 
             {/* Stacked Cards */}
             <div className="space-y-24 max-w-4xl mx-auto">
-              {/* What to Expect Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">What to Expect</h2>
-                <p className="text-lg leading-relaxed mb-6">
-                  Each drum circle is a unique experience, guided by the energy of the group and the intention of the evening. We begin with a brief introduction and grounding meditation, then move into the drumming practice.
-                </p>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">Opening ceremony and intention setting</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">Basic drumming techniques and rhythms</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">Group drumming and free expression</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">Guided meditation and sound journey</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">Closing circle and sharing</span>
-                  </div>
-                </div>
-              </div>
-
               {/* Location Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
+              <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section mt-10">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">Location & Details</h2>
                 <p className="text-lg leading-relaxed mb-6">
                   The drum circle takes place in my healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings.
@@ -173,11 +148,6 @@ export default function DrumCircle() {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Spacer section with off-white padding */}
-        <section className="py-16 bg-gray-50">
-          {/* Empty section for additional padding/spacing */}
         </section>
 
         {/* Footer */}

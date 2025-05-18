@@ -276,11 +276,6 @@ export default function Offerings() {
           </div>
         </section>
         
-        {/* Spacer section with off-white padding */}
-        <section className="py-16 bg-gray-50">
-          {/* Empty section for additional padding/spacing */}
-        </section>
-        
         {/* Footer */}
         <footer className="bg-footer text-gray-300 py-12">
           <div className="container mx-auto px-4">
