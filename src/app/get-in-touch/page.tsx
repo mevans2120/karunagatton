@@ -106,25 +106,20 @@ export default function GetInTouch() {
               <feDisplacementMap in="SourceGraphic" scale="25" />
             </filter>
           </svg>
-          
           {/* Animated yellow sun spot */}
-          <div className="sun-spot sun-spot-contact"></div>
-          
+          <div className="sun-spot sun-spot-contact z-10"></div>
           {/* Hero Content */}
-          <div className="container mx-auto px-4 relative z-10 text-left py-24">
+          <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
             <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Get in Touch</h1>
             <p className="text-xl max-w-3xl mb-6">
               Whether you have questions, want to schedule a session, or need directions to the yurt — Karuna is here to connect with you.
             </p>
           </div>
-        </section>
-        
-        {/* Wave divider as separate section */}
-        <div className="relative bg-primary h-12 -mt-12">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="absolute top-0 w-full" style={{ transform: 'translateY(-80%)' }}>
-            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+          {/* Wavy white bar at the bottom, in front of sun spot */}
+          <svg className="absolute bottom-0 left-0 w-full z-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z" />
           </svg>
-        </div>
+        </section>
         
         {/* Contact Form */}
         <section className="py-20 px-4 bg-gray-50">

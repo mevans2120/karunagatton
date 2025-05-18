@@ -249,7 +249,7 @@ export default function Home() {
         
         {/* Welcome Message */}
         <section id="welcome" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="max-w-4xl mx-auto px-4">
             <div className="relative fade-in-section">
               <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-30">
                 <img src="/yurt-icon-welcome.svg" alt="Yurt icon" className="w-full h-full" />
