@@ -64,7 +64,7 @@ export default function About() {
           <Navigation />
           
           {/* Hero Section with Wavy Pattern */}
-          <section className="relative min-h-[50vh] flex items-center bg-primary text-white overflow-hidden">
+          <section className="relative h-[400px] flex items-center bg-primary text-white overflow-hidden">
             {/* SVG Filters */}
             <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
               <filter id="turbulence">
