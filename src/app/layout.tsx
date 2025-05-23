@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Unbounded } from "next/font/google";
+import Navigation from "@/components/Navigation";
 //import "./tailwind-test.css";
 import "./globals.css";
 
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${ebGaramond.variable} ${unbounded.variable}`}>
+    <html lang="en" className={`${ebGaramond.variable} ${unbounded.variable} font-serif`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,14 +51,9 @@ export default function RootLayout({
         {/* Large favicon sizes for various contexts */}
         <link rel="icon" type="image/svg+xml" href="/yurt-icon-welcome.svg" sizes="192x192" />
         <link rel="icon" type="image/svg+xml" href="/yurt-icon-welcome.svg" sizes="512x512" />
-        
-        <style dangerouslySetInnerHTML={{ __html: `
-          h1, h2, h3, h4, h5, h6, nav, a[href="/"] { 
-            font-family: 'Unbounded', sans-serif !important; 
-          }
-        `}} />
       </head>
-      <body>
+      <body className="font-serif">
+        <Navigation />
         {children}
       </body>
     </html>

@@ -9,15 +9,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Force Unbounded font */
-@layer base {
-  /* Reset footer list styles to ensure they never show bullets */
-  footer ul {
-    list-style-type: none !important;
-    padding-left: 0 !important;
-  }
-}
-
 /* Custom styles */
 :root {
   --primary: #4B006E;
@@ -48,15 +39,13 @@ body {
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, nav, a[href="/"] {
-  font-family: var(--font-unbounded), sans-serif !important;
+/* Reset footer list styles */
+footer ul {
+  list-style-type: none;
+  padding-left: 0;
 }
 
-/* Additional font overrides */
-#welcome h2, h2.font-heading, .font-heading {
-  font-family: var(--font-unbounded), sans-serif !important;
-}
-
+/* Container */
 .container {
   max-width: 1280px;
   margin-left: auto;
@@ -64,16 +53,6 @@ h1, h2, h3, h4, h5, h6, nav, a[href="/"] {
   padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
-}
-
-/* Custom SVG Icon styles */
-.offering-icon {
-  width: 4rem;  /* 64px base size */
-  height: 4rem;
-  transition: transform 0.2s ease;
-}
-.offering-icon:hover {
-  transform: scale(1.05);
 }
 
 /* Hero gradient background */
@@ -104,9 +83,85 @@ h1, h2, h3, h4, h5, h6, nav, a[href="/"] {
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Mobile menu animations */
+.mobile-menu-overlay {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-nav {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: 0.1s;
+}
+
+.mobile-menu-nav.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-nav a {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+}
+
+.mobile-menu-nav.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-nav.open a:nth-child(1) { transition-delay: 0.2s; }
+.mobile-menu-nav.open a:nth-child(2) { transition-delay: 0.25s; }
+.mobile-menu-nav.open a:nth-child(3) { transition-delay: 0.3s; }
+.mobile-menu-nav.open a:nth-child(4) { transition-delay: 0.35s; }
+.mobile-menu-nav.open a:nth-child(5) { transition-delay: 0.4s; }
+
+/* Basic page styles */
+.purple-dissolve, .page-content {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Footer styles */
+.bg-footer {
+  background-color: #121826;
+}
+
+footer, footer p, footer li, footer address, footer a {
+  color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+  footer {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* Custom SVG Icon styles */
+.offering-icon {
+  width: 4rem;  /* 64px base size */
+  height: 4rem;
+  transition: transform 0.2s ease;
+}
+.offering-icon:hover {
+  transform: scale(1.05);
 }
 
 /* Colors */
@@ -187,54 +242,6 @@ h1, h2, h3, h4, h5, h6, nav, a[href="/"] {
   }
 }
 
-/* Mobile menu animations */
-.mobile-menu-overlay {
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.mobile-menu-overlay.open {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.mobile-menu-nav {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  transition-delay: 0.1s;
-}
-
-.mobile-menu-nav.open {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.mobile-menu-nav a {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
-}
-
-.mobile-menu-nav.open a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.mobile-menu-nav.open a:nth-child(1) { transition-delay: 0.2s; }
-.mobile-menu-nav.open a:nth-child(2) { transition-delay: 0.25s; }
-.mobile-menu-nav.open a:nth-child(3) { transition-delay: 0.3s; }
-.mobile-menu-nav.open a:nth-child(4) { transition-delay: 0.35s; }
-.mobile-menu-nav.open a:nth-child(5) { transition-delay: 0.4s; }
-
-/* Basic page styles */
-.purple-dissolve, .page-content {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-}
-
 /* Empty animations for compatibility */
 @keyframes fadeInFromPurple {
   /* Empty to remove animation */
@@ -242,13 +249,4 @@ h1, h2, h3, h4, h5, h6, nav, a[href="/"] {
 
 @keyframes fadeIn {
   /* Empty to remove animation */
-}
-
-/* tailwind test */
-.bg-footer {
-  background-color: #121826 !important;
-}
-
-footer, footer p, footer li, footer address, footer a {
-  color: #fff !important;
 }
