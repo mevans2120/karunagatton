@@ -58,15 +58,15 @@ const PortraitCarousel = ({ images = sampleImages }) => {
   // Navigation functions
   const goToPrevious = useCallback(() => { setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1)); }, [images.length]);
   const goToNext = useCallback(() => { setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1)); }, [images.length]);
-  const goToSlide = (index) => { setCurrentIndex(index); };
+  const goToSlide = (index: number) => { setCurrentIndex(index); };
 
   // Modal functions
-  const openModal = (index) => { setCurrentIndex(index); setIsModalOpen(true); };
+  const openModal = (index: number) => { setCurrentIndex(index); setIsModalOpen(true); };
   const closeModal = () => { setIsModalOpen(false); };
 
   // Keyboard navigation
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (!isModalOpen) return;
       switch (event.key) {
         case 'ArrowLeft': goToPrevious(); break;
@@ -93,7 +93,7 @@ const PortraitCarousel = ({ images = sampleImages }) => {
         {!isModalOpen && (
           <>
             <div className="grid grid-cols-2 gap-4 mb-4">
-              {images.slice(0, 2).map((image, index) => (
+              {images.slice(0, 2).map((image, index: number) => (
                 <div
                   key={image.id}
                   className="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 cursor-pointer group"
@@ -151,7 +151,7 @@ const PortraitCarousel = ({ images = sampleImages }) => {
             {/* Bottom Thumbnail Carousel */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent">
               <div className="flex items-center justify-center p-4 space-x-2 overflow-x-auto">
-                {images.map((image, index) => ( <button key={image.id} onClick={() => goToSlide(index)} className={`flex-shrink-0 relative w-16 h-20 rounded overflow-hidden transition-all duration-200 ${index === currentIndex ? 'ring-2 ring-white scale-110' : 'opacity-60 hover:opacity-80'}`}><Image src={image.thumbnail} alt={image.alt} fill className="object-cover" sizes="64px" /></button> ))}
+                {images.map((image, index: number) => ( <button key={image.id} onClick={() => goToSlide(index)} className={`flex-shrink-0 relative w-16 h-20 rounded overflow-hidden transition-all duration-200 ${index === currentIndex ? 'ring-2 ring-white scale-110' : 'opacity-60 hover:opacity-80'}`}><Image src={image.thumbnail} alt={image.alt} fill className="object-cover" sizes="64px" /></button> ))}
               </div>
             </div>
           </div>
