@@ -170,48 +170,8 @@ export default function Home() {
         </filter>
       </svg>
       
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
-          <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
-          </nav>
-        </div>
-      )}
-    
       {/* Main content wrapper */}
       <div className="page-content">
-        {/* Header - Increased z-index */}
-        <header className="absolute top-0 w-full z-50 p-4">
-          <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-            <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading relative">Karuna</Link>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-              <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-              <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-              <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
-            </nav>
-            
-            {/* Mobile Menu Button - Toggle between hamburger and X */}
-            <div 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white cursor-pointer p-4"
-              style={{
-                touchAction: 'manipulation',
-                position: 'relative',
-                zIndex: 60
-              }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </div>
-          </div>
-        </header>
-        
         {/* Hero Section with Wavy Header */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
           {/* Wavy pattern - Ensure it doesn't block pointer events */}
