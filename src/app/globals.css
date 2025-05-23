@@ -48,7 +48,7 @@ body {
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] {
+h1, h2, h3, h4, h5, h6, nav, a[href="/"] {
   font-family: var(--font-unbounded), sans-serif !important;
 }
 

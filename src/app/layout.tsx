@@ -52,7 +52,7 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/yurt-icon-welcome.svg" sizes="512x512" />
         
         <style dangerouslySetInnerHTML={{ __html: `
-          h1, h2, h3, h4, h5, h6, nav, button, a[href="/"] { 
+          h1, h2, h3, h4, h5, h6, nav, a[href="/"] { 
             font-family: 'Unbounded', sans-serif !important; 
           }
         `}} />

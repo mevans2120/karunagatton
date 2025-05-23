@@ -161,11 +161,11 @@ export default function Offerings() {
           </svg>
           {/* Animated yellow sun spot */}
           <div className="sun-spot sun-spot-offerings z-10"></div>
-          {/* Hero Content */}
+          {/* Hero Content: Empowerment Ceremonies header and paragraph */}
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Healing Offerings</h1>
+            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Empowerment Ceremonies</h1>
             <p className="text-xl max-w-3xl mb-6">
-              Explore Karuna's comprehensive healing ceremonies, each designed to address specific aspects of spiritual, emotional, and energetic wellbeing. All offerings can be conducted both in-person and remotely.
+              Karuna offers an empowerment ceremony focused on soul healing from past traumas, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
             </p>
           </div>
           {/* Wavy white bar at the bottom, in front of sun spot */}
@@ -174,16 +174,9 @@ export default function Offerings() {
           </svg>
         </section>
         
-        {/* Empowerment Ceremonies Section */}
+        {/* Empowerment Ceremonies Section: just the cards, no subhead or description */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 max-w-5xl">
-            <div className="fade-in-section">
-              <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Empowerment Ceremonies</h2>
-              <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-                Karuna offers an empowerment ceremony focused on soul healing from past traumas, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
-              </p>
-            </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {empowermentCeremonies.map((ceremony, index) => (
                 <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center fade-in-section">
