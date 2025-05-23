@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import PortraitCarousel from '@/components/PortraitCarousel';
+import ViewAllButton from '@/components/ViewAllButton';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -280,58 +282,8 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl text-center font-light text-primary mb-16 fade-in-section font-heading">Visiting Karuna</h2>
             
             <div className="max-w-5xl mx-auto fade-in-section">
-              {/* Card Carousel */}
-              <div 
-                className="carousel"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
-                <ul className="carousel__list">
-                  {carouselPhotos.map((photo, index) => {
-                    // Calculate the initial position for each card
-                    // We need to center the first photo, so positions need to be calculated relative to the currentPhotoIndex
-                    let initialPos = index - currentPhotoIndex;
-                    
-                    // Handle wrapping for a circular carousel
-                    if (initialPos < -2) initialPos += carouselPhotos.length;
-                    if (initialPos > 2) initialPos -= carouselPhotos.length;
-                    
-                    // Handle the case with fewer than 5 photos
-                    if (carouselPhotos.length <= 5 && initialPos < -2) initialPos += carouselPhotos.length;
-                    if (carouselPhotos.length <= 5 && initialPos > 2) initialPos -= carouselPhotos.length;
-                    
-                    return (
-                      <li 
-                        key={index} 
-                        className="carousel__item"
-                        data-pos={initialPos}
-                        onClick={() => {
-                          // Explicitly set currentPhotoIndex to this image's index when clicked
-                          setCurrentPhotoIndex(index);
-                          console.log("Clicked on image", index);
-                        }}
-                      >
-                        <div className="w-full h-full flex flex-col items-center">
-                          <div className="rounded-lg overflow-hidden">
-                            <img 
-                              src={photo.src} 
-                              alt={photo.alt} 
-                              loading="lazy"
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              
-              {/* Caption displayed separately below the carousel */}
-              <div className="text-center mt-8 text-primary">
-                <p>{carouselPhotos[currentPhotoIndex]?.alt}</p>
-              </div>
+              {/* Old Carousel (or Gallery) – Replaced with PortraitCarousel */}
+              <PortraitCarousel />
             </div>
           </div>
           
@@ -489,9 +441,8 @@ export default function Home() {
             </div>
             
             <div className="text-center mt-12 fade-in-section">
-              <Link href="/offerings" className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition duration-300">
-                View All
-                <ChevronRight size={20} className="ml-2" />
+              <Link href="/offerings" passHref legacyBehavior>
+                <ViewAllButton />
               </Link>
             </div>
           </div>
