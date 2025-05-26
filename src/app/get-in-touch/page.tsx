@@ -55,50 +55,10 @@ export default function GetInTouch() {
 
   return (
     <div className="min-h-screen text-gray-800 bg-primary w-full">
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
-          <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
-          </nav>
-        </div>
-      )}
-    
       {/* Main content wrapper */}
       <div className="page-content">
-        {/* Header */}
-        <header className="absolute top-0 w-full z-50 p-4">
-          <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-            <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-              <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-              <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-              <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
-            </nav>
-            
-            {/* Mobile Menu Button - Toggle between hamburger and X */}
-            <div 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white cursor-pointer p-4"
-              style={{
-                touchAction: 'manipulation',
-                position: 'relative',
-                zIndex: 60
-              }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </div>
-          </div>
-        </header>
-        
         {/* Hero Section with Wavy Pattern */}
-        <section className="relative min-h-[50vh] flex items-center bg-primary text-white overflow-hidden">
+        <section className="relative h-[400px] flex items-center bg-primary text-white overflow-hidden">
           {/* SVG Filters */}
           <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
             <filter id="turbulence">
@@ -106,25 +66,20 @@ export default function GetInTouch() {
               <feDisplacementMap in="SourceGraphic" scale="25" />
             </filter>
           </svg>
-          
           {/* Animated yellow sun spot */}
-          <div className="sun-spot sun-spot-contact"></div>
-          
+          <div className="sun-spot sun-spot-contact z-10"></div>
           {/* Hero Content */}
-          <div className="container mx-auto px-4 relative z-10 text-left py-24">
+          <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
             <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Get in Touch</h1>
             <p className="text-xl max-w-3xl mb-6">
               Whether you have questions, want to schedule a session, or need directions to the yurt — Karuna is here to connect with you.
             </p>
           </div>
-        </section>
-        
-        {/* Wave divider as separate section */}
-        <div className="relative bg-primary h-12 -mt-12">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="absolute top-0 w-full" style={{ transform: 'translateY(-80%)' }}>
-            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+          {/* Wavy white bar at the bottom, in front of sun spot */}
+          <svg className="absolute bottom-0 left-0 w-full z-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z" />
           </svg>
-        </div>
+        </section>
         
         {/* Contact Form */}
         <section className="py-20 px-4 bg-gray-50">
@@ -295,11 +250,6 @@ export default function GetInTouch() {
             </svg>
           </div>
           <div className="h-24"></div>
-        </section>
-        
-        {/* Spacer section with off-white padding */}
-        <section className="py-16 bg-gray-50">
-          {/* Empty section for additional padding/spacing */}
         </section>
         
         {/* Footer */}

@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import PortraitCarousel from '@/components/PortraitCarousel';
+import ViewAllButton from '@/components/ViewAllButton';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -168,48 +170,8 @@ export default function Home() {
         </filter>
       </svg>
       
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
-          <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
-          </nav>
-        </div>
-      )}
-    
       {/* Main content wrapper */}
       <div className="page-content">
-        {/* Header - Increased z-index */}
-        <header className="absolute top-0 w-full z-50 p-4">
-          <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-            <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading relative">Karuna</Link>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-              <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-              <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-              <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
-            </nav>
-            
-            {/* Mobile Menu Button - Toggle between hamburger and X */}
-            <div 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white cursor-pointer p-4"
-              style={{
-                touchAction: 'manipulation',
-                position: 'relative',
-                zIndex: 60
-              }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </div>
-          </div>
-        </header>
-        
         {/* Hero Section with Wavy Header */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
           {/* Wavy pattern - Ensure it doesn't block pointer events */}
@@ -249,7 +211,7 @@ export default function Home() {
         
         {/* Welcome Message */}
         <section id="welcome" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="max-w-4xl mx-auto px-4">
             <div className="relative fade-in-section">
               <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-30">
                 <img src="/yurt-icon-welcome.svg" alt="Yurt icon" className="w-full h-full" />
@@ -280,57 +242,8 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl text-center font-light text-primary mb-16 fade-in-section font-heading">Visiting Karuna</h2>
             
             <div className="max-w-5xl mx-auto fade-in-section">
-              {/* Card Carousel */}
-              <div 
-                className="carousel"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
-                <ul className="carousel__list">
-                  {carouselPhotos.map((photo, index) => {
-                    // Calculate the initial position for each card
-                    // We need to center the first photo, so positions need to be calculated relative to the currentPhotoIndex
-                    let initialPos = index - currentPhotoIndex;
-                    
-                    // Handle wrapping for a circular carousel
-                    if (initialPos < -2) initialPos += carouselPhotos.length;
-                    if (initialPos > 2) initialPos -= carouselPhotos.length;
-                    
-                    // Handle the case with fewer than 5 photos
-                    if (carouselPhotos.length <= 5 && initialPos < -2) initialPos += carouselPhotos.length;
-                    if (carouselPhotos.length <= 5 && initialPos > 2) initialPos -= carouselPhotos.length;
-                    
-                    return (
-                      <li 
-                        key={index} 
-                        className="carousel__item"
-                        data-pos={initialPos}
-                        onClick={() => {
-                          // Explicitly set currentPhotoIndex to this image's index when clicked
-                          setCurrentPhotoIndex(index);
-                          console.log("Clicked on image", index);
-                        }}
-                      >
-                        <div className="w-full h-full flex flex-col items-center">
-                          <div className="rounded-lg overflow-hidden">
-                            <img 
-                              src={photo.src} 
-                              alt={photo.alt} 
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              
-              {/* Caption displayed separately below the carousel */}
-              <div className="text-center mt-8 text-primary">
-                <p>{carouselPhotos[currentPhotoIndex]?.alt}</p>
-              </div>
+              {/* Old Carousel (or Gallery) – Replaced with PortraitCarousel */}
+              <PortraitCarousel />
             </div>
           </div>
           
@@ -488,9 +401,8 @@ export default function Home() {
             </div>
             
             <div className="text-center mt-12 fade-in-section">
-              <Link href="/offerings" className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition duration-300">
-                View All
-                <ChevronRight size={20} className="ml-2" />
+              <Link href="/offerings" passHref legacyBehavior>
+                <ViewAllButton />
               </Link>
             </div>
           </div>

@@ -107,51 +107,11 @@ export default function Offerings() {
   ];
 
   return (
-    <div className="min-h-screen text-gray-800 bg-primary w-full">
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open">
-          <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
-          </nav>
-        </div>
-      )}
-    
+    <div className="min-h-screen text-gray-800 w-full">
       {/* Main content wrapper */}
       <div className="page-content">
-        {/* Header */}
-        <header className="absolute top-0 w-full z-50 p-4">
-          <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-            <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 text-white">
-              <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-              <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-              <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-              <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
-            </nav>
-            
-            {/* Mobile Menu Button - Toggle between hamburger and X */}
-            <div 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white cursor-pointer p-4"
-              style={{
-                touchAction: 'manipulation',
-                position: 'relative',
-                zIndex: 60
-              }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </div>
-          </div>
-        </header>
-        
         {/* Hero Section with Wavy Pattern */}
-        <section className="relative min-h-[80vh] flex items-center bg-primary text-white overflow-hidden">
+        <section className="relative min-h-[50vh] flex items-center bg-primary text-white overflow-hidden">
           {/* SVG Filters */}
           <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
             <filter id="turbulence">
@@ -159,40 +119,24 @@ export default function Offerings() {
               <feDisplacementMap in="SourceGraphic" scale="25" />
             </filter>
           </svg>
-          
           {/* Animated yellow sun spot */}
-          <div className="sun-spot sun-spot-offerings"></div>
-          
-          {/* Hero Content */}
-          <div className="container mx-auto px-4 relative z-20 text-left py-24 fade-in-section">
-            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Healing Offerings</h1>
-            <p className="text-xl max-w-3xl mb-10">
-              Explore Karuna's comprehensive healing ceremonies, each designed to address specific aspects of spiritual, emotional, and energetic wellbeing. All offerings can be conducted both in-person and remotely.
+          <div className="sun-spot sun-spot-offerings z-10"></div>
+          {/* Hero Content: Empowerment Ceremonies header and paragraph */}
+          <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
+            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Empowerment Ceremonies</h1>
+            <p className="text-xl max-w-3xl mb-6">
+              Karuna offers an empowerment ceremony focused on soul healing from past traumas, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
             </p>
-            <Link href="/get-in-touch" className="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 text-white border border-white border-opacity-50 rounded-full backdrop-blur-sm hover:bg-opacity-30 transition duration-300 relative z-20">
-              Get in Touch
-              <ChevronRight size={20} className="ml-2" />
-            </Link>
           </div>
+          {/* Wavy white bar at the bottom, in front of sun spot */}
+          <svg className="absolute bottom-0 left-0 w-full z-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z" />
+          </svg>
         </section>
         
-        {/* Wave divider as separate section */}
-        <div className="relative bg-primary h-12 -mt-12">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="absolute top-0 w-full" style={{ transform: 'translateY(-80%)' }}>
-            <path fill="#f5f3f7" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
-          </svg>
-        </div>
-        
-        {/* Empowerment Ceremonies Section */}
+        {/* Empowerment Ceremonies Section: just the cards, no subhead or description */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 max-w-5xl">
-            <div className="fade-in-section">
-              <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Empowerment Ceremonies</h2>
-              <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-                These core shamanic ceremonies are focused on soul healing, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
-              </p>
-            </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {empowermentCeremonies.map((ceremony, index) => (
                 <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center fade-in-section">
@@ -230,7 +174,7 @@ export default function Offerings() {
             <div className="fade-in-section">
               <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Other Offerings</h2>
               <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-                Beyond the core empowerment ceremonies, Karuna offers specialized shamanic services to address specific life situations and spaces.
+                Beyond the core empowerment ceremony, Karuna offers specialized shamanic services to address specific life situations and spaces.
               </p>
             </div>
             
@@ -285,13 +229,8 @@ export default function Offerings() {
           </div>
         </section>
         
-        {/* Spacer section with off-white padding */}
-        <section className="py-16 bg-gray-50">
-          {/* Empty section for additional padding/spacing */}
-        </section>
-        
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-300 py-12">
+        <footer className="bg-footer text-gray-300 py-12">
           <div className="container mx-auto px-4">
             <div className="md:flex md:justify-between">
               <div className="mb-8 md:mb-0 fade-in-section">

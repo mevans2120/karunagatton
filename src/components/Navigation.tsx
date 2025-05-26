@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
   
   // Handle ESC key to close menu
   useEffect(() => {
@@ -77,19 +79,31 @@ export default function Navigation() {
     };
   }, [isMenuOpen]);
   
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return pathname === path;
+    }
+    return pathname.startsWith(path);
+  };
+
+  const navLinkClass = (path: string) => {
+    const baseClass = "font-heading hover:text-accent transition duration-300";
+    return `${baseClass} ${isActive(path) ? 'font-semibold' : 'font-normal'}`;
+  };
+
   return (
     <>
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div 
           className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open"
-          style={{ touchAction: 'none' }}  // Prevent default touch behaviors
+          style={{ touchAction: 'none' }}
         >
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300" onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
+            <Link href="/offerings" className={navLinkClass('/offerings')} onClick={() => setIsMenuOpen(false)}>Offerings</Link>
+            <Link href="/drum-circle" className={navLinkClass('/drum-circle')} onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
+            <Link href="/about" className={navLinkClass('/about')} onClick={() => setIsMenuOpen(false)}>About</Link>
+            <Link href="/get-in-touch" className={navLinkClass('/get-in-touch')} onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
           </nav>
           
           {/* Close button that's always visible */}
@@ -109,13 +123,13 @@ export default function Navigation() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">
-            <Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link>
-            <Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link>
-            <Link href="/about" className="hover:text-accent transition duration-300">About</Link>
-            <Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link>
+            <Link href="/offerings" className={navLinkClass('/offerings')}>Offerings</Link>
+            <Link href="/drum-circle" className={navLinkClass('/drum-circle')}>Drum Circle</Link>
+            <Link href="/about" className={navLinkClass('/about')}>About</Link>
+            <Link href="/get-in-touch" className={navLinkClass('/get-in-touch')}>Get in Touch</Link>
           </nav>
           
-          {/* Mobile Menu Button - Toggle between hamburger and X */}
+          {/* Mobile Menu Button */}
           <div 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-white cursor-pointer p-4"
