@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Unbounded } from "next/font/google";
 import Navigation from "@/components/Navigation";
+import { Analytics } from "@vercel/analytics/next";
 //import "./tailwind-test.css";
 import "./globals.css";
 
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body className="font-serif">
         <Navigation />
         {children}
+        <Analytics />
       </body>
     </html>
   );
