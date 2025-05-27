@@ -109,8 +109,8 @@ export default function DrumCircle() {
               </div>
               <div className="bg-white p-8 rounded-lg shadow-sm flex flex-col justify-center w-full">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">Join Our Circle</h2>
-                <p className="text-base leading-relaxed mb-6">
-                  Experience the transformative power of communal drumming in a supportive and welcoming environment. Our monthly drum circle meets on the first Tuesday of each month at 7:30pm.
+                <p className="space-y-4 mb-8">
+                  Experience the transformative power of communal drumming in a supportive and welcoming environment.
                 </p>
                 <div className="space-y-4 mb-8">
                   <div className="flex items-start">
@@ -120,11 +120,11 @@ export default function DrumCircle() {
                     <span className="text-lg leading-relaxed">Drums provided or bring your own</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">All skill levels welcome</span>
+                    <span className="text-lg leading-relaxed">Everyone is welcome</span>
                   </div>
                 </div>
                 <Link href="/get-in-touch" className="inline-flex items-center text-primary hover:text-accent transition duration-300">
-                  RSVP for the next circle
+                  Get in touch with any questions
                   <ChevronRight size={20} className="ml-1" />
                 </Link>
               </div>
@@ -136,14 +136,18 @@ export default function DrumCircle() {
               <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section mt-10">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">Location & Details</h2>
                 <p className="text-lg leading-relaxed mb-6">
-                  The drum circle takes place in my healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings.
+                  The drum circle takes place in Karuna's healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings.
                 </p>
                 <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-medium mb-4 font-heading text-primary">Next Gathering</h3>
-                  <p className="mb-2">First Tuesday of the month</p>
-                  <p className="mb-2">7:30pm - 9:30pm</p>
-                  <p className="mb-2">Eugene, Oregon</p>
-                  <p className="text-sm text-gray-600">Please arrive 10-15 minutes early to settle in</p>
+                  <div className="mb-4">
+                    <p className="mb-1">First Tuesday of the month</p>
+                    <p className="mb-0">7:30pm - 9:30pm</p>
+                  </div>
+                  <div className="mb-4">
+                    <p className="mb-1">2826 Floral Hill Drive</p>
+                    <p className="mb-0">Eugene, Oregon 97405</p>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-0">Please arrive 10-15 minutes early to settle in</p>
                 </div>
               </div>
             </div>

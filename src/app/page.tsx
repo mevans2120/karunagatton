@@ -1,88 +1,19 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Menu, X } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Calendar, Clock, MapPin, X, Menu } from 'lucide-react';
 import Link from 'next/link';
 import PortraitCarousel from '@/components/PortraitCarousel';
 import ViewAllButton from '@/components/ViewAllButton';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [touchStartX, setTouchStartX] = useState(0);
-  const [touchEndX, setTouchEndX] = useState(0);
-  const [touchStartTime, setTouchStartTime] = useState(0);
-  const [isTouching, setIsTouching] = useState(false);
-  const [touchMoveX, setTouchMoveX] = useState(0);
   
   // Debug log for menu state
   useEffect(() => {
     console.log("Menu state changed:", isMenuOpen);
   }, [isMenuOpen]);
-  
-  // Handle swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault();
-    setTouchStartX(e.touches[0].clientX);
-    setTouchStartTime(Date.now());
-    setTouchMoveX(e.touches[0].clientX);
-    setIsTouching(true);
-  };
-  
-  const handleTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault();
-    setTouchEndX(e.touches[0].clientX);
-    setTouchMoveX(e.touches[0].clientX);
-  };
-  
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    e.preventDefault();
-    if (!touchStartX || !touchEndX) return;
-    
-    const swipeDistance = touchEndX - touchStartX;
-    const swipeTime = Date.now() - touchStartTime;
-    const velocity = Math.abs(swipeDistance) / swipeTime;
-    const minSwipeDistance = 30; // Reduced from 50 to make it more sensitive
-    
-    // Check both distance and velocity for more natural swipe detection
-    if ((swipeDistance > minSwipeDistance || (swipeDistance > 10 && velocity > 0.3))) {
-      // Swiped right - move to previous photo
-      setCurrentPhotoIndex(prev => (prev > 0 ? prev - 1 : carouselPhotos.length - 1));
-    } else if ((swipeDistance < -minSwipeDistance || (swipeDistance < -10 && velocity > 0.3))) {
-      // Swiped left - move to next photo
-      setCurrentPhotoIndex(prev => (prev < carouselPhotos.length - 1 ? prev + 1 : 0));
-    }
-    
-    // Reset touch coordinates
-    setTouchStartX(0);
-    setTouchEndX(0);
-    setTouchMoveX(0);
-    setIsTouching(false);
-  };
-  
-  // Carousel photos data
-  const carouselPhotos = [
-    {
-      src: "/01_Yurt with flowers.jpg",
-      alt: "Yurt with beautiful flowers in the foreground"
-    },
-    {
-      src: "/02_Purple house from driveway.jpg",
-      alt: "Purple house viewed from the driveway"
-    },
-    {
-      src: "/03_karuna with drum.png",
-      alt: "Karuna with ceremonial drum"
-    },
-    {
-      src: "/04_Yurt from a distance.jpg",
-      alt: "Yurt viewed from a distance"
-    },
-    {
-      src: "/05_Purple house up close.JPG",
-      alt: "Close-up view of the purple house"
-    }
-  ];
   
   useEffect(() => {
     // Intersection Observer for fade-in animations
@@ -480,45 +411,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-footer text-gray-300 py-12">
-          <div className="container mx-auto px-4">
-            <div className="md:flex md:justify-between">
-              <div className="mb-8 md:mb-0 fade-in-section">
-                <h3 className="text-2xl font-light text-white mb-4 font-heading">Karuna</h3>
-                <p className="max-w-xs">Shamanic healing in Eugene, Oregon and beyond through remote sessions.</p>
-              </div>
-              
-              <nav className="grid grid-cols-2 md:grid-cols-3 gap-8 fade-in-section">
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-4 font-heading">Pages</h4>
-                  <ul className="space-y-2 list-none">
-                    <li><Link href="/offerings" className="hover:text-accent transition duration-300">Offerings</Link></li>
-                    <li><Link href="/drum-circle" className="hover:text-accent transition duration-300">Drum Circle</Link></li>
-                    <li><Link href="/about" className="hover:text-accent transition duration-300">About</Link></li>
-                    <li><Link href="/get-in-touch" className="hover:text-accent transition duration-300">Get in Touch</Link></li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-4 font-heading">Connect</h4>
-                  <address className="not-italic space-y-2">
-                    <p> 2826 Floral Hill Drive</p>
-                    <p>Eugene, Oregon 97405</p>
-                    <p>
-                      <Link href="/get-in-touch" className="hover:text-accent transition duration-300">
-                        Contact Us
-                      </Link>
-                    </p>
-                  </address>
-                </div>
-              </nav>
-            </div>
-            
-            <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm fade-in-section">
-              <p>&copy; {new Date().getFullYear()} Karuna Gatton. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

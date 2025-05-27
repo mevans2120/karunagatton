@@ -27,12 +27,12 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-medium text-white mb-4 font-heading">Connect</h4>
               <address className="not-italic space-y-2">
-                <p>2826 Floral Hill Drive</p>
-                <p>Eugene, OR 97405</p>
+                <p> 2826 Floral Hill Drive</p>
+                <p>Eugene, Oregon 97405</p>
                 <p>
-                  <a href="mailto:contact@karunagatton.com" className="hover:text-accent transition duration-300">
-                    contact@karunagatton.com
-                  </a>
+                  <Link href="/get-in-touch" className="hover:text-accent transition duration-300">
+                    Contact Us
+                  </Link>
                 </p>
               </address>
             </div>
