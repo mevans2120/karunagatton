@@ -119,7 +119,15 @@ export default function Navigation() {
       {/* Header */}
       <header className="absolute top-0 w-full z-50 p-4 text-white">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
-          <Link href="/" className="text-white text-3xl font-light tracking-wider font-heading">Karuna</Link>
+          <Link href="/" className="flex items-center text-white text-3xl font-light tracking-wider font-heading">
+            <img 
+              src="/Group 5.svg" 
+              alt="Drum logo" 
+              className="w-8 h-8 mr-3"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
+            Karuna
+          </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">

@@ -140,7 +140,7 @@ export default function Offerings() {
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {empowermentCeremonies.map((ceremony, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center fade-in-section">
+                <div key={index} className="bg-white p-8 rounded-lg shadow-sm flex flex-col items-center text-center fade-in-section">
                   <div className="w-24 h-24 mb-6">
                     <img 
                       src={ceremony.icon} 
@@ -181,7 +181,7 @@ export default function Offerings() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {otherOfferings.map((offering, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center fade-in-section">
+                <div key={index} className="bg-white p-8 rounded-lg shadow-sm flex flex-col items-center text-center fade-in-section">
                   <div className="w-24 h-24 mb-6">
                     <img 
                       src={offering.icon} 

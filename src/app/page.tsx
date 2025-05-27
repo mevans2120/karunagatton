@@ -170,7 +170,11 @@ export default function Home() {
           </div>
           
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl md:text-5xl text-center font-light text-primary mb-16 fade-in-section font-heading">Visiting Karuna</h2>
+            <h2 className="text-4xl md:text-5xl text-center font-light text-primary mb-8 fade-in-section font-heading">Visiting Karuna</h2>
+            
+            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section max-w-3xl mx-auto">
+              She works out of her yurt, between her purple house and Hendricks Park's urban forest in Eugene
+            </p>
             
             <div className="max-w-5xl mx-auto fade-in-section">
               {/* Old Carousel (or Gallery) – Replaced with PortraitCarousel */}
@@ -311,7 +315,7 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {offeringTeasers.map((offering, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
+                <div key={index} className="bg-white p-8 rounded-lg shadow-sm flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
                   <div className="mb-6">
                     <img 
                       src={offering.icon} 
@@ -333,7 +337,7 @@ export default function Home() {
             
             <div className="text-center mt-12 fade-in-section">
               <Link href="/offerings" passHref legacyBehavior>
-                <ViewAllButton />
+                <ViewAllButton>Learn More</ViewAllButton>
               </Link>
             </div>
           </div>
@@ -390,7 +394,7 @@ export default function Home() {
               <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">
                 <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
                   <img 
-                    src="/Charlie_Quincy_Silver.jpg" 
+                    src="/Karuna_headshot.png" 
                     alt="Karuna Gatton" 
                     className="w-full h-full object-cover" 
                   />
