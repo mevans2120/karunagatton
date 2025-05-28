@@ -50,13 +50,17 @@ export default function Home() {
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        // Skip hero section elements to prevent repaints
+        if (entry.target.closest('section.hero-section')) {
+          return;
+        }
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
         }
       });
     }, observerOptions);
     
-    const fadeElements = document.querySelectorAll('.fade-in-section');
+    const fadeElements = document.querySelectorAll('.fade-in-section:not(.hero-section *)');
     fadeElements.forEach(element => {
       observer.observe(element);
     });
@@ -129,9 +133,18 @@ export default function Home() {
       {/* Main content wrapper */}
       <div className="page-content">
         {/* Hero Section with Wavy Header */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary" style={{ isolation: 'isolate' }}>
+        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary" style={{ 
+          isolation: 'isolate',
+          transform: 'translateZ(0)', // Force GPU acceleration
+          backfaceVisibility: 'hidden', // Prevent repaints
+          perspective: '1000px', // Create new stacking context
+          willChange: 'transform' // Hint to browser about animation
+        }}>
           {/* Wavy pattern - Ensure it doesn't block pointer events */}
-          <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
+          <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none" style={{
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden'
+          }}>
             <svg className="absolute bottom-0 w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ marginBottom: '-1px' }}>
               <path fill="#f9fafb" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
@@ -141,10 +154,22 @@ export default function Home() {
           </div>
           
           {/* Animated yellow sun spot - with stable positioning */}
-          <div className="sun-spot sun-spot-home" style={{ position: 'absolute', zIndex: 1, contain: 'layout' }}></div>
+          <div className="sun-spot sun-spot-home" style={{ 
+            position: 'absolute', 
+            zIndex: 1, 
+            contain: 'layout',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+            willChange: 'transform'
+          }}></div>
           
           {/* Hero Content - wrapped in stable container */}
-          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4" style={{ contain: 'layout', transform: 'translateZ(0)' }}>
+          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4" style={{ 
+            contain: 'layout', 
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+            willChange: 'transform'
+          }}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
             </h1>
