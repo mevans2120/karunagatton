@@ -71,7 +71,7 @@ export default function Navigation() {
       {isMenuOpen && (
         <div 
           className="fixed inset-0 z-50 bg-primary bg-opacity-95 flex flex-col items-center justify-center mobile-menu-overlay open"
-          style={{ touchAction: 'none' }}
+          style={{ touchAction: 'none', position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh' }}
         >
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
             <Link href="/offerings" className={navLinkClass('/offerings')} onClick={() => setIsMenuOpen(false)}>Offerings</Link>
