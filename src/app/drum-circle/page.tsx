@@ -82,9 +82,10 @@ export default function DrumCircle() {
           <div className="sun-spot sun-spot-drum-circle z-10"></div>
           {/* Hero Content */}
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Monthly Drum Circle</h1>
+            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Drum Circle</h1>
             <p className="text-xl max-w-3xl mb-6">
-              Join our community gathering for healing and connection through the power of the drum.
+              Join the 30 year running Casa del Sol
+              Drum and Journey Circle for healing and connection.
             </p>
           </div>
           {/* Wavy white bar at the bottom, in front of sun spot */}
@@ -108,23 +109,19 @@ export default function DrumCircle() {
                 </div>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-sm flex flex-col justify-center w-full">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">Join Our Circle</h2>
+                <h2 className="text-3xl font-light mb-6 font-heading text-primary">New to the Journey Process?</h2>
                 <p className="space-y-4 mb-8">
-                  Experience the transformative power of communal drumming in a supportive and welcoming environment.
+                  Experience the transformative power of communal drumming in a supportive and welcoming environment. You may come 30 minutes early for instruction to help you begin your practice.
                 </p>
                 <div className="space-y-4 mb-8">
+                 
                   <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">No experience necessary</span>
+                    <span className="text-lg leading-relaxed">We reccomend an appointment for newcomers to learn more about the Journey Process:</span>
                   </div>
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">Drums provided or bring your own</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">Everyone is welcome</span>
-                  </div>
+                
                 </div>
                 <Link href="/get-in-touch" className="inline-flex items-center text-primary hover:text-accent transition duration-300">
-                  Get in touch with any questions
+                  Get in touch
                   <ChevronRight size={20} className="ml-1" />
                 </Link>
               </div>
@@ -136,7 +133,7 @@ export default function DrumCircle() {
               <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section mt-10">
                 <h2 className="text-3xl font-light mb-6 font-heading text-primary">Location & Details</h2>
                 <p className="text-lg leading-relaxed mb-6">
-                  The drum circle takes place in Karuna's healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings.
+                  The drum circle takes place in Karuna's healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings. Suggested donation is $10 - 20 dollars.
                 </p>
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="mb-4">

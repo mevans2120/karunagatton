@@ -40,14 +40,7 @@ const sampleImages = [
     thumbnail: '/05_Purple house up close.JPG',
     alt: 'Close-up view of the purple house',
     title: 'Close-up view of the purple house',
-  },
-  {
-    id: 6,
-    src: '/Karuna.jpg',
-    thumbnail: '/Karuna.jpg',
-    alt: 'Portrait of Karuna Gatton',
-    title: 'Portrait of Karuna Gatton',
-  },
+  }
 ];
 
 const PortraitCarousel = ({ images = sampleImages }) => {

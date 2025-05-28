@@ -177,7 +177,7 @@ export default function GetInTouch() {
             `}</style>
 
             <form 
-              action="https://formspree.io/f/yourFormID" // Replace with actual Formspree endpoint
+              action="https://formspree.io/f/manepoek"
               className="fs-form"
               target="_top"
               method="POST"
