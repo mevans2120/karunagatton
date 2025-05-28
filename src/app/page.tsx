@@ -10,6 +10,25 @@ import Footer from '@/components/Footer';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
+  // Ensure page starts at top on mobile
+  useEffect(() => {
+    // Only run on mount
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+      
+      // Set custom viewport height property for mobile
+      const setViewportHeight = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      };
+      
+      setViewportHeight();
+      window.addEventListener('resize', setViewportHeight);
+      
+      return () => window.removeEventListener('resize', setViewportHeight);
+    }
+  }, []);
+  
   // Debug log for menu state
   useEffect(() => {
     console.log("Menu state changed:", isMenuOpen);
@@ -119,7 +138,7 @@ export default function Home() {
           <div className="sun-spot sun-spot-home"></div>
           
           {/* Hero Content */}
-          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4">
+          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4 hero-content">
             <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
             </h1>

@@ -15,6 +15,17 @@
   --accent: #b2a3c7;
   --secondary: #6d5590;
   --background: #F5F3FE;
+  /* Dynamic viewport height for mobile compatibility */
+  --vh: 1vh;
+  --dvh: 1dvh;
+  --svh: 1svh;
+}
+
+/* Set up dynamic viewport height */
+@supports (height: 100dvh) {
+  :root {
+    --vh: 1dvh;
+  }
 }
 
 /* Critical for preventing white flash during page transitions */
@@ -24,6 +35,8 @@ html {
   touch-action: pan-y;
   font-size: 16px;
   line-height: 1.5;
+  /* Ensure page starts at top */
+  scroll-behavior: auto;
 }
 
 body {
@@ -37,6 +50,9 @@ body {
   overscroll-behavior-x: none;
   -webkit-touch-callout: none;
   width: 100%;
+  /* Ensure no initial transform */
+  transform: none;
+  position: relative;
 }
 
 /* Reset footer list styles */
@@ -271,6 +287,34 @@ footer, footer p, footer li, footer address, footer a {
 
 /* Mobile-specific fixes for SVG transitions */
 @media (max-width: 768px) {
+  /* Ensure users start at top of page on mobile */
+  html, body {
+    scroll-behavior: auto;
+  }
+  
+  /* Fix hero section height on mobile */
+  .h-screen {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Ensure header is always visible and stable */
+  header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(75, 0, 110, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Add padding to hero content to account for fixed header */
+  .hero-content {
+    padding-top: 80px;
+  }
+  
   /* Ensure SVGs render properly on mobile */
   svg {
     display: block;

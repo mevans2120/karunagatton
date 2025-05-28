@@ -26,57 +26,31 @@ export default function Navigation() {
   
   // Prevent scrolling when menu is open
   useEffect(() => {
-    // Define the function once for consistent reference
-    const preventTouch = (e: TouchEvent) => {
-      e.preventDefault();
-    };
-    
     if (isMenuOpen) {
-      // Save current scroll position
+      // Save current scroll position before making any changes
       const scrollY = window.scrollY;
       
-      // Apply styles to prevent scrolling - more robust approach
-      document.documentElement.style.overflow = 'hidden'; // <html> element
+      // Prevent scrolling - simplified approach
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
       document.body.style.width = '100%';
       
-      // Add touch event listeners to prevent mobile scrolling
-      document.addEventListener('touchmove', preventTouch, { passive: false });
-      
-    } else if (document.body.style.position === 'fixed') {
-      // Only run this code if the body is currently fixed (menu was previously open)
-      // Restore scrolling when menu is closed
-      const scrollY = document.body.style.top;
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      
-      // Remove touch event listeners
-      document.removeEventListener('touchmove', preventTouch);
-      
-      // Restore scroll position
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
-    }
-    
-    // Cleanup function that runs when component unmounts or before effect runs again
-    return () => {
-      document.removeEventListener('touchmove', preventTouch);
-      
-      // Only clean up styles if the menu is currently open when unmounting
-      if (isMenuOpen) {
-        document.documentElement.style.overflow = '';
+      return () => {
+        // Restore body styles
+        const bodyTop = document.body.style.top;
         document.body.style.overflow = '';
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
-      }
-    };
+        
+        // Restore scroll position
+        if (bodyTop) {
+          const scrollY = parseInt(bodyTop, 10) * -1;
+          window.scrollTo(0, scrollY);
+        }
+      };
+    }
   }, [isMenuOpen]);
   
   const isActive = (path: string) => {
@@ -117,7 +91,7 @@ export default function Navigation() {
       )}
 
       {/* Header */}
-      <header className="absolute top-0 w-full z-50 py-4 text-white">
+      <header className="absolute md:absolute top-0 w-full z-50 py-4 text-white">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
           <Link href="/" className="flex items-center text-white text-3xl font-light tracking-wider font-heading">
             <img 
