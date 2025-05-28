@@ -10,11 +10,34 @@ import Footer from '@/components/Footer';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // Set viewport height immediately to prevent layout shift
-  if (typeof window !== 'undefined') {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
+  // Single source of truth for viewport height
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Function to set viewport height
+    const setViewportHeight = () => {
+      // Use visual viewport for more accurate mobile height
+      const vh = window.visualViewport?.height 
+        ? window.visualViewport.height * 0.01 
+        : window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    
+    // Set initial height
+    setViewportHeight();
+    
+    // Listen for both resize and visual viewport changes
+    window.visualViewport?.addEventListener('resize', setViewportHeight);
+    window.visualViewport?.addEventListener('scroll', setViewportHeight);
+    window.addEventListener('resize', setViewportHeight);
+    
+    // Cleanup
+    return () => {
+      window.visualViewport?.removeEventListener('resize', setViewportHeight);
+      window.visualViewport?.removeEventListener('scroll', setViewportHeight);
+      window.removeEventListener('resize', setViewportHeight);
+    };
+  }, []); // Empty dependency array - only run on mount
   
   // Ensure page starts at top on mobile
   useEffect(() => {
