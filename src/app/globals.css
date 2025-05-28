@@ -226,6 +226,15 @@ footer, footer p, footer li, footer address, footer a {
   left: 1%;
 }
 
+/* Footer sun spot positioning */
+.sun-spot-footer {
+  bottom: -60%;
+  left: -15%;
+  opacity: 0.3;
+  width: 500px;
+  height: 500px;
+}
+
 /* Add SVG filter for ragged edges */
 @keyframes sunPulseUpward {
   0% {
