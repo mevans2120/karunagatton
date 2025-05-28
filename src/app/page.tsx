@@ -107,7 +107,7 @@ export default function Home() {
         <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
           {/* Wavy pattern - Ensure it doesn't block pointer events */}
           <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
-            <svg className="absolute bottom-0 w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <svg className="absolute bottom-0 w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ marginBottom: '-1px' }}>
               <path fill="#f9fafb" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
             <svg className="absolute bottom-0 w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ transform: 'translateY(10px)' }}>
@@ -162,19 +162,19 @@ export default function Home() {
         
         {/* Transition Wave to Photo Carousel */}
         <section className="bg-gray-50 relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24" style={{ transform: 'rotate(180deg)' }}>
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style={{ marginBottom: '-1px' }}>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block" style={{ transform: 'rotate(180deg)', verticalAlign: 'bottom' }}>
               <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-purple-50"></path>
             </svg>
           </div>
-          <div className="h-24"></div>
+          <div className="h-24 bg-gray-50"></div>
         </section>
         
         {/* Integrated Photo Carousel */}
         <section className="relative py-20 bg-purple-50">
           {/* Top wave decoration */}
-          <div className="absolute top-0 left-0 w-full overflow-hidden">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20">
+          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20 block" style={{ verticalAlign: 'bottom' }}>
               <path fill="#f5f3ff" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
           </div>
@@ -310,8 +310,8 @@ export default function Home() {
           `}</style>
           
           {/* Bottom wave decoration */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20" style={{ transform: 'rotate(180deg)' }}>
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style={{ marginBottom: '-1px' }}>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block" style={{ transform: 'rotate(180deg)', verticalAlign: 'bottom' }}>
               <path fill="#f5f3ff" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
           </div>
@@ -319,12 +319,12 @@ export default function Home() {
         
         {/* Transition Wave to Offerings */}
         <section className="bg-purple-50 relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24" style={{ transform: 'rotate(180deg)' }}>
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style={{ marginBottom: '-1px' }}>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block" style={{ transform: 'rotate(180deg)', verticalAlign: 'bottom' }}>
               <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-white"></path>
             </svg>
           </div>
-          <div className="h-24"></div>
+          <div className="h-24 bg-purple-50"></div>
         </section>
         
         {/* Offerings Teaser */}
@@ -364,12 +364,12 @@ export default function Home() {
         
         {/* Transition Wave to Testimonials */}
         <section className="bg-white relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24" style={{ transform: 'rotate(180deg)' }}>
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style={{ marginBottom: '-1px' }}>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block" style={{ transform: 'rotate(180deg)', verticalAlign: 'bottom' }}>
               <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-background"></path>
             </svg>
           </div>
-          <div className="h-24"></div>
+          <div className="h-24 bg-white"></div>
         </section>
         
         {/* Testimonial Section */}
@@ -401,17 +401,16 @@ export default function Home() {
         </section>
         
         {/* Transition Wave to Drum Circle */}
-        <section className="bg-background relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24" style={{ transform: 'rotate(180deg)' }}>
+        <section className="bg-background relative" style={{ paddingBottom: '10%', minHeight: '0' }}>
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full block" style={{ transform: 'rotate(180deg)' }}>
               <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-primary"></path>
             </svg>
           </div>
-          <div className="h-24"></div>
         </section>
         
         {/* Drum Circle Highlight */}
-        <section className="bg-primary text-white py-20">
+        <section className="bg-primary text-white py-20" style={{ marginTop: '-1px' }}>
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-light mb-6 fade-in-section font-heading">Monthly Drum Circle</h2>
@@ -426,18 +425,16 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Transition Wave to About Section */}
-        <section className="bg-primary relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24" style={{ transform: 'rotate(180deg)' }}>
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-gray-50"></path>
-            </svg>
-          </div>
-          <div className="h-24"></div>
-        </section>
+        {/* Transition Wave to About Section - removed from here */}
         
         {/* About Karuna Teaser */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gray-50 relative" style={{ marginTop: '0' }}>
+          {/* Wave transition at top */}
+          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10" style={{ marginTop: '-1px' }}>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block">
+              <path d="M0,0L0,27.35A600.21,600.21,0,0,0,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0Z" className="fill-primary"></path>
+            </svg>
+          </div>
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="md:flex items-center">
               <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">

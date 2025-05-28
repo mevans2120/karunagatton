@@ -76,7 +76,7 @@ export default function About() {
             <div className="sun-spot sun-spot-about z-10"></div>
             {/* Hero Content */}
             <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-              <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">About Karuna</h1>
+              <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">About</h1>
               <p className="text-xl max-w-3xl mb-6">
               Karuna found deep healing through Shamanic practices. She was guided first by Spirit, then refined her practice through formal training. What began as a personal journey evolved into a calling. 
               </p>

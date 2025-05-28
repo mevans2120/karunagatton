@@ -268,3 +268,75 @@ footer, footer p, footer li, footer address, footer a {
 @keyframes fadeIn {
   /* Empty to remove animation */
 }
+
+/* Mobile-specific fixes for SVG transitions */
+@media (max-width: 768px) {
+  /* Ensure SVGs render properly on mobile */
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Fix for subpixel rendering issues */
+  section {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+  
+  /* Ensure proper stacking and no gaps */
+  .overflow-hidden {
+    overflow: hidden !important;
+  }
+  
+  /* Force GPU acceleration for smoother rendering */
+  .absolute {
+    will-change: transform;
+  }
+  
+  /* Flatten wave heights on mobile (excluding hero section) */
+  section:not(.bg-primary) svg[data-name="Layer 1"] {
+    height: 3rem !important; /* Reduced from h-24 (6rem) to h-12 (3rem) */
+  }
+  
+  section:not(.bg-primary) .h-24 {
+    height: 3rem !important; /* Match the SVG height */
+  }
+  
+  section:not(.bg-primary) .h-20 {
+    height: 2.5rem !important; /* Reduced from h-20 (5rem) */
+  }
+  
+  /* Adjust padding for sections with waves to compensate for smaller waves */
+  section:not(.bg-primary) .absolute.bottom-0 svg {
+    height: 3rem !important;
+  }
+  
+  section:not(.bg-primary) .absolute.top-0 svg {
+    height: 3rem !important;
+  }
+  
+  /* Reduce the padding percentage on mobile for wave transitions */
+  section.bg-background[style*="paddingBottom: '10%'"] {
+    padding-bottom: 5% !important;
+  }
+}
+
+/* Additional fixes for wave transitions */
+.leading-none {
+  line-height: 0 !important;
+}
+
+/* Ensure no gaps between sections */
+.-mt-px {
+  margin-top: -1px;
+}
+
+.-mb-px {
+  margin-bottom: -1px;
+}
+
+.-mt-1 {
+  margin-top: -0.25rem;
+}

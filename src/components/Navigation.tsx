@@ -117,7 +117,7 @@ export default function Navigation() {
       )}
 
       {/* Header */}
-      <header className="absolute top-0 w-full z-50 p-4 text-white">
+      <header className="absolute top-0 w-full z-50 py-4 text-white">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
           <Link href="/" className="flex items-center text-white text-3xl font-light tracking-wider font-heading">
             <img 
@@ -140,7 +140,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <div 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white cursor-pointer p-4"
+            className="md:hidden text-white cursor-pointer"
             style={{
               touchAction: 'manipulation',
               position: 'relative',
