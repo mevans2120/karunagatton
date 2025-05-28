@@ -6,9 +6,11 @@ import Link from 'next/link';
 import PortraitCarousel from '@/components/PortraitCarousel';
 import ViewAllButton from '@/components/ViewAllButton';
 import Footer from '@/components/Footer';
+import TestimonialModal from '@/components/TestimonialModal';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<{ quote: string; author: string } | null>(null);
   const vhCalculated = useRef(false);
   
   // Set viewport height once on mount with Chrome delay
@@ -83,20 +85,28 @@ export default function Home() {
   // Testimonial data
   const testimonials = [
     {
-      quote: "Karuna has been tremendously helpful to me, and the wellness of my whole family. Her unique insight and extraordinary gifts make her a powerful healer. She is also simply delightful to spend time with. Her ability to work remotely makes it so easy to work with her and have work done when it's really needed, even when life is keeping you busy.",
-      author: "Fauna"
+      quote: "For me, Karuna's work has proven to be powerful, transformative and lasting. I live in the heart of Los Angeles where the energies have become overpowering during the last 15 years. Being a highly sensitive person I was absorbing that energy and becoming blocked and unable to move forward. Over a period of time I found Karuna's ability to zero in on the issues and intuitively know just what was needed to be excavated and removed. The relief was immediate and often quite astonishing. My gatekeeper and power animals have remained with me - often making themselves known in fun and interesting ways. My connection to nature spirits has become enhanced and hugely supportive. I have never found so many four-leafed clovers that seem to be the way nature spirits acknowledge themselves and that serves to keep me engaged!\n\nShamanic work can be so helpful especially with the chaos that is being created in today's world of which we have little or no control. As we age it gets even harder to cope with these changes, events and losses. I journal daily and find that I move through these energies at a much different level since beginning this work. No matter where you are in the world and on your journey in life this work can be healing, growth-inducing and powerfully informative. Plus it serves to create connections that call using a different kind of voice.\n\nA powerful and supportive healer is Karuna. I so appreciate her knowledge, connection to Spirit and heart-felt compassion.\n\nThank you Karuna and all your Spirit workers, animals, Ascended Masters and Archangels.",
+      author: "MC Leon"
     },
     {
-      quote: "Since working with Karuna, I have become connected with Spirit on a level that I'd never experienced before! She shares the tools needed to make and maintain this connection that makes magnitudes of difference in my life on a daily basis…. Health, relationships, material success and spiritual realms… I never knew how powerful I was until she showed me!",
-      author: "Kristin F."
+      quote: "I have received support and guidance from Karuna for over a decade now, I am so grateful for how life brought us together. I remember in my early twenties I was still unsure and a little apprehensive, Karuna did a house clearing, which helped immensely. I was dealing with some heavy energies at the time and she cleared it with Spirit. A few months later I saw Karuna for an empowerment ceremony, she pin pointed to a spot on my body that had pain, I was in shock because I didn't tell a soul how that happened or what I thought it was, Karuna knew, that's when I knew she was sincere and authentic in her practice.\n\nThat was over 10 years ago and she has continued to be a huge part of my life and supported me through my evolution of growth and development, I am so grateful for her and she even has taught me to deepen my relationship with spirit which I am so blessed to cultivate. Thank you so much for your love and support over the years, holding me through the seasons of my life.",
+      author: "Alicia Celeste E"
     },
     {
-      quote: "My first shamanic session with Karuna was almost 20 years ago, after a significant family trauma. Upon meeting Karuna, I immediately felt at ease. I intuitively sensed that I could trust her completely. The session was a deeply healing experience for me and for my child. I felt seen, supported, and loved.",
-      author: "Wendy H."
+      quote: "I have had the pleasure of knowing Karuna for over 20 years.\n\nDuring this time she performed a Healing and Empowerment Ceremony for me as well as distance healing for several members of my family. My own healing was very profound. The soul gathering for family members who had passed was such a blessing for the entire family.\n\nIt has been a great honor to know Karuna.\nBlessings",
+      author: "Sue B"
     },
     {
-      quote: "I have had the pleasure of knowing Karuna for over 20 years. During this time she performed a Healing and Empowerment Ceremony for me as well as distance healing for several members of my family. My own healing was very profound. The soul gathering for family members who had passed was such a blessing for the entire family.",
-      author: "Sue Brown"
+      quote: "Since working with Karuna, I have become connected with Spirit on a level that I'd never experienced before! She shares the tools needed to make and maintain this connection that makes magnitudes of difference in my life on a daily basis…. Health, relationships, material success and spiritual realms… I never knew how powerful I was until she showed me! Her empowerment ceremonies are exactly that.\n\nThey give the empowerment needed to overcome/accept anything that life throws at me. And the best part is that these gifts keep on giving… and so does she. I am so grateful for the deep care she shows for me and my family and for the entire collective. She is truly a remarkable human. Loving, generous, kind, and direct. A divine embodiment of the future human that we all are growing into. And if you decide to work with her too, Thank You… on behalf of the whole.",
+      author: "Kristin F"
+    },
+    {
+      quote: "My first shamanic session with Karuna was almost 20 years ago, after a significant family trauma. Upon meeting Karuna, I immediately felt at ease. I intuitively sensed that I could trust her completely. The session was a deeply healing experience for me and for my child. I felt seen, supported, and loved. After our session, I began to notice positive life shifts and new possibilities arising. I have sought her shamanic guidance over the next 2 decades, to gain clarity, peace, and grounding.\n\nKaruna is a gifted healer and wise elder who emanates compassion, gentleness and love. She can handle any situation that may arise. I highly recommend Karuna if you are seeking an authentic and skilled shaman.",
+      author: "Wendy H"
+    },
+    {
+      quote: "Karuna has been tremendously helpful to me, and the wellness of my whole family. Her unique insight and extraordinary gifts make her a powerful healer. She is also simply delightful to spend time with. Her ability to work remotely makes it so easy to work with her and have work done when it's really needed, even when life is keeping you busy. She is truly a blessing in my life and I am so grateful for her and her remarkable work.",
+      author: "Fauna W"
     }
   ];
   
@@ -422,23 +432,44 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm fade-in-section">
+                <div 
+                  key={index} 
+                  className="bg-white p-8 rounded-lg shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer group relative fade-in-section"
+                  onClick={() => setSelectedTestimonial(testimonial)}
+                >
                   <div className="flex flex-col h-full">
                     <div className="text-secondary text-xl mb-4">❝</div>
                     <p className="text-gray-700 italic mb-6 text-lg flex-grow">
-                      {testimonial.quote.length > 150 
-                        ? testimonial.quote.substring(0, 150) + "..." 
-                        : testimonial.quote}
+                      {(() => {
+                        const maxLen = 150;
+                        const text = testimonial.quote;
+                        if (text.length <= maxLen) return text;
+                        const truncated = text.slice(0, maxLen);
+                        const lastSpace = truncated.lastIndexOf(' ');
+                        return truncated.slice(0, lastSpace) + '...';
+                      })()}
                     </p>
-                    <p className="font-medium text-primary self-end text-right">
-                      ― {testimonial.author}
-                    </p>
+                    <div className="flex justify-between items-center">
+                      <p className="font-medium text-primary">
+                        ― {testimonial.author === 'Kristin F.' ? 'Kristin F' : testimonial.author}
+                      </p>
+                      <div className="text-secondary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                        <ChevronRight size={16} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
+        
+        {/* Testimonial Modal */}
+        <TestimonialModal
+          isOpen={selectedTestimonial !== null}
+          onClose={() => setSelectedTestimonial(null)}
+          testimonial={selectedTestimonial || { quote: '', author: '' }}
+        />
         
         {/* Transition Wave to Drum Circle */}
         <section className="bg-background relative" style={{ paddingBottom: '10%', minHeight: '0' }}>
