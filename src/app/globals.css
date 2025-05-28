@@ -242,6 +242,20 @@ footer, footer p, footer li, footer address, footer a {
   left: 1%;
 }
 
+/* Prevent hero content pop-in */
+.bg-primary {
+  position: relative;
+  overflow: hidden;
+  /* Ensure content doesn't reflow */
+  contain: layout style paint;
+}
+
+/* Ensure hero content is properly positioned */
+.bg-primary > * {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
 /* Footer sun spot positioning */
 .sun-spot-footer {
   bottom: -60%;
@@ -299,8 +313,8 @@ footer, footer p, footer li, footer address, footer a {
     min-height: -webkit-fill-available;
   }
   
-  /* Ensure header is always visible and stable */
-  header {
+  /* Remove sticky header - keep it absolute to prevent content jumping */
+  /* header {
     position: fixed !important;
     top: 0;
     left: 0;
@@ -308,12 +322,12 @@ footer, footer p, footer li, footer address, footer a {
     background-color: rgba(75, 0, 110, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-  }
+  } */
   
-  /* Add padding to hero content to account for fixed header */
-  .hero-content {
+  /* Remove padding since header is not fixed */
+  /* .hero-content {
     padding-top: 80px;
-  }
+  } */
   
   /* Ensure SVGs render properly on mobile */
   svg {

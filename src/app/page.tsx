@@ -10,6 +10,12 @@ import Footer from '@/components/Footer';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
+  // Set viewport height immediately to prevent layout shift
+  if (typeof window !== 'undefined') {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  
   // Ensure page starts at top on mobile
   useEffect(() => {
     // Only run on mount
@@ -22,7 +28,7 @@ export default function Home() {
         document.documentElement.style.setProperty('--vh', `${vh}px`);
       };
       
-      setViewportHeight();
+      // Already set above, but add resize listener
       window.addEventListener('resize', setViewportHeight);
       
       return () => window.removeEventListener('resize', setViewportHeight);
@@ -134,11 +140,11 @@ export default function Home() {
             </svg>
           </div>
           
-          {/* Animated yellow sun spot */}
-          <div className="sun-spot sun-spot-home"></div>
+          {/* Animated yellow sun spot - moved before content for better layering */}
+          <div className="sun-spot sun-spot-home" style={{ position: 'absolute', zIndex: 1 }}></div>
           
           {/* Hero Content */}
-          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4 hero-content">
+          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4" style={{ transform: 'translateZ(0)' }}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
             </h1>
