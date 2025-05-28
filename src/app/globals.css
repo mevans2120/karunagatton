@@ -229,7 +229,8 @@ footer, footer p, footer li, footer address, footer a {
   z-index: 1;
   pointer-events: none;
   transform-origin: center;
-  filter: url(#turbulence);
+  /* Remove turbulence filter */
+  /* filter: url(#turbulence); */
   /* Add transform3d for GPU acceleration */
   transform: translate3d(0, 0, 0);
   /* Prevent reflow */

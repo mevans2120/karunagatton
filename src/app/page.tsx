@@ -126,14 +126,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-gray-800 bg-gray-50 w-full">
-      {/* SVG Filters */}
-      <svg width="0" height="0" style={{ position: 'absolute', visibility: 'hidden' }}>
-        <filter id="turbulence">
-          <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="5" />
-          <feDisplacementMap in="SourceGraphic" scale="25" />
-        </filter>
-      </svg>
-      
       {/* Main content wrapper */}
       <div className="page-content">
         {/* Hero Section with Wavy Header */}
