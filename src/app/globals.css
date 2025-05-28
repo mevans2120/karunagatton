@@ -233,6 +233,15 @@ footer, footer p, footer li, footer address, footer a {
   opacity: 0.3;
   width: 500px;
   height: 500px;
+  background: radial-gradient(circle, 
+    rgba(139, 69, 156, 1) 0%, 
+    rgba(109, 85, 144, 0.9) 10%,
+    rgba(75, 0, 110, 0.7) 25%, 
+    rgba(75, 0, 110, 0.4) 40%,
+    rgba(75, 0, 110, 0.2) 60%,
+    rgba(75, 0, 110, 0.1) 75%,
+    rgba(75, 0, 110, 0.05) 90%,
+    rgba(75, 0, 110, 0) 100%);
 }
 
 /* Add SVG filter for ragged edges */
