@@ -44,14 +44,17 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {/* SVG favicon (primary) */}
-        <link rel="icon" href="/yurt-icon-welcome.svg" type="image/svg+xml" sizes="any" />
+        <link rel="icon" href="/drum-favicon.svg" type="image/svg+xml" sizes="any" />
         
         {/* Apple Touch Icon (for iOS devices) - makes icon larger on Apple devices */}
-        <link rel="apple-touch-icon" href="/yurt-icon-welcome.svg" sizes="180x180" />
+        <link rel="apple-touch-icon" href="/drum-favicon.svg" sizes="180x180" />
         
         {/* Large favicon sizes for various contexts */}
-        <link rel="icon" type="image/svg+xml" href="/yurt-icon-welcome.svg" sizes="192x192" />
-        <link rel="icon" type="image/svg+xml" href="/yurt-icon-welcome.svg" sizes="512x512" />
+        <link rel="icon" type="image/svg+xml" href="/drum-favicon.svg" sizes="192x192" />
+        <link rel="icon" type="image/svg+xml" href="/drum-favicon.svg" sizes="512x512" />
+        
+        {/* PNG fallback for browsers that don't support SVG favicons */}
+        <link rel="icon" type="image/png" href="/drum-favicon.png" sizes="32x32" />
       </head>
       <body className="font-serif">
         <Navigation />
