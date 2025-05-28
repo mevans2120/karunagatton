@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, ChevronLeft, Calendar, Clock, MapPin, X, Menu } from 'lucide-react';
 import Link from 'next/link';
 import PortraitCarousel from '@/components/PortraitCarousel';
@@ -9,35 +9,29 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const vhCalculated = useRef(false);
   
-  // Set viewport height immediately to prevent layout shift
-  if (typeof window !== 'undefined') {
-    // Add a small delay for Chrome to settle its viewport
-    setTimeout(() => {
+  // Set viewport height once on mount with Chrome delay
+  useEffect(() => {
+    if (typeof window === 'undefined' || vhCalculated.current) return;
+    
+    const setViewportHeight = () => {
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
+      vhCalculated.current = true;
+    };
+    
+    // Add small delay for Chrome to settle its viewport
+    setTimeout(() => {
+      setViewportHeight();
+      
+      // Only add resize listener for desktop
+      if (window.innerWidth >= 768) {
+        window.addEventListener('resize', setViewportHeight);
+        return () => window.removeEventListener('resize', setViewportHeight);
+      }
     }, 100);
-  }
-  
-  // Ensure page starts at top on mobile
-  useEffect(() => {
-    // Only run on mount
-    if (typeof window !== 'undefined') {
-      // Remove the scrollTo call as it might interfere with Chrome's behavior
-      // window.scrollTo(0, 0);
-      
-      // Set custom viewport height property for mobile
-      const setViewportHeight = () => {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      };
-      
-      // Already set above, but add resize listener
-      window.addEventListener('resize', setViewportHeight);
-      
-      return () => window.removeEventListener('resize', setViewportHeight);
-    }
-  }, []);
+  }, []); // Empty dependency array - only run on mount
   
   // Debug log for menu state
   useEffect(() => {
