@@ -129,7 +129,7 @@ export default function Home() {
       {/* Main content wrapper */}
       <div className="page-content">
         {/* Hero Section with Wavy Header */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary" style={{ isolation: 'isolate' }}>
           {/* Wavy pattern - Ensure it doesn't block pointer events */}
           <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
             <svg className="absolute bottom-0 w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ marginBottom: '-1px' }}>
@@ -140,11 +140,11 @@ export default function Home() {
             </svg>
           </div>
           
-          {/* Animated yellow sun spot - moved before content for better layering */}
-          <div className="sun-spot sun-spot-home" style={{ position: 'absolute', zIndex: 1 }}></div>
+          {/* Animated yellow sun spot - with stable positioning */}
+          <div className="sun-spot sun-spot-home" style={{ position: 'absolute', zIndex: 1, contain: 'layout' }}></div>
           
-          {/* Hero Content */}
-          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4" style={{ transform: 'translateZ(0)' }}>
+          {/* Hero Content - wrapped in stable container */}
+          <div className="relative z-20 text-left pb-32 container mx-auto px-2 md:px-4" style={{ contain: 'layout', transform: 'translateZ(0)' }}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
             </h1>
