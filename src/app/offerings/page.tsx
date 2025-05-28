@@ -126,7 +126,7 @@ export default function Offerings() {
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
             <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Empowerment Ceremonies</h1>
             <p className="text-xl max-w-3xl mb-6">
-              Karuna offers an empowerment ceremony focused on soul healing from past traumas, energy restoration, and spiritual empowerment. Each ceremony creates a sacred space for profound transformation.
+              Karuna offers a 3.5 hour healing empowerment ceremony focused on soul healing from past traumas, energy restoration, and spiritual empowerment. Each ceremony, which includes all of the activities below, creates a sacred space for profound transformation.
             </p>
           </div>
           {/* Wavy white bar at the bottom, in front of sun spot */}
