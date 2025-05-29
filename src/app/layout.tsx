@@ -22,6 +22,26 @@ const unbounded = Unbounded({
 export const metadata: Metadata = {
   title: "Karuna | Shamanic Healing",
   description: "Shamanic healing in Eugene, Oregon and beyond through remote sessions.",
+  openGraph: {
+    title: "Karuna | Shamanic Healing",
+    description: "Shamanic healing in Eugene, Oregon and beyond through remote sessions.",
+    images: [
+      {
+        url: "/Homepage_Screenshot.png",
+        width: 1200,
+        height: 630,
+        alt: "Karuna Shamanic Healing",
+      },
+    ],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Karuna | Shamanic Healing",
+    description: "Shamanic healing in Eugene, Oregon and beyond through remote sessions.",
+    images: ["/Homepage_Screenshot.png"],
+  },
 };
 
 export default function RootLayout({
