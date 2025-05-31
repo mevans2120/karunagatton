@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 export default function Offerings() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // Optimized useEffect - removed setTimeout delays, keeping only intersection observer
+  // Optimized useEffect - defer animations until after first paint
   useEffect(() => {
     // Intersection Observer for fade-in animations
     const observerOptions = {
@@ -25,16 +25,31 @@ export default function Offerings() {
       });
     }, observerOptions);
     
-    // Use requestAnimationFrame for better performance than setTimeout
-    const observeElements = () => {
+    // Start sun spot animation immediately after first render for visual impact
+    const startSunAnimation = () => {
+      const sunSpots = document.querySelectorAll('.sun-spot');
+      sunSpots.forEach(spot => {
+        spot.classList.add('animate');
+      });
+    };
+    
+    // Start fade-in animations with slight delay for performance
+    const startFadeAnimations = () => {
       const fadeElements = document.querySelectorAll('.fade-in-section');
       fadeElements.forEach(element => {
         observer.observe(element);
       });
     };
     
-    // Observe elements after initial render without artificial delays
-    requestAnimationFrame(observeElements);
+    // Start sun animation immediately for visual impact
+    requestAnimationFrame(startSunAnimation);
+    
+    // Defer fade-in animations slightly for better FCP
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(startFadeAnimations);
+    } else {
+      setTimeout(startFadeAnimations, 100);
+    }
     
     return () => {
       const fadeElements = document.querySelectorAll('.fade-in-section');
