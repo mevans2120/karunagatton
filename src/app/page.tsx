@@ -23,16 +23,14 @@ export default function Home() {
       vhCalculated.current = true;
     };
     
-    // Add small delay for Chrome to settle its viewport
-    setTimeout(() => {
-      setViewportHeight();
-      
-      // Only add resize listener for desktop
-      if (window.innerWidth >= 768) {
-        window.addEventListener('resize', setViewportHeight);
-        return () => window.removeEventListener('resize', setViewportHeight);
-      }
-    }, 100);
+    // Set viewport height immediately to prevent layout shift
+    setViewportHeight();
+    
+    // Only add resize listener for desktop
+    if (window.innerWidth >= 768) {
+      window.addEventListener('resize', setViewportHeight);
+      return () => window.removeEventListener('resize', setViewportHeight);
+    }
   }, []); // Empty dependency array - only run on mount
   
   // Debug log for menu state
