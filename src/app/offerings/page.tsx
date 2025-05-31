@@ -7,25 +7,9 @@ import Footer from '@/components/Footer';
 
 export default function Offerings() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   
-  // Set loaded state after mount to trigger dissolve effect
+  // Optimized useEffect - removed setTimeout delays, keeping only intersection observer
   useEffect(() => {
-    // Short timeout to ensure purple background is visible first
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 50); // Just enough delay to ensure the purple bg shows first
-    
-    return () => clearTimeout(timer);
-  }, []);
-  
-  // Add useEffect to ensure page elements load correctly and handle fade-in animations
-  useEffect(() => {
-    // This forces a re-render after component mounts
-    const timer = setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 100);
-    
     // Intersection Observer for fade-in animations
     const observerOptions = {
       root: null,
@@ -41,13 +25,19 @@ export default function Offerings() {
       });
     }, observerOptions);
     
-    const fadeElements = document.querySelectorAll('.fade-in-section');
-    fadeElements.forEach(element => {
-      observer.observe(element);
-    });
+    // Use requestAnimationFrame for better performance than setTimeout
+    const observeElements = () => {
+      const fadeElements = document.querySelectorAll('.fade-in-section');
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+    };
+    
+    // Observe elements after initial render without artificial delays
+    requestAnimationFrame(observeElements);
     
     return () => {
-      clearTimeout(timer);
+      const fadeElements = document.querySelectorAll('.fade-in-section');
       fadeElements.forEach(element => {
         observer.unobserve(element);
       });
