@@ -27,28 +27,12 @@ export default function Navigation() {
   // Prevent scrolling when menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      // Save current scroll position before making any changes
-      const scrollY = window.scrollY;
-      
-      // Prevent scrolling - simplified approach
+      // Simple overflow prevention without position manipulation
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
       
       return () => {
-        // Restore body styles
-        const bodyTop = document.body.style.top;
+        // Just restore overflow, don't manipulate scroll position
         document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        
-        // Restore scroll position
-        if (bodyTop) {
-          const scrollY = parseInt(bodyTop, 10) * -1;
-          window.scrollTo(0, scrollY);
-        }
       };
     }
   }, [isMenuOpen]);

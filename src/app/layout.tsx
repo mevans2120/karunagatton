@@ -67,6 +67,42 @@ export default function RootLayout({
         
         {/* PNG fallback for browsers that don't support SVG favicons */}
         <link rel="icon" type="image/png" href="/drum-favicon.png" sizes="32x32" />
+        
+        {/* Ensure page starts at top - critical for mobile */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if ('scrollRestoration' in history) {
+                  history.scrollRestoration = 'manual';
+                }
+                
+                // Immediate scroll to top before any content renders
+                if (typeof window !== 'undefined') {
+                  window.scrollTo(0, 0);
+                  document.documentElement.scrollTop = 0;
+                  document.body.scrollTop = 0;
+                }
+                
+                // Additional scroll reset after DOM is ready
+                document.addEventListener('DOMContentLoaded', function() {
+                  window.scrollTo(0, 0);
+                  document.documentElement.scrollTop = 0;
+                  document.body.scrollTop = 0;
+                });
+                
+                // Final scroll reset after all resources load
+                window.addEventListener('load', function() {
+                  setTimeout(function() {
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                  }, 0);
+                });
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="font-serif">
         <Navigation />
