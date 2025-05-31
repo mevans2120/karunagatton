@@ -51,8 +51,6 @@ body {
   /* Ensure no initial transform */
   transform: none;
   position: relative;
-  /* Force start at top of page */
-  scroll-behavior: auto;
 }
 
 /* Reset footer list styles */
@@ -333,21 +331,6 @@ footer, footer p, footer li, footer address, footer a {
   /* Ensure users start at top of page on mobile */
   html, body {
     scroll-behavior: auto;
-    /* Critical: Force scroll position to top */
-    scroll-restoration: manual;
-  }
-  
-  /* Force page to start at top on mobile */
-  html {
-    position: relative;
-  }
-  
-  body {
-    position: relative;
-    top: 0;
-    left: 0;
-    /* Prevent any unwanted transforms */
-    transform: none !important;
   }
   
   /* Fix hero section height on mobile */
@@ -355,73 +338,6 @@ footer, footer p, footer li, footer address, footer a {
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     min-height: -webkit-fill-available;
-  }
-  
-  /* Remove sticky header - keep it absolute to prevent content jumping */
-  /* header {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(75, 0, 110, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  } */
-  
-  /* Remove padding since header is not fixed */
-  /* .hero-content {
-    padding-top: 80px;
-  } */
-  
-  /* Ensure SVGs render properly on mobile */
-  svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Fix for subpixel rendering issues */
-  section {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-  }
-  
-  /* Ensure proper stacking and no gaps */
-  .overflow-hidden {
-    overflow: hidden !important;
-  }
-  
-  /* Force GPU acceleration for smoother rendering */
-  .absolute {
-    will-change: transform;
-  }
-  
-  /* Flatten wave heights on mobile (excluding hero section) */
-  section:not(.bg-primary) svg[data-name="Layer 1"] {
-    height: 3rem !important; /* Reduced from h-24 (6rem) to h-12 (3rem) */
-  }
-  
-  section:not(.bg-primary) .h-24 {
-    height: 3rem !important; /* Match the SVG height */
-  }
-  
-  section:not(.bg-primary) .h-20 {
-    height: 2.5rem !important; /* Reduced from h-20 (5rem) */
-  }
-  
-  /* Adjust padding for sections with waves to compensate for smaller waves */
-  section:not(.bg-primary) .absolute.bottom-0 svg {
-    height: 3rem !important;
-  }
-  
-  section:not(.bg-primary) .absolute.top-0 svg {
-    height: 3rem !important;
-  }
-  
-  /* Reduce the padding percentage on mobile for wave transitions */
-  section.bg-background[style*="paddingBottom: '10%'"] {
-    padding-bottom: 5% !important;
   }
 }
 
