@@ -257,7 +257,11 @@ footer, footer p, footer li, footer address, footer a {
 }
 
 /* Position variants for different pages */
-.sun-spot-home,
+.sun-spot-home {
+  bottom: -20%;
+  left: 5%;
+}
+
 .sun-spot-offerings,
 .sun-spot-drum-circle,
 .sun-spot-about,

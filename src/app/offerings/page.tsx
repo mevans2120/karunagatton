@@ -25,14 +25,6 @@ export default function Offerings() {
       });
     }, observerOptions);
     
-    // Start sun spot animation immediately after first render for visual impact
-    const startSunAnimation = () => {
-      const sunSpots = document.querySelectorAll('.sun-spot');
-      sunSpots.forEach(spot => {
-        spot.classList.add('animate');
-      });
-    };
-    
     // Start fade-in animations with slight delay for performance
     const startFadeAnimations = () => {
       const fadeElements = document.querySelectorAll('.fade-in-section');
@@ -40,9 +32,6 @@ export default function Offerings() {
         observer.observe(element);
       });
     };
-    
-    // Start sun animation immediately for visual impact
-    requestAnimationFrame(startSunAnimation);
     
     // Defer fade-in animations slightly for better FCP
     if ('requestIdleCallback' in window) {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { EB_Garamond, Unbounded } from "next/font/google";
 import Navigation from "@/components/Navigation";
 import { Analytics } from "@vercel/analytics/next";
+import SunAnimationHandler from "@/components/SunAnimationHandler";
 //import "./tailwind-test.css";
 import "./globals.css";
 
@@ -69,6 +70,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/drum-favicon.png" sizes="32x32" />
       </head>
       <body className="font-serif">
+        <SunAnimationHandler />
         <Navigation />
         {children}
         <Analytics />
