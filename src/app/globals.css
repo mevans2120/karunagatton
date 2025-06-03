@@ -252,7 +252,7 @@ footer, footer p, footer li, footer address, footer a {
 
 /* Enable animation after page loads */
 .sun-spot.animate {
-  animation: sunPulseUpward 6.25s ease-in-out infinite;
+  animation: sunPulseUpward 12.5s ease-in-out infinite;
   will-change: transform, opacity;
 }
 
