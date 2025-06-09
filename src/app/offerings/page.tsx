@@ -205,7 +205,7 @@ export default function Offerings() {
         </section>
         
         {/* Remote Healing Note */}
-        <section className="py-12 px-4 bg-background">
+        <section className="py-12 px-4 bg-gray-50">
           <div className="container mx-auto max-w-3xl text-center fade-in-section">
             <div className="w-36 h-36 mx-auto mb-6">
               <img 
