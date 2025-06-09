@@ -68,6 +68,17 @@ export default function RootLayout({
         
         {/* PNG fallback for browsers that don't support SVG favicons */}
         <link rel="icon" type="image/png" href="/drum-favicon.png" sizes="32x32" />
+        
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV6QM4YNNN"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FV6QM4YNNN');
+          `
+        }} />
       </head>
       <body className="font-serif">
         <SunAnimationHandler />
