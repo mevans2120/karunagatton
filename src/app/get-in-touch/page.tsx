@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Footer from '@/components/Footer';
 
 export default function GetInTouch() {
@@ -225,12 +226,12 @@ export default function GetInTouch() {
         <section className="py-24 px-4 bg-purple-50">
           <div className="max-w-3xl mx-auto text-center fade-in-section">
             <div className="w-36 h-36 mx-auto mb-16">
-              <img 
-                src="/yurt-icon-9.svg" 
-                alt="Yurt location" 
-                className="w-full h-full" 
-                width="108"
-                height="108"
+              <Image
+                src="/yurt-icon-9.svg"
+                alt="Yurt location"
+                width={144}
+                height={144}
+                className="w-full h-full"
                 style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
               />
             </div>

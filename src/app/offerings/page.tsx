@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Footer from '@/components/Footer';
 
 export default function Offerings() {
@@ -136,12 +137,12 @@ export default function Offerings() {
               {empowermentCeremonies.map((ceremony, index) => (
                 <div key={index} className="bg-white p-8 rounded-lg shadow-sm flex flex-col items-center text-center fade-in-section">
                   <div className="w-24 h-24 mb-6">
-                    <img 
-                      src={ceremony.icon} 
-                      alt={ceremony.title} 
-                      className="w-full h-full" 
-                      width="86"
-                      height="86"
+                    <Image
+                      src={ceremony.icon}
+                      alt={ceremony.title}
+                      width={96}
+                      height={96}
+                      className="w-full h-full"
                       style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
                     />
                   </div>
@@ -177,12 +178,12 @@ export default function Offerings() {
               {otherOfferings.map((offering, index) => (
                 <div key={index} className="bg-white p-8 rounded-lg shadow-sm flex flex-col items-center text-center fade-in-section">
                   <div className="w-24 h-24 mb-6">
-                    <img 
-                      src={offering.icon} 
+                    <Image
+                      src={offering.icon}
                       alt={offering.title}
-                      className="w-full h-full" 
-                      width="86"
-                      height="86"
+                      width={96}
+                      height={96}
+                      className="w-full h-full"
                       style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
                     />
                   </div>
@@ -208,12 +209,12 @@ export default function Offerings() {
         <section className="py-12 px-4 bg-gray-50">
           <div className="container mx-auto max-w-3xl text-center fade-in-section">
             <div className="w-36 h-36 mx-auto mb-6">
-              <img 
-                src="/yurt-icon-9.svg" 
-                alt="Distance healing" 
-                className="w-full h-full" 
-                width="108"
-                height="108"
+              <Image
+                src="/yurt-icon-9.svg"
+                alt="Distance healing"
+                width={144}
+                height={144}
+                className="w-full h-full"
                 style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
               />
             </div>

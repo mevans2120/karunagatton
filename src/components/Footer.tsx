@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -21,9 +22,11 @@ export default function Footer() {
         <div className="md:flex md:justify-between">
           <div className="mb-8 md:mb-0 fade-in-section">
             <h3 className="text-2xl font-light text-white mb-4 font-heading flex items-center">
-              <img 
-                src="/Group 5.svg" 
-                alt="Drum logo" 
+              <Image
+                src="/Group 5.svg"
+                alt="Drum logo"
+                width={24}
+                height={24}
                 className="w-6 h-6 mr-3"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />

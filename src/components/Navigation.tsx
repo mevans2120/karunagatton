@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -71,11 +72,14 @@ export default function Navigation() {
       <header className="absolute md:absolute top-0 w-full z-50 py-4 text-white">
         <div className="container mx-auto flex items-center justify-between px-2 md:px-4">
           <Link href="/" className="flex items-center text-white text-3xl font-light tracking-wider font-heading">
-            <img 
-              src="/Group 5.svg" 
-              alt="Drum logo" 
+            <Image
+              src="/Group 5.svg"
+              alt="Drum logo"
+              width={32}
+              height={32}
               className="w-8 h-8 mr-3"
               style={{ filter: 'brightness(0) invert(1)' }}
+              priority
             />
             Karuna
           </Link>

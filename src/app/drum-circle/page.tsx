@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
@@ -101,10 +102,14 @@ export default function DrumCircle() {
             <div className="grid md:grid-cols-2 gap-4 mb-10 mt-[50px] fade-in-section">
               <div className="relative w-full">
                 <div className="w-full h-[400px] rounded-lg overflow-hidden">
-                  <img 
-                    src="/Photo of Yurt.jpg" 
-                    alt="Karuna's Healing Yurt" 
+                  <Image
+                    src="/Photo of Yurt.jpg"
+                    alt="Karuna's Healing Yurt"
+                    width={600}
+                    height={400}
                     className="w-full h-full object-cover"
+                    priority={true}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>

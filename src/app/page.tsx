@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, ChevronLeft, Calendar, Clock, MapPin, X, Menu } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import PortraitCarousel from '@/components/PortraitCarousel';
 import ViewAllButton from '@/components/ViewAllButton';
 import Footer from '@/components/Footer';
@@ -193,7 +194,13 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4">
             <div className="relative fade-in-section">
               <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-30">
-                <img src="/yurt-icon-welcome.svg" alt="Yurt icon" className="w-full h-full" />
+                <Image
+                  src="/yurt-icon-welcome.svg"
+                  alt="Yurt icon"
+                  width={64}
+                  height={64}
+                  className="w-full h-full"
+                />
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section font-heading">
@@ -384,12 +391,12 @@ export default function Home() {
               {offeringTeasers.map((offering, index) => (
                 <div key={index} className="bg-gray-50 p-8 rounded-lg shadow-sm flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
                   <div className="mb-6">
-                    <img 
-                      src={offering.icon} 
-                      alt="Yurt icon" 
-                      width="86"
-                      height="86"
-                      style={{ 
+                    <Image
+                      src={offering.icon}
+                      alt={`${offering.title} icon`}
+                      width={86}
+                      height={86}
+                      style={{
                         filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)',
                         maxWidth: '100%',
                         height: 'auto'
@@ -508,10 +515,14 @@ export default function Home() {
             <div className="md:flex items-center">
               <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">
                 <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
-                  <img 
-                    src="/Karuna_headshot.png" 
-                    alt="Karuna Gatton" 
-                    className="w-full h-full object-cover" 
+                  <Image
+                    src="/Karuna_headshot.png"
+                    alt="Karuna Gatton"
+                    width={192}
+                    height={192}
+                    className="w-full h-full object-cover"
+                    priority={false}
+                    sizes="(max-width: 768px) 192px, 192px"
                   />
                 </div>
               </div>
