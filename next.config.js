@@ -11,7 +11,6 @@ const nextConfig = {
   optimizeFonts: true,
   // Enable experimental features for better performance
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
   },
   // Configure headers for better caching
