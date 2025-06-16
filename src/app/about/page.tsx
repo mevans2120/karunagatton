@@ -93,9 +93,9 @@ export default function About() {
               <div className="grid gap-12 mb-16 mt-6">
                 <div className="relative">
                   <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
-                    <Image 
-                      src="/Karuna in front of yurt.jpg" 
-                      alt="Karuna Gatton in front of her healing yurt" 
+                    <Image
+                      src="/Karuna in front of yurt.webp"
+                      alt="Karuna Gatton in front of her healing yurt"
                       width={800}
                       height={500}
                       className="w-full h-full object-cover"

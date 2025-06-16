@@ -103,7 +103,7 @@ export default function DrumCircle() {
               <div className="relative w-full">
                 <div className="w-full h-[400px] rounded-lg overflow-hidden">
                   <Image
-                    src="/Photo of Yurt.jpg"
+                    src="/Photo of Yurt.webp"
                     alt="Karuna's Healing Yurt"
                     width={600}
                     height={400}
