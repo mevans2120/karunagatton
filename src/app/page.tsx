@@ -166,7 +166,15 @@ export default function Home() {
             backfaceVisibility: 'hidden',
             willChange: 'transform'
           }}>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading">
+            <h1
+              className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading"
+              style={{
+                willChange: 'auto',
+                transform: 'translateZ(0)',
+                backfaceVisibility: 'hidden',
+                contain: 'layout style paint'
+              }}
+            >
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
             </h1>
             <h2 className="text-xl md:text-2xl text-white font-light tracking-wide max-w-2xl mb-8">
