@@ -1,9 +1,30 @@
-/* 
+/*
  * Tailwind CSS directives
  */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Font face declarations with optimized loading */
+@font-face {
+  font-family: 'EB Garamond Fallback';
+  src: local('Georgia'), local('Times New Roman'), local('serif');
+  font-display: block;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+@font-face {
+  font-family: 'Unbounded Fallback';
+  src: local('system-ui'), local('-apple-system'), local('BlinkMacSystemFont');
+  font-display: block;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
 
 /* Custom styles */
 :root {
@@ -15,6 +36,9 @@
   --vh: 1vh;
   --dvh: 1dvh;
   --svh: 1svh;
+  /* Font family variables with optimized fallbacks */
+  --font-heading: var(--font-unbounded), 'Unbounded Fallback', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: var(--font-eb-garamond), 'EB Garamond Fallback', Georgia, 'Times New Roman', serif;
 }
 
 /* Set up dynamic viewport height */
@@ -35,6 +59,10 @@ html {
   scroll-behavior: auto;
   /* Force scroll position to top on page load */
   scroll-restoration: manual;
+  /* Optimize font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -42,7 +70,8 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  font-family: var(--font-eb-garamond), serif;
+  /* Use optimized font variable with fallbacks */
+  font-family: var(--font-body);
   font-size: 1.1em;
   min-height: 100vh;
   overscroll-behavior-x: none;
@@ -53,6 +82,8 @@ body {
   position: relative;
   /* Force start at top of page */
   scroll-behavior: auto;
+  /* Optimize font loading */
+  font-display: swap;
 }
 
 /* Reset footer list styles */
@@ -207,6 +238,10 @@ footer, footer p, footer li, footer address, footer a {
 /* Text styling */
 .font-light { font-weight: 300; }
 .font-medium { font-weight: 500; }
+.font-heading {
+  font-family: var(--font-heading);
+  font-display: swap;
+}
 
 /* Flexbox utilities */
 .flex { display: flex; }

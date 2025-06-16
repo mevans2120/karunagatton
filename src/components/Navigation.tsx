@@ -64,13 +64,6 @@ export default function Navigation() {
             <Link href="/get-in-touch" className={navLinkClass('/get-in-touch')} onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
           </nav>
           
-          {/* Close button that's always visible */}
-          <div 
-            onClick={() => setIsMenuOpen(false)}
-            className="mobile-menu-open-button cursor-pointer absolute top-6 right-6"
-          >
-            <X size={24} color="white" />
-          </div>
         </div>
       )}
 

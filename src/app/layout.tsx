@@ -11,6 +11,8 @@ const ebGaramond = EB_Garamond({
   variable: "--font-eb-garamond",
   display: "swap",
   weight: ["400", "500", "600"],
+  preload: true,
+  fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
 const unbounded = Unbounded({
@@ -18,6 +20,8 @@ const unbounded = Unbounded({
   variable: "--font-unbounded",
   display: "swap",
   weight: ["300", "400", "500", "600"],
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -56,6 +60,40 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
+        
+        {/* DNS prefetch for faster font loading */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        
+        {/* Inline critical CSS for faster LCP */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root{--primary:#4B006E;--accent:#b2a3c7;--secondary:#6d5590;--background:#F5F3FE;--vh:1vh;--font-heading:var(--font-unbounded),'Unbounded Fallback',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;--font-body:var(--font-eb-garamond),'EB Garamond Fallback',Georgia,'Times New Roman',serif}html{background-color:var(--primary);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}body{background-color:#F5F3FE;color:#333;margin:0;padding:0;font-family:var(--font-body);font-size:1.1em;min-height:100vh;font-display:swap}.bg-primary{background-color:var(--primary);position:relative;overflow:hidden;transform:translateZ(0);backface-visibility:hidden}.h-screen{height:100vh;height:calc(var(--vh, 1vh) * 100)}.text-white{color:#fff}.text-5xl{font-size:3rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-light{font-weight:300}.font-heading{font-family:var(--font-heading);font-display:swap}.flex{display:flex}.items-center{align-items:center}.justify-center{justify-content:center}.relative{position:relative}.absolute{position:absolute}.container{max-width:1280px;margin:0 auto;padding:0 1rem}.sun-spot{position:absolute;width:743px;height:743px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,25,1) 0%,rgba(255,215,0,0.9) 10%,rgba(250,204,21,0.7) 25%,rgba(250,204,21,0.4) 40%,rgba(200,150,50,0.2) 60%,rgba(150,100,80,0.1) 75%,rgba(75,0,110,0.05) 90%,rgba(75,0,110,0) 100%);z-index:1;pointer-events:none;transform:translate3d(0,0,0);backface-visibility:hidden}.sun-spot-home{bottom:-20%;left:5%}@media (min-width:768px){.text-5xl{font-size:4.5rem}.md\\:text-7xl{font-size:4.5rem;line-height:1}.md\\:text-2xl{font-size:1.5rem;line-height:2rem}.md\\:px-4{padding-left:1rem;padding-right:1rem}.md\\:block{display:block}}@media (min-width:1024px){.lg\\:text-8xl{font-size:6rem;line-height:1}}
+          `
+        }} />
+        
+        {/* Load critical fonts with optimized strategy */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap"
+          as="style"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap"
+        />
+        
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=swap"
+          as="style"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=swap"
+        />
+        
         {/* SVG favicon (primary) */}
         <link rel="icon" href="/drum-favicon.svg" type="image/svg+xml" sizes="any" />
         
@@ -69,7 +107,7 @@ export default function RootLayout({
         {/* PNG fallback for browsers that don't support SVG favicons */}
         <link rel="icon" type="image/png" href="/drum-favicon.png" sizes="32x32" />
         
-        {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) - defer for better performance */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV6QM4YNNN"></script>
         <script dangerouslySetInnerHTML={{
           __html: `
