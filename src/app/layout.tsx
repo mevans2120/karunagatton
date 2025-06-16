@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Unbounded } from "next/font/google";
 import Navigation from "@/components/Navigation";
-import { Analytics } from "@vercel/analytics/next";
+import LazyAnalytics from "@/components/LazyAnalytics";
 import SunAnimationHandler from "@/components/SunAnimationHandler";
 //import "./tailwind-test.css";
 import "./globals.css";
@@ -107,14 +107,16 @@ export default function RootLayout({
         {/* PNG fallback for browsers that don't support SVG favicons */}
         <link rel="icon" type="image/png" href="/drum-favicon.png" sizes="32x32" />
         
-        {/* Google tag (gtag.js) - defer for better performance */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV6QM4YNNN"></script>
-        <script dangerouslySetInnerHTML={{
+        {/* Google Analytics - deferred for better performance */}
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-FV6QM4YNNN"></script>
+        <script defer dangerouslySetInnerHTML={{
           __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-FV6QM4YNNN');
+            window.addEventListener('load', function() {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-FV6QM4YNNN');
+            });
           `
         }} />
       </head>
@@ -122,7 +124,7 @@ export default function RootLayout({
         <SunAnimationHandler />
         <Navigation />
         {children}
-        <Analytics />
+        <LazyAnalytics />
       </body>
     </html>
   );

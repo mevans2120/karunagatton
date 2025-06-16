@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, ChevronLeft, Calendar, Clock, MapPin, X, Menu } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import PortraitCarousel from '@/components/PortraitCarousel';
+import LazyPortraitCarousel from '@/components/LazyPortraitCarousel';
 import ViewAllButton from '@/components/ViewAllButton';
 import Footer from '@/components/Footer';
 import TestimonialModal from '@/components/TestimonialModal';
@@ -35,9 +35,6 @@ export default function Home() {
   }, []); // Empty dependency array - only run on mount
   
   // Debug log for menu state
-  useEffect(() => {
-    console.log("Menu state changed:", isMenuOpen);
-  }, [isMenuOpen]);
   
   useEffect(() => {
     // Intersection Observer for fade-in animations
@@ -243,7 +240,7 @@ export default function Home() {
             
             <div className="max-w-5xl mx-auto fade-in-section">
               {/* Old Carousel (or Gallery) – Replaced with PortraitCarousel */}
-              <PortraitCarousel />
+              <LazyPortraitCarousel />
             </div>
           </div>
           

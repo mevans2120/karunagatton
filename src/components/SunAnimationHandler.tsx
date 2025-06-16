@@ -7,9 +7,13 @@ export default function SunAnimationHandler() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Global sun spot animation logic
+    // Debounce animation to prevent excessive re-runs
+    let timeoutId: NodeJS.Timeout;
+    
     const startSunAnimation = () => {
       const sunSpots = document.querySelectorAll('.sun-spot');
+      if (sunSpots.length === 0) return; // Early exit if no sun spots
+      
       sunSpots.forEach(spot => {
         // Remove existing animate class first to reset animation
         spot.classList.remove('animate');
@@ -20,9 +24,15 @@ export default function SunAnimationHandler() {
       });
     };
 
-    // Start sun animation immediately for visual impact
-    requestAnimationFrame(startSunAnimation);
+    // Debounce the animation start to avoid excessive calls
+    timeoutId = setTimeout(() => {
+      requestAnimationFrame(startSunAnimation);
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [pathname]); // Re-run whenever the route changes
 
   return null;
-} 
+}

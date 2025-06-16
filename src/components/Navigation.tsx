@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
@@ -10,45 +10,55 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   
+  // Memoize the close menu function to prevent unnecessary re-renders
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const toggleMenu = useCallback(() => setIsMenuOpen(prev => !prev), []);
+  
   // Handle ESC key to close menu
   useEffect(() => {
+    if (!isMenuOpen) return; // Only add listener when menu is open
+    
     const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMenuOpen) {
-        setIsMenuOpen(false);
+      if (e.key === 'Escape') {
+        closeMenu();
       }
     };
     
     document.addEventListener('keydown', handleEscKey);
-    
-    return () => {
-      document.removeEventListener('keydown', handleEscKey);
-    };
-  }, [isMenuOpen]);
+    return () => document.removeEventListener('keydown', handleEscKey);
+  }, [isMenuOpen, closeMenu]);
   
   // Prevent scrolling when menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      // Simple overflow prevention without position manipulation
       document.body.style.overflow = 'hidden';
-      
       return () => {
-        // Just restore overflow, don't manipulate scroll position
         document.body.style.overflow = '';
       };
     }
   }, [isMenuOpen]);
   
-  const isActive = (path: string) => {
+  // Memoize active state calculations
+  const isActive = useCallback((path: string) => {
     if (path === '/') {
       return pathname === path;
     }
     return pathname.startsWith(path);
-  };
+  }, [pathname]);
 
-  const navLinkClass = (path: string) => {
+  // Memoize nav link classes to prevent recalculation
+  const navLinkClass = useCallback((path: string) => {
     const baseClass = "font-heading hover:text-accent transition duration-300";
     return `${baseClass} ${isActive(path) ? 'font-semibold' : 'font-normal'}`;
-  };
+  }, [isActive]);
+
+  // Memoize navigation links to prevent unnecessary re-renders
+  const navigationLinks = useMemo(() => [
+    { href: '/offerings', label: 'Offerings' },
+    { href: '/drum-circle', label: 'Drum Circle' },
+    { href: '/about', label: 'About' },
+    { href: '/get-in-touch', label: 'Get in Touch' }
+  ], []);
 
   return (
     <>
@@ -59,10 +69,16 @@ export default function Navigation() {
           style={{ touchAction: 'none', position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh' }}
         >
           <nav className="flex flex-col items-center space-y-8 text-xl text-white mobile-menu-nav open">
-            <Link href="/offerings" className={navLinkClass('/offerings')} onClick={() => setIsMenuOpen(false)}>Offerings</Link>
-            <Link href="/drum-circle" className={navLinkClass('/drum-circle')} onClick={() => setIsMenuOpen(false)}>Drum Circle</Link>
-            <Link href="/about" className={navLinkClass('/about')} onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/get-in-touch" className={navLinkClass('/get-in-touch')} onClick={() => setIsMenuOpen(false)}>Get in Touch</Link>
+            {navigationLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={navLinkClass(href)}
+                onClick={closeMenu}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
           
         </div>
@@ -86,24 +102,30 @@ export default function Navigation() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 text-white">
-            <Link href="/offerings" className={navLinkClass('/offerings')}>Offerings</Link>
-            <Link href="/drum-circle" className={navLinkClass('/drum-circle')}>Drum Circle</Link>
-            <Link href="/about" className={navLinkClass('/about')}>About</Link>
-            <Link href="/get-in-touch" className={navLinkClass('/get-in-touch')}>Get in Touch</Link>
+            {navigationLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={navLinkClass(href)}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
           
           {/* Mobile Menu Button */}
-          <div 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white cursor-pointer"
+          <button
+            onClick={toggleMenu}
+            className="md:hidden text-white cursor-pointer p-2"
             style={{
               touchAction: 'manipulation',
               position: 'relative',
               zIndex: 60
             }}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </div>
+          </button>
         </div>
       </header>
     </>
