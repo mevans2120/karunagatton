@@ -67,6 +67,16 @@ const nextConfig = {
         destination: '/get-in-touch',
         permanent: true, // 301 redirect
       },
+      {
+        source: '/offerings/otherhealingservices',
+        destination: '/offerings',
+        permanent: true, // 301 redirect
+      },
+      {
+        source: '/offerings/healingandempowerment',
+        destination: '/offerings',
+        permanent: true, // 301 redirect
+      },
     ];
   },
   
