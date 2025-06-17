@@ -58,6 +58,17 @@ const nextConfig = {
       },
     ];
   },
+
+  // Configure 301 redirects
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: '/get-in-touch',
+        permanent: true, // 301 redirect
+      },
+    ];
+  },
   
   // Webpack optimizations for better bundle splitting
   webpack: (config, { dev, isServer }) => {
