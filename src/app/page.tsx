@@ -14,19 +14,48 @@ export default function Home() {
   const [selectedTestimonial, setSelectedTestimonial] = useState<{ quote: string; author: string } | null>(null);
   const vhCalculated = useRef(false);
   
+  // Preload critical SVG images for homepage
+  useEffect(() => {
+    const preloadImages = [
+      '/yurt-icon-welcome.svg',
+      '/yurt-icon-1.svg',
+      '/yurt-icon-2.svg',
+      '/yurt-icon-3.svg'
+    ];
+
+    const links: HTMLLinkElement[] = [];
+    preloadImages.forEach(href => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = href;
+      document.head.appendChild(link);
+      links.push(link);
+    });
+
+    // Cleanup: remove preload links when component unmounts
+    return () => {
+      links.forEach(link => {
+        if (link.parentNode) {
+          link.parentNode.removeChild(link);
+        }
+      });
+    };
+  }, []);
+
   // Set viewport height once on mount with Chrome delay
   useEffect(() => {
     if (typeof window === 'undefined' || vhCalculated.current) return;
-    
+
     const setViewportHeight = () => {
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
       vhCalculated.current = true;
     };
-    
+
     // Set viewport height immediately to prevent layout shift
     setViewportHeight();
-    
+
     // Only add resize listener for desktop
     if (window.innerWidth >= 768) {
       window.addEventListener('resize', setViewportHeight);

@@ -66,12 +66,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         
-        {/* Preload critical images for faster FCP */}
-        <link rel="preload" as="image" href="/yurt-icon-welcome.svg" />
-        <link rel="preload" as="image" href="/yurt-icon-1.svg" />
-        <link rel="preload" as="image" href="/yurt-icon-2.svg" />
-        <link rel="preload" as="image" href="/yurt-icon-3.svg" />
-        
         {/* Inline critical CSS for faster FCP and LCP - optimized for hero section */}
         <style dangerouslySetInnerHTML={{
           __html: `
