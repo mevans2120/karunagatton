@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: "Shamanic healing in Eugene, Oregon and beyond through remote sessions.",
     images: [
       {
-        url: "/Homepage_Screenshot.png",
+        url: "/Homepage_Screenshot.webp",
         width: 1200,
         height: 630,
         alt: "Karuna Shamanic Healing",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Karuna | Shamanic Healing",
     description: "Shamanic healing in Eugene, Oregon and beyond through remote sessions.",
-    images: ["/Homepage_Screenshot.png"],
+    images: ["/Homepage_Screenshot.webp"],
   },
 };
 
@@ -57,14 +57,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ebGaramond.variable} ${unbounded.variable} font-serif`}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         
-        {/* DNS prefetch for faster font loading */}
+        {/* Resource hints for performance */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+
+        {/* Prefetch likely user navigation paths */}
+        <link rel="prefetch" href="/offerings" />
+        <link rel="prefetch" href="/about" />
+
+        {/* Preload critical hero image for homepage (WebP with fallback) */}
+        <link rel="preload" as="image" href="/Karuna_headshot.webp" type="image/webp" />
         
         {/* Inline critical CSS for faster FCP and LCP - optimized for hero section */}
         <style dangerouslySetInnerHTML={{
@@ -73,27 +81,7 @@ export default function RootLayout({
           `
         }} />
         
-        {/* Load critical fonts with optimized strategy for faster FCP */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=optional"
-          as="style"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=optional"
-        />
-        
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=optional"
-          as="style"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&display=optional"
-        />
-        
+        {/* Fonts are automatically optimized by Next.js through next/font/google */}
         {/* SVG favicon (primary) */}
         <link rel="icon" href="/drum-favicon.svg" type="image/svg+xml" sizes="any" />
         
@@ -123,7 +111,9 @@ export default function RootLayout({
       <body className="font-serif">
         <SunAnimationHandler />
         <Navigation />
-        {children}
+        <main role="main">
+          {children}
+        </main>
         <LazyAnalytics />
       </body>
     </html>

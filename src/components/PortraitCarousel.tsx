@@ -4,40 +4,40 @@ import { ChevronLeft, ChevronRight, X, Download } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import ViewAllButton from '@/components/ViewAllButton';
 
-// Sample portrait images – now using local images from the public folder
+// Sample portrait images – now using optimized WebP images
 const sampleImages = [
   {
     id: 1,
-    src: '/01_Yurt_In_Spring.jpg',
-    thumbnail: '/01_Yurt_In_Spring.jpg',
+    src: '/01_Yurt_In_Spring.webp',
+    thumbnail: '/01_Yurt_In_Spring-640w.webp',
     alt: 'Yurt in spring setting',
     title: 'Yurt in spring setting',
   },
   {
     id: 2,
-    src: '/02_Karuna_Yurt.png',
-    thumbnail: '/02_Karuna_Yurt.png',
+    src: '/02_Karuna_Yurt.webp',
+    thumbnail: '/02_Karuna_Yurt-640w.webp',
     alt: "Karuna's yurt",
     title: "Karuna's yurt",
   },
   {
     id: 3,
-    src: '/03_path_to_yurt.jpg',
-    thumbnail: '/03_path_to_yurt.jpg',
+    src: '/03_path_to_yurt.webp',
+    thumbnail: '/03_path_to_yurt-640w.webp',
     alt: 'Path leading to the yurt',
     title: 'Path leading to the yurt',
   },
   {
     id: 4,
-    src: '/04_Yurt from a distance.jpg',
-    thumbnail: '/04_Yurt from a distance.jpg',
+    src: '/04_Yurt from a distance.webp',
+    thumbnail: '/04_Yurt from a distance-640w.webp',
     alt: 'Yurt viewed from a distance',
     title: 'Yurt viewed from a distance',
   },
   {
     id: 5,
-    src: '/05_Purple house up close.JPG',
-    thumbnail: '/05_Purple house up close.JPG',
+    src: '/05_Purple house up close.webp',
+    thumbnail: '/05_Purple house up close-640w.webp',
     alt: 'Close-up view of the purple house',
     title: 'Close-up view of the purple house',
   }

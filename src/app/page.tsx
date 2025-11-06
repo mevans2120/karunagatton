@@ -550,7 +550,7 @@ export default function Home() {
               <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">
                 <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
                   <Image
-                    src="/Karuna_headshot.png"
+                    src="/Karuna_headshot.webp"
                     alt="Karuna Gatton"
                     width={192}
                     height={192}
