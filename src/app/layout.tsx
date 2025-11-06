@@ -63,18 +63,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         
-        {/* Resource hints for performance */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-
-        {/* Prefetch likely user navigation paths */}
-        <link rel="prefetch" href="/offerings" />
-        <link rel="prefetch" href="/about" />
-
-        {/* Preload critical hero image for homepage (WebP with fallback) */}
-        <link rel="preload" as="image" href="/Karuna_headshot.webp" type="image/webp" fetchPriority="high" />
+        {/* Preload critical hero image for homepage only */}
+        <link rel="preload" as="image" href="/Karuna_headshot.webp" type="image/webp" fetchPriority="high" imageSrcSet="/Karuna_headshot.webp 192w" imageSizes="192px" />
         
         {/* Inline critical CSS for faster FCP and LCP - optimized for hero section */}
         <style dangerouslySetInnerHTML={{
@@ -97,16 +87,34 @@ export default function RootLayout({
         {/* PNG fallback for browsers that don't support SVG favicons */}
         <link rel="icon" type="image/png" href="/drum-favicon.png" sizes="32x32" />
         
-        {/* Google Analytics - deferred for better performance */}
-        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-FV6QM4YNNN"></script>
-        <script defer dangerouslySetInnerHTML={{
+        {/* Google Analytics - loaded after user interaction for better performance */}
+        <script dangerouslySetInnerHTML={{
           __html: `
-            window.addEventListener('load', function() {
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-FV6QM4YNNN');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+
+            // Delay loading GA until after user interaction or 3 seconds
+            let gaLoaded = false;
+            function loadGA() {
+              if (gaLoaded) return;
+              gaLoaded = true;
+              const script = document.createElement('script');
+              script.async = true;
+              script.src = 'https://www.googletagmanager.com/gtag/js?id=G-FV6QM4YNNN';
+              document.head.appendChild(script);
+              script.onload = function() {
+                gtag('js', new Date());
+                gtag('config', 'G-FV6QM4YNNN');
+              };
+            }
+
+            // Load on user interaction
+            ['mousedown', 'touchstart', 'keydown', 'scroll'].forEach(function(event) {
+              window.addEventListener(event, loadGA, { once: true, passive: true });
             });
+
+            // Or after 3 seconds as fallback
+            setTimeout(loadGA, 3000);
           `
         }} />
       </head>

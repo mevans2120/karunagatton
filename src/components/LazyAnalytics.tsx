@@ -7,12 +7,31 @@ export default function LazyAnalytics() {
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    // Delay analytics loading until after initial page load
-    const timer = setTimeout(() => {
-      setShouldLoad(true);
-    }, 2000); // 2 second delay
+    let loaded = false;
 
-    return () => clearTimeout(timer);
+    // Load analytics after user interaction or after 3 seconds
+    const loadAnalytics = () => {
+      if (!loaded) {
+        loaded = true;
+        setShouldLoad(true);
+      }
+    };
+
+    // Load on first user interaction
+    const events = ['mousedown', 'touchstart', 'keydown', 'scroll'];
+    events.forEach(event => {
+      window.addEventListener(event, loadAnalytics, { once: true, passive: true });
+    });
+
+    // Or after 3 seconds as fallback
+    const timer = setTimeout(loadAnalytics, 3000);
+
+    return () => {
+      clearTimeout(timer);
+      events.forEach(event => {
+        window.removeEventListener(event, loadAnalytics);
+      });
+    };
   }, []);
 
   if (!shouldLoad) {

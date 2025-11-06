@@ -14,34 +14,7 @@ export default function Home() {
   const [selectedTestimonial, setSelectedTestimonial] = useState<{ quote: string; author: string } | null>(null);
   const vhCalculated = useRef(false);
   
-  // Preload critical SVG images for homepage
-  useEffect(() => {
-    const preloadImages = [
-      '/yurt-icon-welcome.svg',
-      '/yurt-icon-1.svg',
-      '/yurt-icon-2.svg',
-      '/yurt-icon-3.svg'
-    ];
-
-    const links: HTMLLinkElement[] = [];
-    preloadImages.forEach(href => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = href;
-      document.head.appendChild(link);
-      links.push(link);
-    });
-
-    // Cleanup: remove preload links when component unmounts
-    return () => {
-      links.forEach(link => {
-        if (link.parentNode) {
-          link.parentNode.removeChild(link);
-        }
-      });
-    };
-  }, []);
+  // Note: SVG preloading removed to reduce initial page load - SVGs load fast enough without preloading
 
   // Set viewport height once on mount with Chrome delay
   useEffect(() => {
@@ -66,43 +39,48 @@ export default function Home() {
   // Debug log for menu state
   
   useEffect(() => {
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15,
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        // Skip hero section elements to prevent repaints
-        if (entry.target.closest('section.hero-section')) {
-          return;
-        }
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
+    // Delay non-critical animations until after initial render
+    const timeoutId = setTimeout(() => {
+      // Intersection Observer for fade-in animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '50px', // Start animation slightly before element is visible
+        threshold: 0.1, // Reduced threshold for earlier trigger
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Stop observing once visible to improve performance
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const fadeElements = document.querySelectorAll('.fade-in-section');
+      fadeElements.forEach(element => {
+        observer.observe(element);
       });
-    }, observerOptions);
-    
-    const fadeElements = document.querySelectorAll('.fade-in-section:not(.hero-section *)');
-    fadeElements.forEach(element => {
-      observer.observe(element);
-    });
-    
+
+      return () => {
+        fadeElements.forEach(element => {
+          observer.unobserve(element);
+        });
+      };
+    }, 100); // Delay to prioritize initial render
+
     // Ensure menu can be closed with escape key
     const handleEscKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isMenuOpen) {
         setIsMenuOpen(false);
       }
     };
-    
+
     document.addEventListener('keydown', handleEscKey);
-    
+
     return () => {
-      fadeElements.forEach(element => {
-        observer.unobserve(element);
-      });
+      clearTimeout(timeoutId);
       document.removeEventListener('keydown', handleEscKey);
     };
   }, [isMenuOpen]);

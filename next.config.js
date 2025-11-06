@@ -16,7 +16,10 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    optimizeCss: true, // Enable CSS optimization with critters
   },
+  // Production source maps disabled for smaller bundle
+  productionBrowserSourceMaps: false,
   // Image optimization configuration
   images: {
     formats: ['image/webp', 'image/avif'],
