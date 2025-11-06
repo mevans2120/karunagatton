@@ -555,7 +555,8 @@ export default function Home() {
                     width={192}
                     height={192}
                     className="w-full h-full object-cover"
-                    priority={false}
+                    priority={true}
+                    fetchPriority="high"
                     sizes="(max-width: 768px) 192px, 192px"
                   />
                 </div>

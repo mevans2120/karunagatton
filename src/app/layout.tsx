@@ -9,19 +9,21 @@ import "./globals.css";
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
   variable: "--font-eb-garamond",
-  display: "swap",
+  display: "optional", // Changed from "swap" to "optional" for better FCP
   weight: ["400", "500", "600"],
   preload: true,
   fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: true, // Enable automatic font metric adjustment
 });
 
 const unbounded = Unbounded({
   subsets: ["latin"],
   variable: "--font-unbounded",
-  display: "swap",
+  display: "optional", // Changed from "swap" to "optional" for better FCP
   weight: ["300", "400", "500", "600"],
   preload: true,
   fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+  adjustFontFallback: true, // Enable automatic font metric adjustment
 });
 
 export const metadata: Metadata = {
@@ -72,7 +74,7 @@ export default function RootLayout({
         <link rel="prefetch" href="/about" />
 
         {/* Preload critical hero image for homepage (WebP with fallback) */}
-        <link rel="preload" as="image" href="/Karuna_headshot.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/Karuna_headshot.webp" type="image/webp" fetchPriority="high" />
         
         {/* Inline critical CSS for faster FCP and LCP - optimized for hero section */}
         <style dangerouslySetInnerHTML={{

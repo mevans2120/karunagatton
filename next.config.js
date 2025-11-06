@@ -7,6 +7,10 @@ const nextConfig = {
     // Remove console logs in production for further optimization
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Target modern browsers for smaller bundle size
+  env: {
+    NEXT_PUBLIC_BROWSERSLIST_TARGETS: '> 0.5% and not dead, Chrome >= 85, Firefox >= 79, Safari >= 14, Edge >= 85, not IE 11',
+  },
   // Optimize fonts and performance
   optimizeFonts: true,
   // Enable experimental features for better performance
