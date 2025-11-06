@@ -506,7 +506,7 @@ export default function Home() {
                 Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
               </p>
               <Link href="/drum-circle" className="inline-flex items-center text-accent hover:text-accent/80 transition duration-300 fade-in-section">
-                Learn More
+                Learn More About Monthly Drum Circle
                 <ChevronRight size={20} className="ml-1" />
               </Link>
             </div>

@@ -27,6 +27,7 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.karunagatton.com'),
   title: "Karuna | Shamanic Healing",
   description: "Shamanic healing in Eugene, Oregon and beyond through remote sessions.",
   openGraph: {
