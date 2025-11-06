@@ -26,8 +26,8 @@ export default function Footer() {
                 src="/Group 5.svg"
                 alt="Drum logo"
                 width={24}
-                height={24}
-                className="w-6 h-6 mr-3"
+                height={19}
+                className="w-6 h-auto mr-3"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
               Karuna

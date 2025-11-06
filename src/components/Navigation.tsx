@@ -92,8 +92,8 @@ export default function Navigation() {
               src="/Group 5.svg"
               alt="Drum logo"
               width={32}
-              height={32}
-              className="w-8 h-8 mr-3"
+              height={26}
+              className="w-8 h-auto mr-3"
               style={{ filter: 'brightness(0) invert(1)' }}
               priority
             />

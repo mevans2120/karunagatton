@@ -51,10 +51,12 @@ export default function NotFound() {
         <div className="max-w-4xl mx-auto text-center">
           {/* 404 Header */}
           <div className="mb-12">
-            <img 
-              src="/Group 5.svg" 
-              alt="Drum logo" 
-              className="w-16 h-16 mx-auto mb-6 opacity-60"
+            <img
+              src="/Group 5.svg"
+              alt="Drum logo"
+              className="w-16 h-auto mx-auto mb-6 opacity-60"
+              width="64"
+              height="51"
             />
             <h1 className="text-8xl md:text-9xl font-light text-primary mb-4 font-heading">
               404
