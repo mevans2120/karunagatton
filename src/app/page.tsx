@@ -212,6 +212,7 @@ export default function Home() {
                   width={64}
                   height={64}
                   className="w-full h-full"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -408,6 +409,7 @@ export default function Home() {
                       alt={`${offering.title} icon`}
                       width={86}
                       height={86}
+                      loading="lazy"
                       style={{
                         filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)',
                         maxWidth: '100%',
@@ -533,8 +535,7 @@ export default function Home() {
                     width={192}
                     height={192}
                     className="w-full h-full object-cover"
-                    priority={true}
-                    fetchPriority="high"
+                    loading="lazy"
                     sizes="(max-width: 768px) 192px, 192px"
                   />
                 </div>

@@ -63,9 +63,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        
-        {/* Preload critical hero image for homepage only */}
-        <link rel="preload" as="image" href="/Karuna_headshot.webp" type="image/webp" fetchPriority="high" imageSrcSet="/Karuna_headshot.webp 192w" imageSizes="192px" />
+
+        {/* Preconnect to Vercel Analytics for faster loading */}
+        <link rel="preconnect" href="https://vitals.vercel-insights.com" crossOrigin="" />
         
         {/* Inline critical CSS for faster FCP and LCP - optimized for hero section */}
         <style dangerouslySetInnerHTML={{

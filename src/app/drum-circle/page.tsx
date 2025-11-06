@@ -108,7 +108,7 @@ export default function DrumCircle() {
                     width={600}
                     height={400}
                     className="w-full h-full object-cover"
-                    priority={true}
+                    loading="lazy"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>

@@ -143,6 +143,7 @@ export default function Offerings() {
                       width={96}
                       height={96}
                       className="w-full h-full"
+                      loading="lazy"
                       style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
                     />
                   </div>
@@ -184,6 +185,7 @@ export default function Offerings() {
                       width={96}
                       height={96}
                       className="w-full h-full"
+                      loading="lazy"
                       style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
                     />
                   </div>
@@ -215,6 +217,7 @@ export default function Offerings() {
                 width={144}
                 height={144}
                 className="w-full h-full"
+                loading="lazy"
                 style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
                 unoptimized={true}
               />
