@@ -5,6 +5,7 @@ import { ChevronRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import Heading from '@/components/ui/Heading';
 
 export default function Offerings() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -119,7 +120,7 @@ export default function Offerings() {
           <div className="sun-spot sun-spot-offerings z-10"></div>
           {/* Hero Content: Empowerment Ceremonies header and paragraph */}
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-48">
-            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Empowerment Ceremony</h1>
+            <Heading level={1} variant="hero" className="mb-8">Empowerment Ceremony</Heading>
             <p className="text-xl max-w-3xl mb-6">
               Karuna offers a 3.5 hour healing empowerment ceremony focused on soul healing from past traumas, energy restoration, and spiritual empowerment. Each ceremony, which includes all of the activities below, creates a sacred space for profound transformation.
             </p>
@@ -169,7 +170,7 @@ export default function Offerings() {
         <section className="py-20 bg-purple-50 relative">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="fade-in-section">
-              <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 font-heading">Other Offerings</h2>
+              <Heading level={2} variant="section" align="center" color="primary" className="mb-10">Other Offerings</Heading>
               <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
                 Beyond the core empowerment ceremony, Karuna offers specialized shamanic services to address specific life situations and spaces.
               </p>

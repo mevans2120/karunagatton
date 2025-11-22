@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import Heading from '@/components/ui/Heading';
 
 export default function About() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -76,9 +77,9 @@ export default function About() {
             <div className="sun-spot sun-spot-about z-10"></div>
             {/* Hero Content */}
             <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-              <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">About</h1>
+              <Heading level={1} variant="hero" className="mb-8">About</Heading>
               <p className="text-xl max-w-3xl mb-6">
-              Karuna found deep healing through Shamanic practices. She was guided first by Spirit, then refined her practice through formal training. What began as a personal journey evolved into a calling. 
+              Karuna found deep healing through Shamanic practices. She was guided first by Spirit, then refined her practice through formal training. What began as a personal journey evolved into a calling.
               </p>
             </div>
             {/* Wavy white bar at the bottom, in front of sun spot */}
@@ -104,7 +105,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="bg-white p-8 rounded-lg shadow-sm">
-                  <h2 className="text-3xl font-light mb-6 font-heading text-primary">My Journey</h2>
+                  <Heading level={2} variant="subsection" color="primary" className="mb-6">My Journey</Heading>
                   <p className="text-lg leading-relaxed mb-6">
                     Like many people who are drawn to Shamanic healing, my journey began after a car accident that left me with PTSD.
                     For over a year, I struggled with intense anxiety and nightly panic attacks.

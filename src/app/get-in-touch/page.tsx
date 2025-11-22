@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import Heading from '@/components/ui/Heading';
 
 export default function GetInTouch() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -70,7 +71,7 @@ export default function GetInTouch() {
           <div className="sun-spot sun-spot-contact z-10"></div>
           {/* Hero Content */}
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Get in Touch</h1>
+            <Heading level={1} variant="hero" className="mb-8">Get in Touch</Heading>
             <p className="text-xl max-w-3xl mb-6">
               Whether you have questions, want to schedule a session, or need directions to the yurt — Karuna is here to connect with you.
             </p>
@@ -234,7 +235,7 @@ export default function GetInTouch() {
                 style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
               />
             </div>
-            <h2 className="text-3xl font-light text-primary mb-6 font-heading">Visit the Yurt</h2>
+            <Heading level={2} variant="subsection" color="primary" className="mb-6">Visit the Yurt</Heading>
             <p className="text-lg text-gray-700 mb-8">
               Karuna's yurt is nestled in a peaceful part of Eugene, Oregon. Directions will be provided upon scheduling to protect the privacy and sacredness of the space.
             </p>

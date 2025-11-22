@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Heading from '@/components/ui/Heading';
 
 export default function DrumCircle() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -83,7 +84,7 @@ export default function DrumCircle() {
           <div className="sun-spot sun-spot-drum-circle z-10"></div>
           {/* Hero Content */}
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-            <h1 className="text-5xl md:text-7xl font-light mb-8 font-heading">Drum Circle</h1>
+            <Heading level={1} variant="hero" className="mb-8">Drum Circle</Heading>
             <p className="text-xl max-w-3xl mb-6">
               Join the 30 year running Casa del Sol
               Drum and Journey Circle for healing and connection.
@@ -114,7 +115,7 @@ export default function DrumCircle() {
                 </div>
               </div>
               <div className="bg-white p-8 rounded-lg shadow-sm flex flex-col justify-center w-full">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">New to the Journey Process?</h2>
+                <Heading level={2} variant="subsection" color="primary" className="mb-6">New to the Journey Process?</Heading>
                 <p className="space-y-4 mb-8">
                   Experience the transformative power of communal drumming in a supportive and welcoming environment. You may come 30 minutes early for instruction to help you begin your practice.
                 </p>
@@ -136,7 +137,7 @@ export default function DrumCircle() {
             <div className="space-y-24 max-w-4xl mx-auto">
               {/* Location Card */}
               <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section mt-10">
-                <h2 className="text-3xl font-light mb-6 font-heading text-primary">Location & Details</h2>
+                <Heading level={2} variant="subsection" color="primary" className="mb-6">Location & Details</Heading>
                 <p className="text-lg leading-relaxed mb-6">
                   The drum circle takes place in Karuna's healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings. Suggested donation is $10 - 20 dollars.
                 </p>

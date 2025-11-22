@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import Heading from '@/components/ui/Heading';
 
 export default function NotFound() {
   const mainPages = [
@@ -58,12 +59,12 @@ export default function NotFound() {
               width="64"
               height="51"
             />
-            <h1 className="text-8xl md:text-9xl font-light text-primary mb-4 font-heading">
+            <Heading level={1} color="primary" className="text-8xl md:text-9xl mb-4">
               404
-            </h1>
-            <h2 className="text-2xl md:text-3xl font-light text-gray-700 mb-4 font-heading">
+            </Heading>
+            <Heading level={2} variant="subsection" color="gray" className="mb-4">
               Path Not Found
-            </h2>
+            </Heading>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
               The page you're looking for seems to have wandered off the beaten path. 
               Let us guide you back to where healing and wisdom await.

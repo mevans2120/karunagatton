@@ -8,6 +8,7 @@ import LazyPortraitCarousel from '@/components/LazyPortraitCarousel';
 import Footer from '@/components/Footer';
 import TestimonialModal from '@/components/TestimonialModal';
 import Button from '@/components/ui/Button';
+import Heading from '@/components/ui/Heading';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -173,8 +174,11 @@ export default function Home() {
             backfaceVisibility: 'hidden',
             willChange: 'transform'
           }}>
-            <h1
-              className="text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wider mb-4 leading-tight font-heading"
+            <Heading
+              level={1}
+              variant="hero"
+              color="white"
+              className="mb-4"
               style={{
                 willChange: 'auto',
                 transform: 'translateZ(0)',
@@ -183,10 +187,15 @@ export default function Home() {
               }}
             >
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
-            </h1>
-            <h2 className="text-xl md:text-2xl text-white font-light tracking-wide max-w-2xl mb-8">
+            </Heading>
+            <Heading
+              level={2}
+              variant="subtitle"
+              color="white"
+              className="max-w-2xl mb-8"
+            >
               A place where spirit moves through ancient ceremony and great mystery
-            </h2>
+            </Heading>
             <Button
               href="/offerings"
               variant="ghost"
@@ -215,9 +224,9 @@ export default function Home() {
                 />
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-10 fade-in-section font-heading">
+            <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-10">
               Welcome
-            </h2>
+            </Heading>
             <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
               You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and great mystery. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
             </p>
@@ -247,7 +256,9 @@ export default function Home() {
           </div>
           
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl md:text-5xl text-center font-light text-primary mb-8 fade-in-section font-heading">Visiting Karuna</h2>
+            <Heading level={1} variant="section" align="center" color="primary" fadeIn className="mb-8">
+              Visiting Karuna
+            </Heading>
             
             <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section max-w-3xl mx-auto">
               She works out of her yurt, between her purple house and Hendricks Park's urban forest in Eugene
@@ -397,7 +408,9 @@ export default function Home() {
         {/* Offerings Teaser */}
         <section id="offerings" className="py-20 bg-white relative overflow-hidden">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section font-heading">Empowerment Ceremonies Include</h2>
+            <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-16">
+              Empowerment Ceremonies Include
+            </Heading>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {offeringTeasers.map((offering, index) => (
@@ -446,7 +459,9 @@ export default function Home() {
           <div className="absolute bottom-10 right-10 text-8xl text-secondary opacity-10">❞</div>
           
           <div className="container mx-auto px-4 max-w-6xl relative z-10">
-            <h2 className="text-3xl md:text-4xl text-center font-light text-primary mb-16 fade-in-section font-heading">What the community says</h2>
+            <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-16">
+              What the community says
+            </Heading>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
@@ -502,7 +517,9 @@ export default function Home() {
         <section className="bg-primary text-white py-20" style={{ marginTop: '-1px' }}>
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-light mb-6 fade-in-section font-heading">Monthly Drum Circle</h2>
+              <Heading level={2} variant="section" fadeIn className="mb-6">
+                Monthly Drum Circle
+              </Heading>
               <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section max-w-2xl mx-auto">
                 Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
               </p>
@@ -540,7 +557,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="md:w-2/3">
-                <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-800 fade-in-section font-heading">About Karuna</h2>
+                <Heading level={2} variant="section" fadeIn color="gray" className="mb-6">
+                  About Karuna
+                </Heading>
                 <p className="text-lg leading-relaxed mb-6 text-gray-700 fade-in-section">
                   Karuna Gatton brings decades of experience in shamanic healing traditions. Her approach is gentle yet powerful, focusing on empowering her clients through deep connection with spirit and nature.
                 </p>
