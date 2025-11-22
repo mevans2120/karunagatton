@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Heading from '@/components/ui/Heading';
+import Card from '@/components/ui/Card';
 
 export default function DrumCircle() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -114,7 +115,7 @@ export default function DrumCircle() {
                   />
                 </div>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm flex flex-col justify-center w-full">
+              <Card className="flex flex-col justify-center w-full">
                 <Heading level={2} variant="subsection" color="primary" className="mb-6">New to the Journey Process?</Heading>
                 <p className="space-y-4 mb-8">
                   Experience the transformative power of communal drumming in a supportive and welcoming environment. You may come 30 minutes early for instruction to help you begin your practice.
@@ -130,13 +131,13 @@ export default function DrumCircle() {
                   Get in touch
                   <ChevronRight size={20} className="ml-1" />
                 </Link>
-              </div>
+              </Card>
             </div>
 
             {/* Stacked Cards */}
             <div className="space-y-24 max-w-4xl mx-auto">
               {/* Location Card */}
-              <div className="bg-white p-8 rounded-lg shadow-sm fade-in-section mt-10">
+              <Card fadeIn className="mt-10">
                 <Heading level={2} variant="subsection" color="primary" className="mb-6">Location & Details</Heading>
                 <p className="text-lg leading-relaxed mb-6">
                   The drum circle takes place in Karuna's healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings. Suggested donation is $10 - 20 dollars.
@@ -152,7 +153,7 @@ export default function DrumCircle() {
                   </div>
                   <p className="text-sm text-gray-600 mb-0">Please arrive 10-15 minutes early to settle in</p>
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </section>

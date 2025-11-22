@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import Heading from '@/components/ui/Heading';
+import Card from '@/components/ui/Card';
 
 export default function Offerings() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -136,7 +137,7 @@ export default function Offerings() {
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {empowermentCeremonies.map((ceremony, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm flex flex-col items-center text-center fade-in-section">
+                <Card key={index} alignment="center" fadeIn>
                   <div className="w-24 h-24 mb-6">
                     <Image
                       src={ceremony.icon}
@@ -150,7 +151,7 @@ export default function Offerings() {
                   </div>
                   <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{ceremony.title}</h3>
                   <p className="text-gray-600">{ceremony.description}</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>
@@ -178,7 +179,7 @@ export default function Offerings() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {otherOfferings.map((offering, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg shadow-sm flex flex-col items-center text-center fade-in-section">
+                <Card key={index} alignment="center" fadeIn>
                   <div className="w-24 h-24 mb-6">
                     <Image
                       src={offering.icon}
@@ -192,7 +193,7 @@ export default function Offerings() {
                   </div>
                   <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{offering.title}</h3>
                   <p className="text-gray-600">{offering.description}</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

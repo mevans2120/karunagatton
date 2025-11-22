@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import TestimonialModal from '@/components/TestimonialModal';
 import Button from '@/components/ui/Button';
 import Heading from '@/components/ui/Heading';
+import Card from '@/components/ui/Card';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -465,9 +466,10 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white p-8 rounded-lg shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer group relative fade-in-section"
+                <Card
+                  key={index}
+                  variant="interactive"
+                  fadeIn
                   onClick={() => setSelectedTestimonial(testimonial)}
                 >
                   <div className="flex flex-col h-full">
@@ -491,7 +493,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

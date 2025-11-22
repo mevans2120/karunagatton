@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import Heading from '@/components/ui/Heading';
+import Card from '@/components/ui/Card';
 
 export default function GetInTouch() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -84,7 +85,7 @@ export default function GetInTouch() {
         
         {/* Contact Form */}
         <section className="py-20 px-4 bg-gray-50">
-          <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-8 fade-in-section">
+          <Card variant="elevated" fadeIn className="max-w-xl mx-auto">
             <style jsx>{`
               /* Formspree styles */
               .fs-form {
@@ -208,7 +209,7 @@ export default function GetInTouch() {
                 <button className="fs-button" type="submit">Submit</button>
               </div>
             </form>
-          </div>
+          </Card>
         </section>
         
         {/* Divider Wave */}

@@ -7,6 +7,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Heading from '@/components/ui/Heading';
+import Card from '@/components/ui/Card';
 
 export default function About() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -104,7 +105,7 @@ export default function About() {
                     />
                   </div>
                 </div>
-                <div className="bg-white p-8 rounded-lg shadow-sm">
+                <Card>
                   <Heading level={2} variant="subsection" color="primary" className="mb-6">My Journey</Heading>
                   <p className="text-lg leading-relaxed mb-6">
                     Like many people who are drawn to Shamanic healing, my journey began after a car accident that left me with PTSD.
@@ -165,7 +166,7 @@ export default function About() {
                     Connect with me
                     <ChevronRight size={20} className="ml-1" />
                   </Link>
-                </div>
+                </Card>
               </div>
             </div>
           </section>
