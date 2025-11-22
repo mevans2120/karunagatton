@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronRight, ChevronLeft, Calendar, Clock, MapPin, X, Menu } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, Clock, MapPin, X, Menu } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import LazyPortraitCarousel from '@/components/LazyPortraitCarousel';
-import ViewAllButton from '@/components/ViewAllButton';
 import Footer from '@/components/Footer';
 import TestimonialModal from '@/components/TestimonialModal';
+import Button from '@/components/ui/Button';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -187,17 +187,16 @@ export default function Home() {
             <h2 className="text-xl md:text-2xl text-white font-light tracking-wide max-w-2xl mb-8">
               A place where spirit moves through ancient ceremony and great mystery
             </h2>
-            <Link 
-              href="/offerings" 
-              className="inline-flex items-center px-6 py-3 bg-transparent text-white border border-white rounded-full backdrop-blur-sm hover:bg-white hover:bg-opacity-10 transition duration-300"
+            <Button
+              href="/offerings"
+              variant="ghost"
               style={{
                 position: 'relative',
                 zIndex: 40
               }}
             >
               View Offerings
-              <ChevronRight size={20} className="ml-2" />
-            </Link>
+            </Button>
           </div>
         </section>
         
@@ -424,9 +423,9 @@ export default function Home() {
             </div>
             
             <div className="text-center mt-12 fade-in-section">
-              <Link href="/offerings" passHref legacyBehavior>
-                <ViewAllButton>Learn More</ViewAllButton>
-              </Link>
+              <Button href="/offerings">
+                Learn More
+              </Button>
             </div>
           </div>
         </section>

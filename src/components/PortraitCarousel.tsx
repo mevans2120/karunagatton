@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X, Download } from 'lucide-react';
 import { createPortal } from 'react-dom';
-import ViewAllButton from '@/components/ViewAllButton';
+import Button from '@/components/ui/Button';
 
 // Sample portrait images – now using optimized WebP images
 const sampleImages = [
@@ -102,7 +102,9 @@ const PortraitCarousel = ({ images = sampleImages }) => {
               ))}
             </div>
             <div className="text-center mt-6">
-              <ViewAllButton onClick={() => openModal(0)} />
+              <Button onClick={() => openModal(0)}>
+                View All
+              </Button>
             </div>
           </>
         )}
