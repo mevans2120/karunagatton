@@ -10,7 +10,7 @@ import React from 'react';
  */
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
-export type HeadingVariant = 'hero' | 'section' | 'subsection' | 'subtitle' | 'default';
+export type HeadingVariant = 'hero' | 'hero-sm' | 'section' | 'subsection' | 'subtitle' | 'default';
 export type HeadingAlign = 'left' | 'center' | 'right';
 
 export interface HeadingProps {
@@ -37,7 +37,7 @@ export interface HeadingProps {
  */
 const getVariantClasses = (variant: HeadingVariant, level: HeadingLevel): string => {
   const variants = {
-    // Hero variant - large, prominent headings for page headers
+    // Hero variant - large, prominent headings for page headers (homepage)
     hero: {
       1: 'text-5xl md:text-7xl lg:text-8xl tracking-wider leading-tight',
       2: 'text-4xl md:text-6xl lg:text-7xl tracking-wide leading-tight',
@@ -45,6 +45,15 @@ const getVariantClasses = (variant: HeadingVariant, level: HeadingLevel): string
       4: 'text-2xl md:text-4xl lg:text-5xl',
       5: 'text-xl md:text-3xl lg:text-4xl',
       6: 'text-lg md:text-2xl lg:text-3xl',
+    },
+    // Hero small variant - 25% smaller for subpage headers
+    'hero-sm': {
+      1: 'text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight',
+      2: 'text-3xl md:text-5xl lg:text-6xl tracking-wide leading-tight',
+      3: 'text-2xl md:text-4xl lg:text-5xl tracking-wide leading-tight',
+      4: 'text-xl md:text-3xl lg:text-4xl',
+      5: 'text-lg md:text-2xl lg:text-3xl',
+      6: 'text-base md:text-xl lg:text-2xl',
     },
     // Section variant - standard section headings
     section: {

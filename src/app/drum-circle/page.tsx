@@ -84,7 +84,7 @@ export default function DrumCircle() {
           <div className="sun-spot sun-spot-drum-circle z-10"></div>
           {/* Hero Content */}
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-            <Heading level={1} variant="hero" className="mb-8">Drum Circle</Heading>
+            <Heading level={1} variant="hero-sm" className="mb-8">Drum Circle</Heading>
             <p className="text-xl max-w-3xl mb-6">
               Join the 30 year running Casa del Sol
               Drum and Journey Circle for healing and connection.

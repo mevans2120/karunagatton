@@ -71,7 +71,7 @@ export default function GetInTouch() {
           <div className="sun-spot sun-spot-contact z-10"></div>
           {/* Hero Content */}
           <div className="container mx-auto px-4 relative z-20 text-left py-24 pt-36">
-            <Heading level={1} variant="hero" className="mb-8">Get in Touch</Heading>
+            <Heading level={1} variant="hero-sm" className="mb-8">Get in Touch</Heading>
             <p className="text-xl max-w-3xl mb-6">
               Whether you have questions, want to schedule a session, or need directions to the yurt — Karuna is here to connect with you.
             </p>
