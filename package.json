@@ -25,6 +25,7 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
@@ -33,6 +34,7 @@
     "cssnano": "^7.1.2",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.1.0",
+    "playwright": "^1.56.1",
     "postcss": "^8.4.35",
     "sharp": "^0.34.5",
     "sharp-cli": "^5.2.0",
