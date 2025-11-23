@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Footer from '@/components/Footer';
 import Heading from '@/components/ui/Heading';
 import Card from '@/components/ui/Card';
+import Section from '@/components/ui/Section';
 
 export default function GetInTouch() {
   const [isLoaded, setIsLoaded] = useState(false);

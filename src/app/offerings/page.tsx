@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Footer from '@/components/Footer';
 import Heading from '@/components/ui/Heading';
 import Card from '@/components/ui/Card';
+import Section from '@/components/ui/Section';
 
 export default function Offerings() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -133,29 +134,27 @@ export default function Offerings() {
         </section>
         
         {/* Empowerment Ceremonies Section: just the cards, no subhead or description */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {empowermentCeremonies.map((ceremony, index) => (
-                <Card key={index} alignment="center" fadeIn>
-                  <div className="w-24 h-24 mb-6">
-                    <Image
-                      src={ceremony.icon}
-                      alt={ceremony.title}
-                      width={96}
-                      height={96}
-                      className="w-full h-full"
-                      loading="lazy"
-                      style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
-                    />
-                  </div>
-                  <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{ceremony.title}</h3>
-                  <p className="text-gray-600">{ceremony.description}</p>
-                </Card>
-              ))}
-            </div>
+        <Section background="bg-gray-50" maxWidth="max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {empowermentCeremonies.map((ceremony, index) => (
+              <Card key={index} alignment="center" fadeIn>
+                <div className="w-24 h-24 mb-6">
+                  <Image
+                    src={ceremony.icon}
+                    alt={ceremony.title}
+                    width={96}
+                    height={96}
+                    className="w-full h-full"
+                    loading="lazy"
+                    style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
+                  />
+                </div>
+                <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{ceremony.title}</h3>
+                <p className="text-gray-600">{ceremony.description}</p>
+              </Card>
+            ))}
           </div>
-        </section>
+        </Section>
         
         {/* Divider Wave */}
         <section className="bg-gray-50 relative overflow-hidden">
@@ -168,36 +167,34 @@ export default function Offerings() {
         </section>
         
         {/* Other Offerings Section */}
-        <section className="py-20 bg-purple-50 relative">
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div className="fade-in-section">
-              <Heading level={2} variant="section" align="center" color="primary" className="mb-10">Other Offerings</Heading>
-              <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
-                Beyond the core empowerment ceremony, Karuna offers specialized shamanic services to address specific life situations and spaces.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {otherOfferings.map((offering, index) => (
-                <Card key={index} alignment="center" fadeIn>
-                  <div className="w-24 h-24 mb-6">
-                    <Image
-                      src={offering.icon}
-                      alt={offering.title}
-                      width={96}
-                      height={96}
-                      className="w-full h-full"
-                      loading="lazy"
-                      style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
-                    />
-                  </div>
-                  <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{offering.title}</h3>
-                  <p className="text-gray-600">{offering.description}</p>
-                </Card>
-              ))}
-            </div>
+        <Section background="bg-purple-50" className="relative" maxWidth="max-w-5xl">
+          <div className="fade-in-section">
+            <Heading level={2} variant="section" align="center" color="primary" className="mb-10">Other Offerings</Heading>
+            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 max-w-3xl mx-auto">
+              Beyond the core empowerment ceremony, Karuna offers specialized shamanic services to address specific life situations and spaces.
+            </p>
           </div>
-        </section>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {otherOfferings.map((offering, index) => (
+              <Card key={index} alignment="center" fadeIn>
+                <div className="w-24 h-24 mb-6">
+                  <Image
+                    src={offering.icon}
+                    alt={offering.title}
+                    width={96}
+                    height={96}
+                    className="w-full h-full"
+                    loading="lazy"
+                    style={{ filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)' }}
+                  />
+                </div>
+                <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{offering.title}</h3>
+                <p className="text-gray-600">{offering.description}</p>
+              </Card>
+            ))}
+          </div>
+        </Section>
         
         {/* Bottom Wave */}
         <section className="bg-purple-50 relative overflow-hidden">

@@ -8,6 +8,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Heading from '@/components/ui/Heading';
 import Card from '@/components/ui/Card';
+import Section from '@/components/ui/Section';
 
 export default function DrumCircle() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -98,65 +99,63 @@ export default function DrumCircle() {
         </section>
 
         {/* Main Content */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-2 max-w-4xl">
-            {/* Image and circle info sections */}
-            <div className="grid md:grid-cols-2 gap-4 mb-10 mt-[50px] fade-in-section">
-              <div className="relative w-full">
-                <div className="w-full h-[400px] rounded-lg overflow-hidden">
-                  <Image
-                    src="/Photo of Yurt.webp"
-                    alt="Karuna's Healing Yurt"
-                    width={600}
-                    height={400}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
+        <Section spacing="sm" background="bg-gray-50" maxWidth="max-w-4xl" containerClassName="px-2">
+          {/* Image and circle info sections */}
+          <div className="grid md:grid-cols-2 gap-4 mb-10 mt-[50px] fade-in-section">
+            <div className="relative w-full">
+              <div className="w-full h-[400px] rounded-lg overflow-hidden">
+                <Image
+                  src="/Photo of Yurt.webp"
+                  alt="Karuna's Healing Yurt"
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
-              <Card className="flex flex-col justify-center w-full">
-                <Heading level={2} variant="subsection" color="primary" className="mb-6">New to the Journey Process?</Heading>
-                <p className="space-y-4 mb-8">
-                  Experience the transformative power of communal drumming in a supportive and welcoming environment. You may come 30 minutes early for instruction to help you begin your practice.
-                </p>
-                <div className="space-y-4 mb-8">
-                 
-                  <div className="flex items-start">
-                    <span className="text-lg leading-relaxed">We reccomend an appointment for newcomers to learn more about the Journey Process:</span>
-                  </div>
-                
-                </div>
-                <Link href="/get-in-touch" className="inline-flex items-center text-primary hover:text-accent transition duration-300">
-                  Get in touch
-                  <ChevronRight size={20} className="ml-1" />
-                </Link>
-              </Card>
             </div>
+            <Card className="flex flex-col justify-center w-full">
+              <Heading level={2} variant="subsection" color="primary" className="mb-6">New to the Journey Process?</Heading>
+              <p className="space-y-4 mb-8">
+                Experience the transformative power of communal drumming in a supportive and welcoming environment. You may come 30 minutes early for instruction to help you begin your practice.
+              </p>
+              <div className="space-y-4 mb-8">
 
-            {/* Stacked Cards */}
-            <div className="space-y-24 max-w-4xl mx-auto">
-              {/* Location Card */}
-              <Card fadeIn className="mt-10">
-                <Heading level={2} variant="subsection" color="primary" className="mb-6">Location & Details</Heading>
-                <p className="text-lg leading-relaxed mb-6">
-                  The drum circle takes place in Karuna's healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings. Suggested donation is $10 - 20 dollars.
-                </p>
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <div className="mb-4">
-                    <p className="mb-1">First Tuesday of the month</p>
-                    <p className="mb-0">7:30pm - 9:30pm</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="mb-1">2826 Floral Hill Drive</p>
-                    <p className="mb-0">Eugene, Oregon 97405</p>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-0">Please arrive 10-15 minutes early to settle in</p>
+                <div className="flex items-start">
+                  <span className="text-lg leading-relaxed">We reccomend an appointment for newcomers to learn more about the Journey Process:</span>
                 </div>
-              </Card>
-            </div>
+
+              </div>
+              <Link href="/get-in-touch" className="inline-flex items-center text-primary hover:text-accent transition duration-300">
+                Get in touch
+                <ChevronRight size={20} className="ml-1" />
+              </Link>
+            </Card>
           </div>
-        </section>
+
+          {/* Stacked Cards */}
+          <div className="space-y-24 max-w-4xl mx-auto">
+            {/* Location Card */}
+            <Card fadeIn className="mt-10">
+              <Heading level={2} variant="subsection" color="primary" className="mb-6">Location & Details</Heading>
+              <p className="text-lg leading-relaxed mb-6">
+                The drum circle takes place in Karuna's healing yurt in Eugene, Oregon. The space is designed to create an intimate and supportive environment for group gatherings. Suggested donation is $10 - 20 dollars.
+              </p>
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="mb-4">
+                  <p className="mb-1">First Tuesday of the month</p>
+                  <p className="mb-0">7:30pm - 9:30pm</p>
+                </div>
+                <div className="mb-4">
+                  <p className="mb-1">2826 Floral Hill Drive</p>
+                  <p className="mb-0">Eugene, Oregon 97405</p>
+                </div>
+                <p className="text-sm text-gray-600 mb-0">Please arrive 10-15 minutes early to settle in</p>
+              </div>
+            </Card>
+          </div>
+        </Section>
 
         {/* Footer */}
         <Footer />

@@ -10,6 +10,7 @@ import TestimonialModal from '@/components/TestimonialModal';
 import Button from '@/components/ui/Button';
 import Heading from '@/components/ui/Heading';
 import Card from '@/components/ui/Card';
+import Section from '@/components/ui/Section';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -211,31 +212,29 @@ export default function Home() {
         </section>
         
         {/* Welcome Message */}
-        <section id="welcome" className="py-20 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="relative fade-in-section">
-              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-30">
-                <Image
-                  src="/yurt-icon-welcome.svg"
-                  alt="Yurt icon"
-                  width={64}
-                  height={64}
-                  className="w-full h-full"
-                  loading="lazy"
-                />
-              </div>
+        <Section id="welcome" background="bg-gray-50" maxWidth="max-w-4xl">
+          <div className="relative fade-in-section">
+            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-30">
+              <Image
+                src="/yurt-icon-welcome.svg"
+                alt="Yurt icon"
+                width={64}
+                height={64}
+                className="w-full h-full"
+                loading="lazy"
+              />
             </div>
-            <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-10">
-              Welcome
-            </Heading>
-            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
-              You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and great mystery. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section">
-              Through shamanic practice, she helps you reconnect to your wholeness, awaken your vitality, and walk forward empowered. Whether you're new to this work or returning to it, you're invited to explore, feel, and heal.
-            </p>
           </div>
-        </section>
+          <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-10">
+            Welcome
+          </Heading>
+          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section">
+            You are not here by accident. You've been guided to a place of healing, a space where spirit moves through ancient ceremony and great mystery. Karuna Gatton offers deep, soul-level healing from her yurt in Eugene, Oregon—and to those beyond through remote sessions.
+          </p>
+          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section">
+            Through shamanic practice, she helps you reconnect to your wholeness, awaken your vitality, and walk forward empowered. Whether you're new to this work or returning to it, you're invited to explore, feel, and heal.
+          </p>
+        </Section>
         
         {/* Transition Wave to Photo Carousel */}
         <section className="bg-gray-50 relative overflow-hidden">
@@ -248,27 +247,25 @@ export default function Home() {
         </section>
         
         {/* Integrated Photo Carousel */}
-        <section className="relative py-20 bg-purple-50">
+        <Section background="bg-purple-50" className="relative">
           {/* Top wave decoration */}
           <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20 block" style={{ verticalAlign: 'bottom' }}>
               <path fill="#f5f3ff" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
           </div>
-          
-          <div className="container mx-auto px-4">
-            <Heading level={1} variant="section" align="center" color="primary" fadeIn className="mb-8">
-              Visiting Karuna
-            </Heading>
-            
-            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section max-w-3xl mx-auto">
-              She works out of her yurt, between her purple house and Hendricks Park's urban forest in Eugene
-            </p>
-            
-            <div className="max-w-5xl mx-auto fade-in-section">
-              {/* Old Carousel (or Gallery) – Replaced with PortraitCarousel */}
-              <LazyPortraitCarousel />
-            </div>
+
+          <Heading level={1} variant="section" align="center" color="primary" fadeIn className="mb-8">
+            Visiting Karuna
+          </Heading>
+
+          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section max-w-3xl mx-auto">
+            She works out of her yurt, between her purple house and Hendricks Park's urban forest in Eugene
+          </p>
+
+          <div className="max-w-5xl mx-auto fade-in-section">
+            {/* Old Carousel (or Gallery) – Replaced with PortraitCarousel */}
+            <LazyPortraitCarousel />
           </div>
           
           {/* Add custom CSS for carousel */}
@@ -394,7 +391,7 @@ export default function Home() {
               <path fill="#f5f3ff" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
           </div>
-        </section>
+        </Section>
         
         {/* Transition Wave to Offerings */}
         <section className="bg-purple-50 relative overflow-hidden">
@@ -407,42 +404,40 @@ export default function Home() {
         </section>
         
         {/* Offerings Teaser */}
-        <section id="offerings" className="py-20 bg-white relative overflow-hidden">
-          <div className="container mx-auto px-4">
-            <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-16">
-              Empowerment Ceremonies Include
-            </Heading>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {offeringTeasers.map((offering, index) => (
-                <div key={index} className="bg-gray-50 p-8 rounded-lg shadow-sm flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
-                  <div className="mb-6">
-                    <Image
-                      src={offering.icon}
-                      alt={`${offering.title} icon`}
-                      width={86}
-                      height={86}
-                      loading="lazy"
-                      style={{
-                        filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)',
-                        maxWidth: '100%',
-                        height: 'auto'
-                      }}
-                    />
-                  </div>
-                  <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{offering.title}</h3>
-                  <p className="text-gray-600">{offering.description}</p>
+        <Section id="offerings" background="bg-white" className="relative overflow-hidden">
+          <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-16">
+            Empowerment Ceremonies Include
+          </Heading>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {offeringTeasers.map((offering, index) => (
+              <div key={index} className="bg-gray-50 p-8 rounded-lg shadow-sm flex flex-col items-center text-center min-h-64 fade-in-section" style={{transitionDelay: `${index * 150}ms`}}>
+                <div className="mb-6">
+                  <Image
+                    src={offering.icon}
+                    alt={`${offering.title} icon`}
+                    width={86}
+                    height={86}
+                    loading="lazy"
+                    style={{
+                      filter: 'invert(13%) sepia(88%) saturate(2651%) hue-rotate(257deg) brightness(86%) contrast(116%)',
+                      maxWidth: '100%',
+                      height: 'auto'
+                    }}
+                  />
                 </div>
-              ))}
-            </div>
-            
-            <div className="text-center mt-12 fade-in-section">
-              <Button href="/offerings">
-                Learn More
-              </Button>
-            </div>
+                <h3 className="text-xl font-medium text-gray-800 mb-4 font-heading">{offering.title}</h3>
+                <p className="text-gray-600">{offering.description}</p>
+              </div>
+            ))}
           </div>
-        </section>
+
+          <div className="text-center mt-12 fade-in-section">
+            <Button href="/offerings">
+              Learn More
+            </Button>
+          </div>
+        </Section>
         
         {/* Transition Wave to Testimonials */}
         <section className="bg-white relative overflow-hidden">
@@ -455,49 +450,47 @@ export default function Home() {
         </section>
         
         {/* Testimonial Section */}
-        <section className="py-24 bg-background text-gray-800 relative overflow-hidden">
+        <Section spacing="lg" background="bg-background" className="text-gray-800 relative overflow-hidden" maxWidth="max-w-6xl" containerClassName="relative z-10">
           <div className="absolute top-10 left-10 text-8xl text-secondary opacity-10">❝</div>
           <div className="absolute bottom-10 right-10 text-8xl text-secondary opacity-10">❞</div>
-          
-          <div className="container mx-auto px-4 max-w-6xl relative z-10">
-            <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-16">
-              What the community says
-            </Heading>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <Card
-                  key={index}
-                  variant="interactive"
-                  fadeIn
-                  onClick={() => setSelectedTestimonial(testimonial)}
-                >
-                  <div className="flex flex-col h-full">
-                    <div className="text-secondary text-xl mb-4">❝</div>
-                    <p className="text-gray-700 italic mb-6 text-lg flex-grow">
-                      {(() => {
-                        const maxLen = 150;
-                        const text = testimonial.quote;
-                        if (text.length <= maxLen) return text;
-                        const truncated = text.slice(0, maxLen);
-                        const lastSpace = truncated.lastIndexOf(' ');
-                        return truncated.slice(0, lastSpace) + '...';
-                      })()}
+
+          <Heading level={2} variant="section" align="center" color="primary" fadeIn className="mb-16">
+            What the community says
+          </Heading>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card
+                key={index}
+                variant="interactive"
+                fadeIn
+                onClick={() => setSelectedTestimonial(testimonial)}
+              >
+                <div className="flex flex-col h-full">
+                  <div className="text-secondary text-xl mb-4">❝</div>
+                  <p className="text-gray-700 italic mb-6 text-lg flex-grow">
+                    {(() => {
+                      const maxLen = 150;
+                      const text = testimonial.quote;
+                      if (text.length <= maxLen) return text;
+                      const truncated = text.slice(0, maxLen);
+                      const lastSpace = truncated.lastIndexOf(' ');
+                      return truncated.slice(0, lastSpace) + '...';
+                    })()}
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <p className="font-medium text-primary">
+                      ― {testimonial.author === 'Kristin F.' ? 'Kristin F' : testimonial.author}
                     </p>
-                    <div className="flex justify-between items-center">
-                      <p className="font-medium text-primary">
-                        ― {testimonial.author === 'Kristin F.' ? 'Kristin F' : testimonial.author}
-                      </p>
-                      <div className="text-secondary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                        <ChevronRight size={16} />
-                      </div>
+                    <div className="text-secondary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                      <ChevronRight size={16} />
                     </div>
                   </div>
-                </Card>
-              ))}
-            </div>
+                </div>
+              </Card>
+            ))}
           </div>
-        </section>
+        </Section>
         
         {/* Testimonial Modal */}
         <TestimonialModal
@@ -516,63 +509,59 @@ export default function Home() {
         </section>
         
         {/* Drum Circle Highlight */}
-        <section className="bg-primary text-white py-20" style={{ marginTop: '-1px' }}>
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="text-center">
-              <Heading level={2} variant="section" fadeIn className="mb-6">
-                Monthly Drum Circle
-              </Heading>
-              <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section max-w-2xl mx-auto">
-                Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
-              </p>
-              <Link href="/drum-circle" className="inline-flex items-center text-accent hover:text-accent/80 transition duration-300 fade-in-section">
-                Learn More About Monthly Drum Circle
-                <ChevronRight size={20} className="ml-1" />
-              </Link>
-            </div>
+        <Section background="bg-primary" className="text-white" maxWidth="max-w-4xl" style={{ marginTop: '-1px' }}>
+          <div className="text-center">
+            <Heading level={2} variant="section" fadeIn className="mb-6">
+              Monthly Drum Circle
+            </Heading>
+            <p className="text-lg leading-relaxed mb-6 text-gray-200 fade-in-section max-w-2xl mx-auto">
+              Join our community gathering on the first Tuesday of each month at 7:30pm. Experience the healing power of the drum in a supportive environment. No experience necessary.
+            </p>
+            <Link href="/drum-circle" className="inline-flex items-center text-accent hover:text-accent/80 transition duration-300 fade-in-section">
+              Learn More About Monthly Drum Circle
+              <ChevronRight size={20} className="ml-1" />
+            </Link>
           </div>
-        </section>
+        </Section>
         
         {/* Transition Wave to About Section - removed from here */}
         
         {/* About Karuna Teaser */}
-        <section className="py-20 bg-gray-50 relative" style={{ marginTop: '0' }}>
+        <Section background="bg-gray-50" className="relative" maxWidth="max-w-4xl" style={{ marginTop: '0' }}>
           {/* Wave transition at top */}
           <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10" style={{ marginTop: '-1px' }}>
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block">
               <path d="M0,0L0,27.35A600.21,600.21,0,0,0,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0Z" className="fill-primary"></path>
             </svg>
           </div>
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="md:flex items-center">
-              <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">
-                <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
-                  <Image
-                    src="/Karuna_headshot.webp"
-                    alt="Karuna Gatton"
-                    width={192}
-                    height={192}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 192px, 192px"
-                  />
-                </div>
-              </div>
-              <div className="md:w-2/3">
-                <Heading level={2} variant="section" fadeIn color="gray" className="mb-6">
-                  About Karuna
-                </Heading>
-                <p className="text-lg leading-relaxed mb-6 text-gray-700 fade-in-section">
-                  Karuna Gatton brings decades of experience in shamanic healing traditions. Her approach is gentle yet powerful, focusing on empowering her clients through deep connection with spirit and nature.
-                </p>
-                <Link href="/about" className="inline-flex items-center text-secondary hover:text-primary transition duration-300 fade-in-section">
-                  Read More About Karuna
-                  <ChevronRight size={20} className="ml-1" />
-                </Link>
+          <div className="md:flex items-center">
+            <div className="md:w-1/3 mb-8 md:mb-0 md:pr-12 flex justify-center fade-in-section">
+              <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
+                <Image
+                  src="/Karuna_headshot.webp"
+                  alt="Karuna Gatton"
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 192px, 192px"
+                />
               </div>
             </div>
+            <div className="md:w-2/3">
+              <Heading level={2} variant="section" fadeIn color="gray" className="mb-6">
+                About Karuna
+              </Heading>
+              <p className="text-lg leading-relaxed mb-6 text-gray-700 fade-in-section">
+                Karuna Gatton brings decades of experience in shamanic healing traditions. Her approach is gentle yet powerful, focusing on empowering her clients through deep connection with spirit and nature.
+              </p>
+              <Link href="/about" className="inline-flex items-center text-secondary hover:text-primary transition duration-300 fade-in-section">
+                Read More About Karuna
+                <ChevronRight size={20} className="ml-1" />
+              </Link>
+            </div>
           </div>
-        </section>
+        </Section>
 
         {/* Footer */}
         <Footer />
