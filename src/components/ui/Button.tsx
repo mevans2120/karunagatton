@@ -75,7 +75,7 @@ const getButtonClasses = (
   size: ButtonSize,
   className?: string
 ): string => {
-  const baseClasses = 'inline-flex items-center rounded-full transition duration-300';
+  const baseClasses = 'inline-flex items-center rounded-full transition duration-300 cursor-pointer';
   const variantClasses = getVariantClasses(variant);
   const sizeClasses = getSizeClasses(size);
 

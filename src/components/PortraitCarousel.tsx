@@ -54,7 +54,10 @@ const PortraitCarousel = ({ images = sampleImages }) => {
   const goToSlide = (index: number) => { setCurrentIndex(index); };
 
   // Modal functions
-  const openModal = (index: number) => { setCurrentIndex(index); setIsModalOpen(true); };
+  const openModal = (index: number) => {
+    setCurrentIndex(index);
+    setIsModalOpen(true);
+  };
   const closeModal = () => { setIsModalOpen(false); };
 
   // Keyboard navigation
@@ -71,17 +74,30 @@ const PortraitCarousel = ({ images = sampleImages }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isModalOpen, goToPrevious, goToNext]);
 
-  // Prevent body scroll when modal is open
+  // Prevent body scroll when modal is open and ensure proper positioning
   useEffect(() => {
-    if (isModalOpen) { document.body.style.overflow = 'hidden'; } else { document.body.style.overflow = 'unset'; }
-    return () => { document.body.style.overflow = 'unset'; };
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+      // Force body to not have any transforms that could break fixed positioning
+      document.body.style.transform = 'none';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.body.style.transform = '';
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.transform = '';
+      document.documentElement.style.overflow = '';
+    };
   }, [isModalOpen]);
 
   const currentImage = images[currentIndex];
 
   return (
     <>
-      <div className="w-full max-w-6xl mx-auto p-4">
+      <div className="w-full max-w-6xl mx-auto px-4">
         {/* Double column, single row grid (first 2 images only) */}
         {!isModalOpen && (
           <>
@@ -112,43 +128,192 @@ const PortraitCarousel = ({ images = sampleImages }) => {
       </div>
       {/* Modal - now rendered via portal */}
       {isModalOpen && typeof window !== 'undefined' && createPortal(
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95">
-          <div className="relative w-full h-full flex flex-col">
-            {/* Header */}
-            <div className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center p-4 bg-gradient-to-b from-black/50 to-transparent">
-              <div className="text-white">
-                <h3 className="text-lg font-semibold">{currentImage.title}</h3>
-                <p className="text-sm opacity-75">{currentIndex + 1} of {images.length}</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <button onClick={closeModal} className="p-2 text-white hover:bg-white/20 rounded-full transition-colors" title="Close">
-                  <X size={24} />
-                </button>
-              </div>
+        <div
+          data-modal-root="true"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.95)',
+            zIndex: 999999,
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden'
+          }}>
+          {/* Header */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '1rem 1.5rem',
+            background: 'rgba(0,0,0,0.5)',
+            borderBottom: '1px solid rgba(255,255,255,0.1)',
+            flexShrink: 0,
+            zIndex: 10
+          }}>
+            <div style={{ color: 'white' }}>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: '600', margin: 0 }}>{currentImage.title}</h3>
+              <p style={{ fontSize: '0.875rem', opacity: 0.75, margin: 0 }}>{currentIndex + 1} of {images.length}</p>
             </div>
+            <button onClick={closeModal} style={{
+              padding: '0.5rem',
+              color: 'white',
+              background: 'rgba(255,255,255,0.1)',
+              border: '1px solid rgba(255,255,255,0.2)',
+              cursor: 'pointer',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.2)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+            }}
+            title="Close (ESC)">
+              <X size={20} />
+            </button>
+          </div>
 
-            {/* Main Image */}
-            <div className="flex-1 flex items-center justify-center">
-              <div className="relative w-[90vw] max-w-2xl aspect-[3/4]">
-                <Image src={currentImage.src} alt={currentImage.alt} fill className="object-contain" priority onLoadStart={() => setIsLoading(true)} onLoad={() => setIsLoading(false)} />
-                {isLoading && ( <div className="absolute inset-0 flex items-center justify-center bg-gray-100"> <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div> </div> )}
-              </div>
+          {/* Main Image Container */}
+          <div style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            minHeight: 0,
+            padding: '2rem',
+            overflow: 'hidden'
+          }}>
+            {/* Image wrapper - smaller size */}
+            <div style={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: '500px',  // Reduced from 672px
+              height: '100%',
+              maxHeight: '667px',  // 500px * 4/3 aspect ratio
+              aspectRatio: '3/4'
+            }}>
+              <Image
+                src={currentImage.src}
+                alt={currentImage.alt}
+                fill
+                style={{
+                  objectFit: 'contain',
+                  width: '100%',
+                  height: '100%'
+                }}
+                sizes="(max-width: 768px) 80vw, 500px"
+                priority
+              />
             </div>
 
             {/* Navigation Arrows */}
-            <button onClick={goToPrevious} className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 text-white hover:bg-white/20 rounded-full transition-colors" title="Previous image">
+            <button onClick={goToPrevious} style={{
+              position: 'absolute',
+              left: '2rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              padding: '0.75rem',
+              color: 'white',
+              background: 'rgba(0,0,0,0.5)',
+              border: '1px solid rgba(255,255,255,0.2)',
+              cursor: 'pointer',
+              borderRadius: '50%',
+              transition: 'all 0.2s',
+              zIndex: 10
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(0,0,0,0.7)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(0,0,0,0.5)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+            }}
+            title="Previous (←)">
               <ChevronLeft size={24} />
             </button>
-            <button onClick={goToNext} className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 text-white hover:bg-white/20 rounded-full transition-colors" title="Next image">
+            <button onClick={goToNext} style={{
+              position: 'absolute',
+              right: '2rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              padding: '0.75rem',
+              color: 'white',
+              background: 'rgba(0,0,0,0.5)',
+              border: '1px solid rgba(255,255,255,0.2)',
+              cursor: 'pointer',
+              borderRadius: '50%',
+              transition: 'all 0.2s',
+              zIndex: 10
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(0,0,0,0.7)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(0,0,0,0.5)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+            }}
+            title="Next (→)">
               <ChevronRight size={24} />
             </button>
+          </div>
 
-            {/* Bottom Thumbnail Carousel */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent">
-              <div className="flex items-center justify-center p-4 space-x-2 overflow-x-auto">
-                {images.map((image, index: number) => ( <button key={image.id} onClick={() => goToSlide(index)} className={`flex-shrink-0 relative w-16 h-20 rounded overflow-hidden transition-all duration-200 ${index === currentIndex ? 'ring-2 ring-white scale-110' : 'opacity-60 hover:opacity-80'}`}><Image src={image.thumbnail} alt={image.alt} fill className="object-cover" sizes="64px" /></button> ))}
-              </div>
-            </div>
+          {/* Bottom Thumbnails */}
+          <div style={{
+            background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+            padding: '1rem',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '0.75rem',
+            overflowX: 'auto',
+            flexShrink: 0
+          }}>
+            {images.map((image, index: number) => (
+              <button key={image.id} onClick={() => goToSlide(index)} style={{
+                position: 'relative',
+                width: '4.5rem',
+                height: '6rem',
+                border: index === currentIndex ? '3px solid white' : '2px solid transparent',
+                borderRadius: '0.5rem',
+                overflow: 'hidden',
+                opacity: index === currentIndex ? 1 : 0.5,
+                cursor: 'pointer',
+                padding: 0,
+                background: 'rgba(0,0,0,0.3)',
+                transition: 'all 0.2s',
+                flexShrink: 0
+              }}
+              onMouseEnter={(e) => {
+                if (index !== currentIndex) {
+                  e.currentTarget.style.opacity = '0.8';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (index !== currentIndex) {
+                  e.currentTarget.style.opacity = '0.5';
+                  e.currentTarget.style.borderColor = 'transparent';
+                }
+              }}>
+                <Image
+                  src={image.thumbnail}
+                  alt={image.alt}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="72px"
+                />
+              </button>
+            ))}
           </div>
         </div>,
         document.body

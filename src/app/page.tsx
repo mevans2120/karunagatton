@@ -181,12 +181,6 @@ export default function Home() {
               variant="hero"
               color="white"
               className="mb-4"
-              style={{
-                willChange: 'auto',
-                transform: 'translateZ(0)',
-                backfaceVisibility: 'hidden',
-                contain: 'layout style paint'
-              }}
             >
               Shamanic Healing <br className="hidden md:block" />in Eugene, OR
             </Heading>
@@ -247,7 +241,7 @@ export default function Home() {
         </section>
         
         {/* Integrated Photo Carousel */}
-        <Section background="bg-purple-50" className="relative">
+        <section className="relative py-12 bg-purple-50">
           {/* Top wave decoration */}
           <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-20 block" style={{ verticalAlign: 'bottom' }}>
@@ -255,143 +249,27 @@ export default function Home() {
             </svg>
           </div>
 
-          <Heading level={1} variant="section" align="center" color="primary" fadeIn className="mb-8">
-            Visiting Karuna
-          </Heading>
+          {/* Container only for heading and text */}
+          <div className="container mx-auto px-4">
+            <Heading level={1} variant="section" align="center" color="primary" fadeIn className="mb-8">
+              Visiting Karuna
+            </Heading>
 
-          <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-16 fade-in-section max-w-3xl mx-auto">
-            She works out of her yurt, between her purple house and Hendricks Park's urban forest in Eugene
-          </p>
-
-          <div className="max-w-5xl mx-auto fade-in-section">
-            {/* Old Carousel (or Gallery) – Replaced with PortraitCarousel */}
-            <LazyPortraitCarousel />
+            <p className="text-lg md:text-xl leading-relaxed text-center text-gray-700 mb-8 fade-in-section max-w-3xl mx-auto">
+              She works out of her yurt, between her purple house and Hendricks Park's urban forest in Eugene
+            </p>
           </div>
-          
-          {/* Add custom CSS for carousel */}
-          <style jsx>{`
-            .carousel {
-              display: flex;
-              width: 100%;
-              align-items: center;
-              margin: 0 auto;
-              height: 500px;
-            }
 
-            .carousel__list {
-              display: flex;
-              list-style: none;
-              position: relative;
-              width: 100%;
-              height: 450px;
-              justify-content: center;
-              perspective: 300px;
-              padding: 0;
-              margin: 0;
-            }
-            
-            .carousel__item {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 270px;
-              height: 400px;
-              border-radius: 12px;
-              position: absolute;
-              transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-              cursor: pointer;
-              overflow: visible;
-              pointer-events: auto;
-              will-change: transform, opacity, filter;
-              transform-origin: center center;
-              -webkit-tap-highlight-color: transparent;
-            }
-            
-            .carousel__item[data-pos="0"] {
-              z-index: 5;
-              transform: translateX(0) scale(1.25);
-              opacity: 1;
-              filter: blur(0px) grayscale(0%);
-              width: 300px;
-            }
-            
-            .carousel__item[data-pos="-1"] {
-              transform: translateX(-40%) scale(0.9);
-              z-index: 4;
-              opacity: 0.8;
-              filter: blur(1px) grayscale(10%);
-            }
-            
-            .carousel__item[data-pos="1"] {
-              transform: translateX(40%) scale(0.9);
-              z-index: 4;
-              opacity: 0.8;
-              filter: blur(1px) grayscale(10%);
-            }
-            
-            .carousel__item[data-pos="-2"] {
-              transform: translateX(-75%) scale(0.5);
-              z-index: 2;
-              opacity: 0.4;
-              filter: blur(2px) grayscale(30%);
-            }
-            
-            .carousel__item[data-pos="2"] {
-              transform: translateX(75%) scale(0.5);
-              z-index: 2;
-              opacity: 0.4;
-              filter: blur(2px) grayscale(30%);
-            }
-            
-            .carousel__item > div {
-              height: 350px;
-            }
-            
-            .carousel__item[data-pos="0"] > div {
-              height: 400px;
-            }
-            
-            .carousel__item > div > div:first-child {
-              box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.5);
-              height: 100%;
-            }
-            
-            /* Desktop media query for larger carousel (20% increase) */
-            @media (min-width: 768px) {
-              .carousel {
-                height: 600px; /* 500px × 1.2 */
-              }
-              
-              .carousel__list {
-                height: 540px; /* 450px × 1.2 */
-              }
-              
-              .carousel__item {
-                width: 324px; /* 270px × 1.2 */
-                height: 480px; /* 400px × 1.2 */
-              }
-              
-              .carousel__item[data-pos="0"] {
-                width: 360px; /* 300px × 1.2 */
-              }
-              
-              .carousel__item > div {
-                height: 420px; /* 350px × 1.2 */
-              }
-              
-              .carousel__item[data-pos="0"] > div {
-                height: 480px; /* 400px × 1.2 */
-              }
-            }
-          `}</style>
-          
+          {/* Carousel outside container - manages its own width */}
+          <LazyPortraitCarousel />
+
           {/* Bottom wave decoration */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style={{ marginBottom: '-1px' }}>
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block" style={{ transform: 'rotate(180deg)', verticalAlign: 'bottom' }}>
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180" style={{ marginBottom: '-1px' }}>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24 block" style={{ verticalAlign: 'bottom' }}>
               <path fill="#f5f3ff" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
           </div>
-        </Section>
+        </section>
         
         {/* Transition Wave to Offerings */}
         <section className="bg-purple-50 relative overflow-hidden">

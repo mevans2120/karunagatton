@@ -6,7 +6,7 @@ import { ComponentProps } from 'react';
 // Lazy load the PortraitCarousel component with loading fallback
 const PortraitCarousel = dynamic(() => import('./PortraitCarousel'), {
   loading: () => (
-    <div className="w-full max-w-6xl mx-auto p-4">
+    <div className="w-full max-w-6xl mx-auto px-4">
       <div className="grid grid-cols-2 gap-4 mb-4">
         {[1, 2].map((i) => (
           <div
