@@ -116,7 +116,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         <Link
           href={href}
           className={combinedClassName}
-          style={style}
+          style={{ cursor: 'pointer', ...style }}
           ref={ref as React.Ref<HTMLAnchorElement>}
         >
           {children}
@@ -131,7 +131,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         ref={ref as React.Ref<HTMLButtonElement>}
         onClick={onClick}
         className={combinedClassName}
-        style={style}
+        style={{ cursor: disabled ? 'not-allowed' : 'pointer', ...style }}
         type={type}
         disabled={disabled}
       >

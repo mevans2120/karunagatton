@@ -356,7 +356,41 @@ git checkout HEAD -- path/to/file
 
 ## Recent Progress Summary
 
-**Sprint C (Card Component) - Just Completed:**
+### ✅ Portrait Carousel Modal Fix (Complete - 2025-11-22)
+
+**Issue:** Modal was "stuck to the top of the page" instead of viewport
+- Close button (X) and thumbnails positioned at page edges, not viewport edges
+- Modal stretched to entire document height instead of browser window
+- CSS `position: fixed` being broken by parent `position: relative`
+
+**Root Causes Identified:**
+1. `body` had `position: relative` in globals.css (line 82)
+2. Mobile-specific CSS also added `position: relative` to html/body (lines 370-380)
+3. These properties break `position: fixed` for child elements rendered via React Portal
+
+**Solution Implemented:**
+1. Removed `position: relative` from globals.css (commented out lines 82 and 370-380)
+2. Converted modal to use full viewport dimensions (100vw × 100vh)
+3. Used inline styles to bypass CSS specificity conflicts
+4. Modal now properly fills entire viewport edge-to-edge with no padding
+
+**Key Learnings:**
+- **Viewport vs Page:** Viewport = browser window, Page = entire document
+- React Portals render to document.body but still affected by body CSS
+- `position: relative` on body/html breaks `position: fixed` children
+- Transform properties can also create new stacking contexts that break fixed positioning
+
+**Files Modified:**
+- `src/components/PortraitCarousel.tsx` - Complete modal rewrite with viewport sizing
+- `src/app/globals.css` - Removed position: relative conflicts
+- `src/app/page.tsx` - Removed 115 lines of orphaned carousel CSS
+- `src/components/ui/Button.tsx` - Added cursor-pointer class
+
+**Status:** Committed to main branch with message "fix: portrait carousel modal viewport positioning and cleanup"
+
+---
+
+**Sprint C (Card Component) - Completed:**
 - Created Card component with 3 variants (default, elevated, interactive)
 - Updated 5 pages: homepage, offerings, about, drum-circle, get-in-touch
 - Eliminated 7 instances of repeated card patterns
@@ -365,12 +399,12 @@ git checkout HEAD -- path/to/file
 - Committed and pushed to remote
 
 **Components Created So Far:**
-1. `src/components/ui/Button.tsx` - 124 lines
+1. `src/components/ui/Button.tsx` - 124 lines (updated with cursor-pointer)
 2. `src/components/ui/Heading.tsx` - 173 lines
 3. `src/components/ui/Card.tsx` - 108 lines
 
 **Total Lines Added:** 405 lines of reusable component code
-**Total Lines Saved:** ~100-150 lines across pages (reduced duplication)
+**Total Lines Saved:** ~265 lines across pages (including 115 lines of orphaned CSS)
 **Bundle Size Impact:** 1-2 KB reduction per page
 
 ---
